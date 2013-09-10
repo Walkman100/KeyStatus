@@ -36,6 +36,7 @@ Public Class Form1
         ExitToolStripMenuItem.Text = "&Exit " & My.Application.Info.ProductName
         RestartToolStripMenuItem.Text = "&Restart " & My.Application.Info.ProductName
         AboutToolStripMenuItem.Text = "&About " & My.Application.Info.ProductName
+        ShowToolStripMenuItem.Text = "&Show " & My.Application.Info.ProductName
         'Setup The Color
         LabelX1.ForeColor = Color.Black
         LabelX2.ForeColor = Color.White
@@ -45,7 +46,7 @@ Public Class Form1
         'Start The Clock Timer To Display The Current Time For LabelX4
         Clock.Start()
         'Sets The Timer's Refresh Rate Accorind To A Settings String
-        KeyStatusService.Interval = My.Settings.TimerRefreshRate
+        KeyStatusService.Interval = My.Settings.TimerRefreshRate.ToString
         'Checks Settings and Sets The Value of The Switchbutton and If Settings 'KeyStatusServiceActive' Equals "1" Then It Goes To The Provate Sub 'StartService()'
         If My.Settings.KeyStatusServiceActive = "0" Then
             SwitchButton1.Value = False
@@ -54,14 +55,29 @@ Public Class Form1
             SwitchButton1.Value = True
             StartService()
         End If
-        'Checks The Settings To See If The User Wants The Command Line Tool
+        If My.Settings.KeyStatusServiceActive = "0" Then
+            SwitchButton1.Value = False
+            KillService()
+        End If
+
+        'Checks The Settings To See If The User Wants The Command Line Tool Visibility Button To Be Shown
         If My.Settings.commandline = "true" Then
             Label1.Visible = True
         End If
         If My.Settings.commandline = "false" Then
             Label1.Visible = False
         End If
-
+        'Other Stuff To Make Everything Seems Normal, To Lazy To Explain
+        If My.Settings.KeyStatusServiceActive = "0" Then
+            KeyStatusNotifyIcon.Text = My.Application.Info.ProductName & " [Service activated]"
+        End If
+        If My.Settings.KeyStatusServiceActive = "1" Then
+            KeyStatusNotifyIcon.Text = My.Application.Info.ProductName & " [Service deactivated]"
+        End If
+        'Checks If The User Wants KeyStatus To Minimize Itself To The Tray On Sta\rtup
+        If My.Settings.HideOnStartup = "true" Then
+            Me.Hide()
+        End If
     End Sub
 
     Private Sub FirstRun()
@@ -73,10 +89,12 @@ Public Class Form1
         If SwitchButton1.Value = True Then
             My.Settings.KeyStatusServiceActive = "1"
             My.Settings.Save()
+            'Add the stuff here for Active Keys
         End If
         If SwitchButton1.Value = False Then
             My.Settings.KeyStatusServiceActive = "0"
             My.Settings.Save()
+            'Add the stuff here for Active Keys
         End If
         If My.Settings.KeyStatusServiceActive = "1" Then
             StartService()
@@ -88,10 +106,28 @@ Public Class Form1
 
     Private Sub StartService()
         KeyStatusService.Start()
+        ActiveKeys.ScrollLockStatusText.Visible = True
+        ActiveKeys.NumLockStatusText.Visible = True
+        KeyStatusNotifyIcon.BalloonTipText = "Service is running..."
+        KeyStatusNotifyIcon.ShowBalloonTip(10)
+        KeyStatusNotifyIcon.Text = My.Application.Info.ProductName & " [Service activated]"
     End Sub
 
     Private Sub KillService()
         KeyStatusService.Stop()
+        ScrollLockOff.Visible = False
+        ScrollLockOn.Visible = False
+        NumLockOff.Visible = False
+        NumLockOn.Visible = False
+        CapsLockOff.Visible = False
+        CapsLockOn.Visible = False
+        ActiveKeys.CapsLockStatusText.Text = "Service not running..."
+        ActiveKeys.NumLockStatusText.Visible = False
+        ActiveKeys.ScrollLockStatusText.Visible = False
+        ActiveKeys.CapsLockStatusText.ForeColor = Color.Red
+        KeyStatusNotifyIcon.BalloonTipText = "Service is not running."
+        KeyStatusNotifyIcon.ShowBalloonTip(10)
+        KeyStatusNotifyIcon.Text = My.Application.Info.ProductName & " [Service deactivated]"
     End Sub
 
     Private Sub ExitButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitButton.Click
@@ -129,7 +165,7 @@ Public Class Form1
     End Sub
 
     Private Sub CheckForUpdatesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckForUpdatesToolStripMenuItem.Click
-        Process.Start("http://deavmi.3owl.com/index.php/KeyStatus")
+        Process.Start("http://deavmi.github.io/KeyStatus/")
     End Sub
 
     Private Sub EnterACommandToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EnterACommandToolStripMenuItem.Click
@@ -152,18 +188,18 @@ Public Class Form1
             Application.Restart()
         End If
         If ToolStripTextBox1.Text = "getpackage" Then
-            If File.Exists("KeyStatus.zip") Then
-                File.Delete("KeyStatus.zip")
-                My.Computer.Network.DownloadFile("http://repository.deavmi.3owl.com/projects/KeyStatus/binary/KeyStatus.zip", Application.StartupPath)
+            If File.Exists("keystatus.zip") Then
+                File.Delete("keystatus.zip")
+                My.Computer.Network.DownloadFile("https://sites.google.com/site/filehostingservice000/home/deavmi/keystatus/keystatus.zip?attredirects=0&d=1", Application.StartupPath & "\keystatus.zip")
             Else
-                My.Computer.Network.DownloadFile("http://repository.deavmi.3owl.com/projects/KeyStatus/binary/KeyStatus.zip", Application.StartupPath)
+                My.Computer.Network.DownloadFile("https://sites.google.com/site/filehostingservice000/home/deavmi/keystatus/keystatus.zip?attredirects=0&d=1", Application.StartupPath & "\keystatus.zip")
             End If
         End If
         If ToolStripTextBox1.Text = "reset" Then
             My.Settings.Reset()
         End If
         If ToolStripTextBox1.Text = "config" Then
-            Process.Start("")
+            Process.Start("KeyStatus.exe.config")
         End If
         If ToolStripTextBox1.Text = "hide" Then
             Me.Hide()
@@ -180,27 +216,50 @@ Public Class Form1
         If ToolStripTextBox1.Text = "stopservice" Then
             SwitchButton1.Value = False
         End If
+        'Refresh-rate values will be changed soon, in time. Mabye, idk :P
+        If ToolStripTextBox1.Text = "refreshrate=lowest" Then
+            My.Settings.TimerRefreshRate = "2500"
+            My.Settings.Save()
+        End If
         If ToolStripTextBox1.Text = "refreshrate=verylow" Then
-
+            My.Settings.TimerRefreshRate = "1000"
+            My.Settings.Save()
         End If
         If ToolStripTextBox1.Text = "refreshrate=low" Then
-
+            My.Settings.TimerRefreshRate = "500"
+            My.Settings.Save()
         End If
         If ToolStripTextBox1.Text = "refreshrate=normal" Then
-
+            My.Settings.TimerRefreshRate = "100"
+            My.Settings.Save()
         End If
         If ToolStripTextBox1.Text = "refreshrate=high" Then
-
+            My.Settings.TimerRefreshRate = "50"
+            My.Settings.Save()
         End If
         If ToolStripTextBox1.Text = "refreshrate=veryhigh" Then
-
+            My.Settings.TimerRefreshRate = "20"
+            My.Settings.Save()
         End If
         If ToolStripTextBox1.Text = "refreshrate=max" Then
-
+            My.Settings.TimerRefreshRate = "1"
+            My.Settings.Save()
         End If
         If ToolStripTextBox1.Text = "break" Then
             Debugger.Break()
         End If
+        If ToolStripTextBox1.Text = "upgrade-config" Then
+            My.Settings.Upgrade()
+        End If
+        If ToolStripTextBox1.Text = "hideonstartup=true" Then
+            My.Settings.HideOnStartup = "true"
+            My.Settings.Save()
+        End If
+        If ToolStripTextBox1.Text = "hideonstartup=false" Then
+            My.Settings.HideOnStartup = "false"
+            My.Settings.Save()
+        End If
+
 
     End Sub
 
@@ -209,12 +268,41 @@ Public Class Form1
     End Sub
 
     Private Sub KeyStatusService_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles KeyStatusService.Tick
+        ' Caps Lock 'If' Statement Goes Below
         If My.Computer.Keyboard.CapsLock = True Then
             CapsLockOn.Visible = True
             CapsLockOff.Visible = False
+            ActiveKeys.CapsLockStatusText.Text = "Caps Lock is active"
+            ActiveKeys.CapsLockStatusText.ForeColor = Color.Lime
         Else
             CapsLockOff.Visible = True
             CapsLockOn.Visible = False
+            ActiveKeys.CapsLockStatusText.Text = "Caps Lock is not active"
+            ActiveKeys.CapsLockStatusText.ForeColor = Color.Red
+        End If
+        ' Num Lock 'If' Statement Goes Below
+        If My.Computer.Keyboard.NumLock = True Then
+            NumLockOn.Visible = True
+            NumLockOff.Visible = False
+            ActiveKeys.NumLockStatusText.Text = "Num Lock is active"
+            ActiveKeys.NumLockStatusText.ForeColor = Color.Lime
+        Else
+            NumLockOff.Visible = True
+            NumLockOn.Visible = False
+            ActiveKeys.NumLockStatusText.Text = "Num Lock is not active"
+            ActiveKeys.NumLockStatusText.ForeColor = Color.Red
+        End If
+        ' Scroll Lock 'If' Statement Goes Below
+        If My.Computer.Keyboard.ScrollLock = True Then
+            ScrollLockOn.Visible = True
+            ScrollLockOff.Visible = False
+            ActiveKeys.ScrollLockStatusText.Text = "Scroll Lock is active"
+            ActiveKeys.ScrollLockStatusText.ForeColor = Color.Lime
+        Else
+            ScrollLockOff.Visible = True
+            ScrollLockOn.Visible = False
+            ActiveKeys.ScrollLockStatusText.Text = "Scroll Lock is not active"
+            ActiveKeys.ScrollLockStatusText.ForeColor = Color.Red
         End If
     End Sub
 End Class

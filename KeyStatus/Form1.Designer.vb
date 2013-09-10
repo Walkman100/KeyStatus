@@ -52,8 +52,13 @@ Partial Class Form1
         Me.RunToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DevCommander = New System.ComponentModel.BackgroundWorker()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.CapsLockOn = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.CapsLockOff = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.CapsLockOn = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.NumLockOn = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.NumLockOff = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.ScrollLockOn = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.ScrollLockOff = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.ShowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.KeyStatusNotifyIconContextMenuStrip.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -158,7 +163,7 @@ Partial Class Form1
         'KeyStatusNotifyIconContextMenuStrip
         '
         Me.KeyStatusNotifyIconContextMenuStrip.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.KeyStatusNotifyIconContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewActiveKeysToolStripMenuItem, Me.ToolStripSeparator1, Me.CheckForUpdatesToolStripMenuItem, Me.AboutToolStripMenuItem, Me.RestartToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.KeyStatusNotifyIconContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewActiveKeysToolStripMenuItem, Me.ShowToolStripMenuItem, Me.ToolStripSeparator1, Me.CheckForUpdatesToolStripMenuItem, Me.AboutToolStripMenuItem, Me.RestartToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.KeyStatusNotifyIconContextMenuStrip.Name = "KeyStatusNotifyIconContextMenuStrip"
         Me.KeyStatusNotifyIconContextMenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.KeyStatusNotifyIconContextMenuStrip.Size = New System.Drawing.Size(177, 142)
@@ -253,7 +258,7 @@ Partial Class Form1
         Me.ReflectionImage1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ReflectionImage1.BackgroundStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
         Me.ReflectionImage1.Image = Global.KeyStatus.My.Resources.Resources._1371918331_keyboard
-        Me.ReflectionImage1.Location = New System.Drawing.Point(12, 12)
+        Me.ReflectionImage1.Location = New System.Drawing.Point(11, 12)
         Me.ReflectionImage1.Name = "ReflectionImage1"
         Me.ReflectionImage1.Size = New System.Drawing.Size(112, 97)
         Me.ReflectionImage1.TabIndex = 0
@@ -297,17 +302,41 @@ Partial Class Form1
         Me.Label1.TabIndex = 14
         Me.Label1.Text = "Command Line"
         '
-        'CapsLockOn
-        '
-        Me.CapsLockOn.Icon = CType(resources.GetObject("CapsLockOn.Icon"), System.Drawing.Icon)
-        Me.CapsLockOn.Text = "NotifyIcon1"
-        Me.CapsLockOn.Visible = True
-        '
         'CapsLockOff
         '
         Me.CapsLockOff.Icon = CType(resources.GetObject("CapsLockOff.Icon"), System.Drawing.Icon)
-        Me.CapsLockOff.Text = "NotifyIcon1"
-        Me.CapsLockOff.Visible = True
+        Me.CapsLockOff.Text = "Caps Lock deactivated"
+        '
+        'CapsLockOn
+        '
+        Me.CapsLockOn.Icon = CType(resources.GetObject("CapsLockOn.Icon"), System.Drawing.Icon)
+        Me.CapsLockOn.Text = "Caps Lock activated"
+        '
+        'NumLockOn
+        '
+        Me.NumLockOn.Icon = CType(resources.GetObject("NumLockOn.Icon"), System.Drawing.Icon)
+        Me.NumLockOn.Text = "Num Lock activated"
+        '
+        'NumLockOff
+        '
+        Me.NumLockOff.Icon = CType(resources.GetObject("NumLockOff.Icon"), System.Drawing.Icon)
+        Me.NumLockOff.Text = "Num Lock deactivated"
+        '
+        'ScrollLockOn
+        '
+        Me.ScrollLockOn.Icon = CType(resources.GetObject("ScrollLockOn.Icon"), System.Drawing.Icon)
+        Me.ScrollLockOn.Text = "Scroll Lock activated"
+        '
+        'ScrollLockOff
+        '
+        Me.ScrollLockOff.Icon = CType(resources.GetObject("ScrollLockOff.Icon"), System.Drawing.Icon)
+        Me.ScrollLockOff.Text = "Scroll Lock deactivated"
+        '
+        'ShowToolStripMenuItem
+        '
+        Me.ShowToolStripMenuItem.Name = "ShowToolStripMenuItem"
+        Me.ShowToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.ShowToolStripMenuItem.Text = "&Show"
         '
         'Form1
         '
@@ -370,7 +399,12 @@ Partial Class Form1
     Friend WithEvents RunToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DevCommander As System.ComponentModel.BackgroundWorker
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents CapsLockOn As System.Windows.Forms.NotifyIcon
     Friend WithEvents CapsLockOff As System.Windows.Forms.NotifyIcon
+    Friend WithEvents CapsLockOn As System.Windows.Forms.NotifyIcon
+    Friend WithEvents NumLockOn As System.Windows.Forms.NotifyIcon
+    Friend WithEvents NumLockOff As System.Windows.Forms.NotifyIcon
+    Friend WithEvents ScrollLockOn As System.Windows.Forms.NotifyIcon
+    Friend WithEvents ScrollLockOff As System.Windows.Forms.NotifyIcon
+    Friend WithEvents ShowToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

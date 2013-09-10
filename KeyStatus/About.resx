@@ -117,4 +117,39 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="RichTextBoxEx1.Text" xml:space="preserve">
+    <value>Developers
+
+
+Deavmi
+&lt;http://deavmi.3owl.com/&gt;
+&lt;http://blackmesahq.3owl.com/&gt;
+&lt;http://twitter.com/deavmi&gt;
+&lt;mailto:tristankildaire@gmail.com&gt;
+
+
+Graphic designers
+
+Saruu
+No Information
+
+Yusuke Kamiyamane
+&lt;http://p.yusukekamiyamane.com/&gt;
+
+
+Testers
+
+Walkman
+&lt;https://sites.google.com/site/filehostingservice000/mc-server-info&gt;
+&lt;http://twitter.com/walkman100&gt;
+&lt;mailto:matthewcarter17@gmail.com&gt;
+
+
+Special Thanks
+
+Walkman
+&lt;https://sites.google.com/site/filehostingservice000/mc-server-info&gt;
+&lt;http://twitter.com/walkman100&gt;
+&lt;mailto:matthewcarter17@gmail.com&gt;</value>
+  </data>
 </root>

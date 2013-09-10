@@ -40,7 +40,7 @@ Partial Class License
         Me.LabelX2.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX2.Location = New System.Drawing.Point(130, 70)
         Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.Size = New System.Drawing.Size(399, 27)
+        Me.LabelX2.Size = New System.Drawing.Size(433, 27)
         Me.LabelX2.TabIndex = 5
         Me.LabelX2.Text = "Version"
         Me.LabelX2.TextLineAlignment = System.Drawing.StringAlignment.Near
@@ -54,7 +54,7 @@ Partial Class License
         Me.LabelX1.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX1.Location = New System.Drawing.Point(130, 12)
         Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.Size = New System.Drawing.Size(399, 52)
+        Me.LabelX1.Size = New System.Drawing.Size(433, 52)
         Me.LabelX1.TabIndex = 4
         Me.LabelX1.Text = "Name"
         '
@@ -86,14 +86,14 @@ Partial Class License
         Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
         Me.WebBrowser1.Name = "WebBrowser1"
         Me.WebBrowser1.ScriptErrorsSuppressed = True
-        Me.WebBrowser1.Size = New System.Drawing.Size(517, 316)
+        Me.WebBrowser1.Size = New System.Drawing.Size(551, 316)
         Me.WebBrowser1.TabIndex = 7
         '
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(427, 451)
+        Me.Button1.Location = New System.Drawing.Point(461, 451)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(102, 32)
         Me.Button1.TabIndex = 8
@@ -104,7 +104,7 @@ Partial Class License
         '
         Me.Button2.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Location = New System.Drawing.Point(319, 451)
+        Me.Button2.Location = New System.Drawing.Point(353, 451)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(102, 32)
         Me.Button2.TabIndex = 9
@@ -116,7 +116,7 @@ Partial Class License
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Desktop
-        Me.ClientSize = New System.Drawing.Size(541, 495)
+        Me.ClientSize = New System.Drawing.Size(575, 495)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.WebBrowser1)

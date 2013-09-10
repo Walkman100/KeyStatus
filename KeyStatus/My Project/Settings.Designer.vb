@@ -56,7 +56,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
         Public Property KeyStatusServiceActive() As Integer
             Get
                 Return CType(Me("KeyStatusServiceActive"),Integer)
@@ -80,7 +80,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("true")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("false")>  _
         Public Property commandline() As String
             Get
                 Return CType(Me("commandline"),String)
@@ -99,6 +99,18 @@ Namespace My
             End Get
             Set
                 Me("TimerRefreshRate") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("false")>  _
+        Public Property HideOnStartup() As String
+            Get
+                Return CType(Me("HideOnStartup"),String)
+            End Get
+            Set
+                Me("HideOnStartup") = value
             End Set
         End Property
     End Class

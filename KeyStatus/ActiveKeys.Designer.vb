@@ -25,9 +25,9 @@ Partial Class ActiveKeys
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.Line1 = New DevComponents.DotNetBar.Controls.Line()
         Me.ReflectionImage1 = New DevComponents.DotNetBar.Controls.ReflectionImage()
-        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
+        Me.CapsLockStatusText = New DevComponents.DotNetBar.LabelX()
+        Me.NumLockStatusText = New DevComponents.DotNetBar.LabelX()
+        Me.ScrollLockStatusText = New DevComponents.DotNetBar.LabelX()
         Me.SuspendLayout()
         '
         'LabelX1
@@ -66,47 +66,47 @@ Partial Class ActiveKeys
         Me.ReflectionImage1.Size = New System.Drawing.Size(39, 38)
         Me.ReflectionImage1.TabIndex = 2
         '
-        'LabelX2
+        'CapsLockStatusText
         '
         '
         '
         '
-        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX2.Location = New System.Drawing.Point(12, 72)
-        Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.Size = New System.Drawing.Size(258, 31)
-        Me.LabelX2.TabIndex = 3
-        Me.LabelX2.Text = "Title"
-        Me.LabelX2.TextAlignment = System.Drawing.StringAlignment.Center
+        Me.CapsLockStatusText.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CapsLockStatusText.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CapsLockStatusText.Location = New System.Drawing.Point(12, 72)
+        Me.CapsLockStatusText.Name = "CapsLockStatusText"
+        Me.CapsLockStatusText.Size = New System.Drawing.Size(258, 31)
+        Me.CapsLockStatusText.TabIndex = 3
+        Me.CapsLockStatusText.Text = "Title"
+        Me.CapsLockStatusText.TextAlignment = System.Drawing.StringAlignment.Center
         '
-        'LabelX3
-        '
-        '
-        '
-        '
-        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX3.Location = New System.Drawing.Point(12, 103)
-        Me.LabelX3.Name = "LabelX3"
-        Me.LabelX3.Size = New System.Drawing.Size(258, 31)
-        Me.LabelX3.TabIndex = 4
-        Me.LabelX3.Text = "Title"
-        Me.LabelX3.TextAlignment = System.Drawing.StringAlignment.Center
-        '
-        'LabelX4
+        'NumLockStatusText
         '
         '
         '
         '
-        Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX4.Location = New System.Drawing.Point(12, 134)
-        Me.LabelX4.Name = "LabelX4"
-        Me.LabelX4.Size = New System.Drawing.Size(258, 31)
-        Me.LabelX4.TabIndex = 5
-        Me.LabelX4.Text = "Title"
-        Me.LabelX4.TextAlignment = System.Drawing.StringAlignment.Center
+        Me.NumLockStatusText.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.NumLockStatusText.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NumLockStatusText.Location = New System.Drawing.Point(12, 103)
+        Me.NumLockStatusText.Name = "NumLockStatusText"
+        Me.NumLockStatusText.Size = New System.Drawing.Size(258, 31)
+        Me.NumLockStatusText.TabIndex = 4
+        Me.NumLockStatusText.Text = "Title"
+        Me.NumLockStatusText.TextAlignment = System.Drawing.StringAlignment.Center
+        '
+        'ScrollLockStatusText
+        '
+        '
+        '
+        '
+        Me.ScrollLockStatusText.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ScrollLockStatusText.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ScrollLockStatusText.Location = New System.Drawing.Point(12, 134)
+        Me.ScrollLockStatusText.Name = "ScrollLockStatusText"
+        Me.ScrollLockStatusText.Size = New System.Drawing.Size(258, 31)
+        Me.ScrollLockStatusText.TabIndex = 5
+        Me.ScrollLockStatusText.Text = "Title"
+        Me.ScrollLockStatusText.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'ActiveKeys
         '
@@ -114,9 +114,9 @@ Partial Class ActiveKeys
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Desktop
         Me.ClientSize = New System.Drawing.Size(282, 181)
-        Me.Controls.Add(Me.LabelX4)
-        Me.Controls.Add(Me.LabelX3)
-        Me.Controls.Add(Me.LabelX2)
+        Me.Controls.Add(Me.ScrollLockStatusText)
+        Me.Controls.Add(Me.NumLockStatusText)
+        Me.Controls.Add(Me.CapsLockStatusText)
         Me.Controls.Add(Me.ReflectionImage1)
         Me.Controls.Add(Me.Line1)
         Me.Controls.Add(Me.LabelX1)
@@ -132,7 +132,7 @@ Partial Class ActiveKeys
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
     Friend WithEvents Line1 As DevComponents.DotNetBar.Controls.Line
     Friend WithEvents ReflectionImage1 As DevComponents.DotNetBar.Controls.ReflectionImage
-    Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents CapsLockStatusText As DevComponents.DotNetBar.LabelX
+    Friend WithEvents NumLockStatusText As DevComponents.DotNetBar.LabelX
+    Friend WithEvents ScrollLockStatusText As DevComponents.DotNetBar.LabelX
 End Class
