@@ -175,7 +175,7 @@ Partial Class About
         Me.RichTextBoxEx2.ShortcutsEnabled = False
         Me.RichTextBoxEx2.Size = New System.Drawing.Size(569, 282)
         Me.RichTextBoxEx2.TabIndex = 12
-        Me.RichTextBoxEx2.Text = "KeyStatus is registered under GNU's General Public License version 3 (GPLv3). You" & _
+        Me.RichTextBoxEx2.Text = "KeyStatus is licensed under GNU's General Public License version 3 (GPLv3) or above. You" & _
             "r copy of the GPL can be obtained here: <http://gnu.org/licenses/gpl.txt/>"
         '
         'LabelX2
