@@ -10,9 +10,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("KeyStatus")> 
 <Assembly: AssemblyDescription("Easily Tells You The Status of Your Keyboard")> 
-<Assembly: AssemblyCompany("Deavmi")> 
+<Assembly: AssemblyCompany("Crowbar")> 
 <Assembly: AssemblyProduct("KeyStatus")> 
-<Assembly: AssemblyCopyright("Copyright © KeyStatus 2013. All Rights Reserved. Registered To Deavmi.")> 
+<Assembly: AssemblyCopyright("Crowbar 2015. This software is licensed under the GNU General Public License v3.0 or above.")> 
 <Assembly: AssemblyTrademark("Showing You What Your Keys Are Doing.")> 
 
 <Assembly: ComVisible(False)>
