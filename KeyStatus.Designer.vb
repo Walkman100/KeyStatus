@@ -26,8 +26,6 @@ Partial Class KeyStatus
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(KeyStatus))
         Me.LabelX1 = New System.Windows.Forms.Label()
         Me.LabelX2 = New System.Windows.Forms.Label()
-        'Me.Line1 = New System.Windows.Forms.Line()
-        'Me.Line2 = New System.Windows.Forms.Line()
         Me.ExitButton = New System.Windows.Forms.Button()
         Me.LabelX3 = New System.Windows.Forms.Label()
         Me.SwitchButton1 = New System.Windows.Forms.Button()
@@ -65,10 +63,6 @@ Partial Class KeyStatus
         '
         'LabelX1
         '
-        '
-        '
-        '
-        'Me.LabelX1.BackgroundStyle.CornerType = System.Windows.Forms.eCornerType.Square
         Me.LabelX1.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX1.Location = New System.Drawing.Point(130, 12)
         Me.LabelX1.Name = "LabelX1"
@@ -78,33 +72,12 @@ Partial Class KeyStatus
         '
         'LabelX2
         '
-        '
-        '
-        '
-        'Me.LabelX2.BackgroundStyle.CornerType = System.Windows.Forms.eCornerType.Square
         Me.LabelX2.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX2.Location = New System.Drawing.Point(130, 70)
         Me.LabelX2.Name = "LabelX2"
         Me.LabelX2.Size = New System.Drawing.Size(334, 27)
         Me.LabelX2.TabIndex = 2
         Me.LabelX2.Text = "Version"
-        'Me.LabelX2.TextLineAlignment = System.Drawing.StringAlignment.Near
-        '
-        'Line1
-        '
-        'Me.Line1.Location = New System.Drawing.Point(-3, 100)
-        'Me.Line1.Name = "Line1"
-        'Me.Line1.Size = New System.Drawing.Size(485, 23)
-        'Me.Line1.TabIndex = 3
-        'Me.Line1.Text = "Line1"
-        '
-        'Line2
-        '
-        'Me.Line2.Location = New System.Drawing.Point(-3, 339)
-        'Me.Line2.Name = "Line2"
-        'Me.Line2.Size = New System.Drawing.Size(485, 10)
-        'Me.Line2.TabIndex = 4
-        'Me.Line2.Text = "Line2"
         '
         'ExitButton
         '
@@ -119,28 +92,18 @@ Partial Class KeyStatus
         '
         'LabelX3
         '
-        '
-        '
-        '
-        'Me.LabelX3.BackgroundStyle.CornerType = System.Windows.Forms.eCornerType.Square
         Me.LabelX3.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX3.Location = New System.Drawing.Point(12, 129)
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.Size = New System.Drawing.Size(218, 27)
         Me.LabelX3.TabIndex = 7
         Me.LabelX3.Text = "Flip The Switch To Begin:"
-        'Me.LabelX3.TextLineAlignment = System.Drawing.StringAlignment.Near
         '
         'SwitchButton1
         '
-        '
-        '
-        '
-        'Me.SwitchButton1.BackgroundStyle.CornerType = System.Windows.Forms.eCornerType.Square
         Me.SwitchButton1.Location = New System.Drawing.Point(236, 129)
         Me.SwitchButton1.Name = "SwitchButton1"
         Me.SwitchButton1.Size = New System.Drawing.Size(83, 27)
-        'Me.SwitchButton1.Style = System.Windows.Forms.eDotNetBarStyle.StyleManagerControlled
         Me.SwitchButton1.TabIndex = 8
         '
         'AboutButton
@@ -204,40 +167,23 @@ Partial Class KeyStatus
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
         Me.ExitToolStripMenuItem.Text = "&Exit"
         '
-        'KeyStatusService
-        '
-        '
         'LabelX4
         '
-        '
-        '
-        '
-        'Me.LabelX4.BackgroundStyle.CornerType = System.Windows.Forms.eCornerType.Square
         Me.LabelX4.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX4.Location = New System.Drawing.Point(12, 352)
         Me.LabelX4.Name = "LabelX4"
         Me.LabelX4.Size = New System.Drawing.Size(110, 27)
         Me.LabelX4.TabIndex = 10
         Me.LabelX4.Text = "Time"
-        'Me.LabelX4.TextAlignment = System.Drawing.StringAlignment.Center
-        'Me.LabelX4.TextLineAlignment = System.Drawing.StringAlignment.Near
-        '
-        'Clock
-        '
         '
         'LabelX5
         '
-        '
-        '
-        '
-        'Me.LabelX5.BackgroundStyle.CornerType = System.Windows.Forms.eCornerType.Square
         Me.LabelX5.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX5.Location = New System.Drawing.Point(12, 162)
         Me.LabelX5.Name = "LabelX5"
         Me.LabelX5.Size = New System.Drawing.Size(452, 171)
         Me.LabelX5.TabIndex = 11
         Me.LabelX5.Text = "Once Activated KeyStatus Will Show You Which" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Keys Are Active."
-        'Me.LabelX5.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'HideButton
         '
@@ -252,11 +198,6 @@ Partial Class KeyStatus
         '
         'ReflectionImage1
         '
-        '
-        '
-        '
-        'Me.ReflectionImage1.BackgroundStyle.CornerType = System.Windows.Forms.eCornerType.Square
-        'Me.ReflectionImage1.BackgroundStyle.TextAlignment = System.Windows.Forms.eStyleTextAlignment.Center
         Me.ReflectionImage1.Image = Global.KeyStatus.My.Resources.Resources._1371918331_keyboard
         Me.ReflectionImage1.Location = New System.Drawing.Point(11, 12)
         Me.ReflectionImage1.Name = "ReflectionImage1"
@@ -352,9 +293,7 @@ Partial Class KeyStatus
         Me.Controls.Add(Me.AboutButton)
         Me.Controls.Add(Me.SwitchButton1)
         Me.Controls.Add(Me.LabelX3)
-        'Me.Controls.Add(Me.Line2)
         Me.Controls.Add(Me.ExitButton)
-        'Me.Controls.Add(Me.Line1)
         Me.Controls.Add(Me.LabelX2)
         Me.Controls.Add(Me.LabelX1)
         Me.Controls.Add(Me.ReflectionImage1)
@@ -374,8 +313,6 @@ Partial Class KeyStatus
     Friend WithEvents ReflectionImage1 As System.Windows.Forms.PictureBox
     Friend WithEvents LabelX1 As System.Windows.Forms.Label
     Friend WithEvents LabelX2 As System.Windows.Forms.Label
-    'Friend WithEvents Line1 As System.Windows.Forms.Line
-    'Friend WithEvents Line2 As System.Windows.Forms.Line
     Friend WithEvents ExitButton As System.Windows.Forms.Button
     Friend WithEvents LabelX3 As System.Windows.Forms.Label
     Friend WithEvents SwitchButton1 As System.Windows.Forms.Button

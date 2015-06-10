@@ -8,12 +8,12 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("KeyStatus")> 
+<Assembly: AssemblyTitle("Key Status")> 
 <Assembly: AssemblyDescription("Easily Tells You The Status of Your Keyboard")> 
-<Assembly: AssemblyCompany("Crowbar")> 
+<Assembly: AssemblyCompany("WalkmanOSS")> 
 <Assembly: AssemblyProduct("KeyStatus")> 
-<Assembly: AssemblyCopyright("Crowbar 2015. This software is licensed under the GNU General Public License v3.0 or above.")> 
-<Assembly: AssemblyTrademark("Showing You What Your Keys Are Doing.")> 
+<Assembly: AssemblyCopyright("FOSS from Crowbar (via Walkman) 2015. This software is licensed under the GNU GPL v3.0 or above")> 
+<Assembly: AssemblyTrademark("Showing You What Your Keys Are Doing")> 
 
 <Assembly: ComVisible(False)>
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.0.1.0")> 
+<Assembly: AssemblyFileVersion("1.0.1.0")> 
