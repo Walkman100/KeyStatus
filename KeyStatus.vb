@@ -16,12 +16,6 @@ Public Class KeyStatus
     '########################################################################################################
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        If My.Settings.FirstStartup = "false" Then
-            NormalStart()
-        End If
-    End Sub
-
-    Private Sub NormalStart()
         'Setup The Form Title To Be The Product Name of The Application
         Me.Text = My.Application.Info.ProductName
         'Set The Title Text of The Notify Icon To Be The Application Product Name
@@ -43,57 +37,57 @@ Public Class KeyStatus
         'Start The Clock Timer To Display The Current Time For LabelX4
         Clock.Start()
         'Sets The Timer's Refresh Rate Accorind To A Settings String
-        KeyStatusService.Interval = My.Settings.TimerRefreshRate.ToString
+        'KeyStatusService.Interval = My.Settings.TimerRefreshRate.ToString
         'Checks Settings and Sets The Value of The Switchbutton and If Settings 'KeyStatusServiceActive' Equals "1" Then It Goes To The Provate Sub 'StartService()'
-        If My.Settings.KeyStatusServiceActive = "0" Then
-            SwitchButton1.Enabled = False
-        End If
-        If My.Settings.KeyStatusServiceActive = "1" Then
-            SwitchButton1.Enabled = True
-            StartService()
-        End If
-        If My.Settings.KeyStatusServiceActive = "0" Then
-            SwitchButton1.Enabled = False
-            KillService()
-        End If
+        'If My.Settings.KeyStatusServiceActive = "0" Then
+        '    SwitchButton1.Enabled = False
+        'End If
+        'If My.Settings.KeyStatusServiceActive = "1" Then
+        '    SwitchButton1.Enabled = True
+        '    StartService()
+        'End If
+        'If My.Settings.KeyStatusServiceActive = "0" Then
+        '    SwitchButton1.Enabled = False
+        '    KillService()
+        'End If
 
         'Checks The Settings To See If The User Wants The Command Line Tool Visibility Button To Be Shown
-        If My.Settings.commandline = "true" Then
-            Label1.Visible = True
-        End If
-        If My.Settings.commandline = "false" Then
-            Label1.Visible = False
-        End If
+        'If My.Settings.commandline = "true" Then
+        '    Label1.Visible = True
+        'End If
+        'If My.Settings.commandline = "false" Then
+        '    Label1.Visible = False
+        'End If
         'Other Stuff To Make Everything Seems Normal, To Lazy To Explain
-        If My.Settings.KeyStatusServiceActive = "0" Then
-            KeyStatusNotifyIcon.Text = My.Application.Info.ProductName & " [Service activated]"
-        End If
-        If My.Settings.KeyStatusServiceActive = "1" Then
-            KeyStatusNotifyIcon.Text = My.Application.Info.ProductName & " [Service deactivated]"
-        End If
+        'If My.Settings.KeyStatusServiceActive = "0" Then
+        '    KeyStatusNotifyIcon.Text = My.Application.Info.ProductName & " [Service activated]"
+        'End If
+        'If My.Settings.KeyStatusServiceActive = "1" Then
+        '    KeyStatusNotifyIcon.Text = My.Application.Info.ProductName & " [Service deactivated]"
+        'End If
         'Checks If The User Wants KeyStatus To Minimize Itself To The Tray On Sta\rtup
-        If My.Settings.HideOnStartup = "true" Then
-            Me.Hide()
-        End If
+        'If My.Settings.HideOnStartup = "true" Then
+        '    Me.Hide()
+        'End If
     End Sub
     
     Private Sub SwitchButton1_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SwitchButton1.VisibleChanged
-        If SwitchButton1.Enabled = True Then
-            My.Settings.KeyStatusServiceActive = "1"
-            My.Settings.Save()
-            'Add the stuff here for Active Keys
-        End If
-        If SwitchButton1.Enabled = False Then
-            My.Settings.KeyStatusServiceActive = "0"
-            My.Settings.Save()
-            'Add the stuff here for Active Keys
-        End If
-        If My.Settings.KeyStatusServiceActive = "1" Then
-            StartService()
-        End If
-        If My.Settings.KeyStatusServiceActive = "0" Then
-            KillService()
-        End If
+        'If SwitchButton1.Enabled = True Then
+        '    My.Settings.KeyStatusServiceActive = "1"
+        '    My.Settings.Save()
+        '    'Add the stuff here for Active Keys
+        'End If
+        'If SwitchButton1.Enabled = False Then
+        '    My.Settings.KeyStatusServiceActive = "0"
+        '    My.Settings.Save()
+        '    'Add the stuff here for Active Keys
+        'End If
+        'If My.Settings.KeyStatusServiceActive = "1" Then
+        '    StartService()
+        'End If
+        'If My.Settings.KeyStatusServiceActive = "0" Then
+        '    KillService()
+        'End If
     End Sub
 
     Private Sub StartService()
@@ -188,31 +182,31 @@ Public Class KeyStatus
         End If
         'Refresh-rate values will be changed soon, in time. Mabye, idk :P
         If ToolStripTextBox1.Text = "refreshrate=lowest" Then
-            My.Settings.TimerRefreshRate = "2500"
+            'My.Settings.TimerRefreshRate = "2500"
             My.Settings.Save()
         End If
         If ToolStripTextBox1.Text = "refreshrate=verylow" Then
-            My.Settings.TimerRefreshRate = "1000"
+            'My.Settings.TimerRefreshRate = "1000"
             My.Settings.Save()
         End If
         If ToolStripTextBox1.Text = "refreshrate=low" Then
-            My.Settings.TimerRefreshRate = "500"
+            'My.Settings.TimerRefreshRate = "500"
             My.Settings.Save()
         End If
         If ToolStripTextBox1.Text = "refreshrate=normal" Then
-            My.Settings.TimerRefreshRate = "100"
+            'My.Settings.TimerRefreshRate = "100"
             My.Settings.Save()
         End If
         If ToolStripTextBox1.Text = "refreshrate=high" Then
-            My.Settings.TimerRefreshRate = "50"
+            'My.Settings.TimerRefreshRate = "50"
             My.Settings.Save()
         End If
         If ToolStripTextBox1.Text = "refreshrate=veryhigh" Then
-            My.Settings.TimerRefreshRate = "20"
+            'My.Settings.TimerRefreshRate = "20"
             My.Settings.Save()
         End If
         If ToolStripTextBox1.Text = "refreshrate=max" Then
-            My.Settings.TimerRefreshRate = "1"
+            'My.Settings.TimerRefreshRate = "1"
             My.Settings.Save()
         End If
         If ToolStripTextBox1.Text = "break" Then
@@ -222,11 +216,11 @@ Public Class KeyStatus
             My.Settings.Upgrade()
         End If
         If ToolStripTextBox1.Text = "hideonstartup=true" Then
-            My.Settings.HideOnStartup = "true"
+            'My.Settings.HideOnStartup = "true"
             My.Settings.Save()
         End If
         If ToolStripTextBox1.Text = "hideonstartup=false" Then
-            My.Settings.HideOnStartup = "false"
+            'My.Settings.HideOnStartup = "false"
             My.Settings.Save()
         End If
 
