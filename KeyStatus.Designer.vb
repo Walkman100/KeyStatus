@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class KeyStatus
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,14 +23,14 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
-        Me.Line1 = New DevComponents.DotNetBar.Controls.Line()
-        Me.Line2 = New DevComponents.DotNetBar.Controls.Line()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(KeyStatus))
+        Me.LabelX1 = New System.Windows.Forms.Label()
+        Me.LabelX2 = New System.Windows.Forms.Label()
+        'Me.Line1 = New System.Windows.Forms.Line()
+        'Me.Line2 = New System.Windows.Forms.Line()
         Me.ExitButton = New System.Windows.Forms.Button()
-        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
-        Me.SwitchButton1 = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.LabelX3 = New System.Windows.Forms.Label()
+        Me.SwitchButton1 = New System.Windows.Forms.Button()
         Me.AboutButton = New System.Windows.Forms.Button()
         Me.KeyStatusNotifyIcon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.KeyStatusNotifyIconContextMenuStrip = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -41,11 +41,11 @@ Partial Class Form1
         Me.RestartToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.KeyStatusService = New System.Windows.Forms.Timer(Me.components)
-        Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX4 = New System.Windows.Forms.Label()
         Me.Clock = New System.Windows.Forms.Timer(Me.components)
-        Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX5 = New System.Windows.Forms.Label()
         Me.HideButton = New System.Windows.Forms.Button()
-        Me.ReflectionImage1 = New DevComponents.DotNetBar.Controls.ReflectionImage()
+        Me.ReflectionImage1 = New System.Windows.Forms.PictureBox()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.EnterACommandToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
@@ -68,7 +68,7 @@ Partial Class Form1
         '
         '
         '
-        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        'Me.LabelX1.BackgroundStyle.CornerType = System.Windows.Forms.eCornerType.Square
         Me.LabelX1.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX1.Location = New System.Drawing.Point(130, 12)
         Me.LabelX1.Name = "LabelX1"
@@ -81,30 +81,30 @@ Partial Class Form1
         '
         '
         '
-        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        'Me.LabelX2.BackgroundStyle.CornerType = System.Windows.Forms.eCornerType.Square
         Me.LabelX2.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX2.Location = New System.Drawing.Point(130, 70)
         Me.LabelX2.Name = "LabelX2"
         Me.LabelX2.Size = New System.Drawing.Size(334, 27)
         Me.LabelX2.TabIndex = 2
         Me.LabelX2.Text = "Version"
-        Me.LabelX2.TextLineAlignment = System.Drawing.StringAlignment.Near
+        'Me.LabelX2.TextLineAlignment = System.Drawing.StringAlignment.Near
         '
         'Line1
         '
-        Me.Line1.Location = New System.Drawing.Point(-3, 100)
-        Me.Line1.Name = "Line1"
-        Me.Line1.Size = New System.Drawing.Size(485, 23)
-        Me.Line1.TabIndex = 3
-        Me.Line1.Text = "Line1"
+        'Me.Line1.Location = New System.Drawing.Point(-3, 100)
+        'Me.Line1.Name = "Line1"
+        'Me.Line1.Size = New System.Drawing.Size(485, 23)
+        'Me.Line1.TabIndex = 3
+        'Me.Line1.Text = "Line1"
         '
         'Line2
         '
-        Me.Line2.Location = New System.Drawing.Point(-3, 339)
-        Me.Line2.Name = "Line2"
-        Me.Line2.Size = New System.Drawing.Size(485, 10)
-        Me.Line2.TabIndex = 4
-        Me.Line2.Text = "Line2"
+        'Me.Line2.Location = New System.Drawing.Point(-3, 339)
+        'Me.Line2.Name = "Line2"
+        'Me.Line2.Size = New System.Drawing.Size(485, 10)
+        'Me.Line2.TabIndex = 4
+        'Me.Line2.Text = "Line2"
         '
         'ExitButton
         '
@@ -122,25 +122,25 @@ Partial Class Form1
         '
         '
         '
-        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        'Me.LabelX3.BackgroundStyle.CornerType = System.Windows.Forms.eCornerType.Square
         Me.LabelX3.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX3.Location = New System.Drawing.Point(12, 129)
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.Size = New System.Drawing.Size(218, 27)
         Me.LabelX3.TabIndex = 7
         Me.LabelX3.Text = "Flip The Switch To Begin:"
-        Me.LabelX3.TextLineAlignment = System.Drawing.StringAlignment.Near
+        'Me.LabelX3.TextLineAlignment = System.Drawing.StringAlignment.Near
         '
         'SwitchButton1
         '
         '
         '
         '
-        Me.SwitchButton1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        'Me.SwitchButton1.BackgroundStyle.CornerType = System.Windows.Forms.eCornerType.Square
         Me.SwitchButton1.Location = New System.Drawing.Point(236, 129)
         Me.SwitchButton1.Name = "SwitchButton1"
         Me.SwitchButton1.Size = New System.Drawing.Size(83, 27)
-        Me.SwitchButton1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        'Me.SwitchButton1.Style = System.Windows.Forms.eDotNetBarStyle.StyleManagerControlled
         Me.SwitchButton1.TabIndex = 8
         '
         'AboutButton
@@ -212,15 +212,15 @@ Partial Class Form1
         '
         '
         '
-        Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        'Me.LabelX4.BackgroundStyle.CornerType = System.Windows.Forms.eCornerType.Square
         Me.LabelX4.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX4.Location = New System.Drawing.Point(12, 352)
         Me.LabelX4.Name = "LabelX4"
         Me.LabelX4.Size = New System.Drawing.Size(110, 27)
         Me.LabelX4.TabIndex = 10
         Me.LabelX4.Text = "Time"
-        Me.LabelX4.TextAlignment = System.Drawing.StringAlignment.Center
-        Me.LabelX4.TextLineAlignment = System.Drawing.StringAlignment.Near
+        'Me.LabelX4.TextAlignment = System.Drawing.StringAlignment.Center
+        'Me.LabelX4.TextLineAlignment = System.Drawing.StringAlignment.Near
         '
         'Clock
         '
@@ -230,14 +230,14 @@ Partial Class Form1
         '
         '
         '
-        Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        'Me.LabelX5.BackgroundStyle.CornerType = System.Windows.Forms.eCornerType.Square
         Me.LabelX5.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX5.Location = New System.Drawing.Point(12, 162)
         Me.LabelX5.Name = "LabelX5"
         Me.LabelX5.Size = New System.Drawing.Size(452, 171)
         Me.LabelX5.TabIndex = 11
         Me.LabelX5.Text = "Once Activated KeyStatus Will Show You Which" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Keys Are Active."
-        Me.LabelX5.TextAlignment = System.Drawing.StringAlignment.Center
+        'Me.LabelX5.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'HideButton
         '
@@ -255,8 +255,8 @@ Partial Class Form1
         '
         '
         '
-        Me.ReflectionImage1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ReflectionImage1.BackgroundStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
+        'Me.ReflectionImage1.BackgroundStyle.CornerType = System.Windows.Forms.eCornerType.Square
+        'Me.ReflectionImage1.BackgroundStyle.TextAlignment = System.Windows.Forms.eStyleTextAlignment.Center
         Me.ReflectionImage1.Image = Global.KeyStatus.My.Resources.Resources._1371918331_keyboard
         Me.ReflectionImage1.Location = New System.Drawing.Point(11, 12)
         Me.ReflectionImage1.Name = "ReflectionImage1"
@@ -352,9 +352,9 @@ Partial Class Form1
         Me.Controls.Add(Me.AboutButton)
         Me.Controls.Add(Me.SwitchButton1)
         Me.Controls.Add(Me.LabelX3)
-        Me.Controls.Add(Me.Line2)
+        'Me.Controls.Add(Me.Line2)
         Me.Controls.Add(Me.ExitButton)
-        Me.Controls.Add(Me.Line1)
+        'Me.Controls.Add(Me.Line1)
         Me.Controls.Add(Me.LabelX2)
         Me.Controls.Add(Me.LabelX1)
         Me.Controls.Add(Me.ReflectionImage1)
@@ -371,20 +371,20 @@ Partial Class Form1
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents ReflectionImage1 As DevComponents.DotNetBar.Controls.ReflectionImage
-    Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents Line1 As DevComponents.DotNetBar.Controls.Line
-    Friend WithEvents Line2 As DevComponents.DotNetBar.Controls.Line
+    Friend WithEvents ReflectionImage1 As System.Windows.Forms.PictureBox
+    Friend WithEvents LabelX1 As System.Windows.Forms.Label
+    Friend WithEvents LabelX2 As System.Windows.Forms.Label
+    'Friend WithEvents Line1 As System.Windows.Forms.Line
+    'Friend WithEvents Line2 As System.Windows.Forms.Line
     Friend WithEvents ExitButton As System.Windows.Forms.Button
-    Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents SwitchButton1 As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents LabelX3 As System.Windows.Forms.Label
+    Friend WithEvents SwitchButton1 As System.Windows.Forms.Button
     Friend WithEvents AboutButton As System.Windows.Forms.Button
     Friend WithEvents KeyStatusNotifyIcon As System.Windows.Forms.NotifyIcon
     Friend WithEvents KeyStatusService As System.Windows.Forms.Timer
-    Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX4 As System.Windows.Forms.Label
     Friend WithEvents Clock As System.Windows.Forms.Timer
-    Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX5 As System.Windows.Forms.Label
     Friend WithEvents KeyStatusNotifyIconContextMenuStrip As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RestartToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
