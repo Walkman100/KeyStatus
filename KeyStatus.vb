@@ -54,35 +54,25 @@ Public Class KeyStatus
         Me.Activate
     End Sub
     
+    'Credits to http://www.ultimateprogrammingtutorials.info/2012/12/switch-onoff-numlockcapslockscrolllock.html
+    Private Declare Sub keybd_event Lib "user32" (ByVal bVk As Byte, ByVal bScan As Byte, ByVal dwFlags As Integer, ByVal dwExtraInfo As Integer)
+ 
+    Private Const VK_CAPITAL As Integer = &H14
+    Private Const VK_SCROLL As Integer = &H91
+    Private Const VK_NUMLOCK As Integer = &H90
+ 
+    Private Const KEYEVENTF_EXTENDEDKEY As Integer = &H1
+    Private Const KEYEVENTF_KEYUP As Integer = &H2
+    
     Sub notifyIconNumLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconNumLock.Click
-        KeyStatusNotifyIcon_MouseDoubleClick
-        If chkTrayClick.Checked Then
-            If My.Computer.Keyboard.NumLock = True Then
-                SendKeys.SendWait("{NUMLOCK}")
-                System.Threading.Thread.Sleep(50)
-                KeyStatusNotifyIcon_MouseDoubleClick
-                If My.Computer.Keyboard.NumLock = True Then
-                    SendKeys.SendWait("{NUMLOCK}")
-                    System.Threading.Thread.Sleep(50)
-                    KeyStatusNotifyIcon_MouseDoubleClick
-                    If My.Computer.Keyboard.NumLock = True Then
-                        SendKeys.SendWait("{NUMLOCK}")
-                    End If
-                End If
-            Else
-                SendKeys.SendWait("{NUMLOCK}")
-                System.Threading.Thread.Sleep(50)
-                KeyStatusNotifyIcon_MouseDoubleClick
-                If My.Computer.Keyboard.NumLock = False Then
-                    SendKeys.SendWait("{NUMLOCK}")
-                    System.Threading.Thread.Sleep(50)
-                    KeyStatusNotifyIcon_MouseDoubleClick
-                    If My.Computer.Keyboard.NumLock = False Then
-                        SendKeys.SendWait("{NUMLOCK}")
-                        System.Threading.Thread.Sleep(50)
-                    End If
-                End If
-            End If
+        If My.Computer.Keyboard.NumLock Then
+            keybd_event(VK_CAPITAL, &H45, KEYEVENTF_EXTENDEDKEY Or KEYEVENTF_KEYUP, 0)
+            keybd_event(VK_SCROLL, &H45, KEYEVENTF_EXTENDEDKEY Or KEYEVENTF_KEYUP, 0)
+            keybd_event(VK_NUMLOCK, &H45, KEYEVENTF_EXTENDEDKEY Or KEYEVENTF_KEYUP, 0)
+        Else
+            keybd_event(VK_CAPITAL, &H45, KEYEVENTF_EXTENDEDKEY Or 0, 0)
+            keybd_event(VK_SCROLL, &H45, KEYEVENTF_EXTENDEDKEY Or 0, 0)
+            keybd_event(VK_NUMLOCK, &H45, KEYEVENTF_EXTENDEDKEY Or 0, 0)
         End If
     End Sub
     
