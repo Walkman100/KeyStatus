@@ -28,9 +28,18 @@ Public Class KeyStatus
     
     Sub timerKeyChecker_Tick() Handles timerKeyChecker.Tick
         SetIcons
-        If ShouldShow("Num") Then notifyIconNumLock.Visible = True Else notifyIconNumLock.Visible = False
-        If ShouldShow("Caps") Then notifyIconCapsLock.Visible = True Else notifyIconCapsLock.Visible = False
-        If ShouldShow("Scroll") Then notifyIconScrollLock.Visible = True Else notifyIconScrollLock.Visible = False
+        notifyIconNumLock.Visible = ShouldShow("Num")
+        notifyIconCapsLock.Visible = ShouldShow("Caps")
+        notifyIconScrollLock.Visible = ShouldShow("Scroll")
+        If chkTrayAppIcon.Checked Then
+            If notifyIconNumLock.Visible = False And notifyIconCapsLock.Visible = False And notifyIconScrollLock.Visible = False Then
+                KeyStatusNotifyIcon.Visible = True
+            Else
+                KeyStatusNotifyIcon.Visible = False
+            End If
+        Else
+            KeyStatusNotifyIcon.Visible = True
+        End If
     End Sub
     
     Sub chkTraySelection_CheckedChanged() Handles chkTraySelection.CheckedChanged
@@ -43,27 +52,98 @@ Public Class KeyStatus
         Me.BringToFront
     End Sub
     
-    Sub notifyIconNumLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconNumLock.MouseUp
+    Sub notifyIconNumLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconNumLock.Click
         If chkTrayClick.Checked Then SendKeys.Send("{NUMLOCK}")
     End Sub
     
-    Sub notifyIconCapsLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconCapsLock.MouseUp
+    Sub notifyIconCapsLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconCapsLock.Click
         If chkTrayClick.Checked Then SendKeys.Send("{CAPSLOCK}")
     End Sub
     
-    Sub notifyIconScrollLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconScrollLock.MouseUp
+    Sub notifyIconScrollLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconScrollLock.Click
         If chkTrayClick.Checked Then SendKeys.Send("{SCROLLLOCK}")
     End Sub
     
     Private Function ShouldShow(lock As String)
         Select Case lock
             Case "Num"
-                
+                If chkTraySelection.Checked Then
+                    If chkTraySelectionNum.Checked Then
+                        If chkTrayEnabledOnly.Checked Then
+                            If My.Computer.Keyboard.NumLock Then
+                                Return True
+                            Else
+                                Return False
+                            End If
+                        Else
+                            Return True
+                        End If
+                    Else
+                        Return False
+                    End If
+                Else
+                    If chkTrayEnabledOnly.Checked Then
+                        If My.Computer.Keyboard.NumLock Then
+                            Return True
+                        Else
+                            Return False
+                        End If
+                    Else
+                        Return True
+                    End If
+                End If
             Case "Caps"
-                
+                If chkTraySelection.Checked Then
+                    If chkTraySelectionCaps.Checked Then
+                        If chkTrayEnabledOnly.Checked Then
+                            If My.Computer.Keyboard.CapsLock Then
+                                Return True
+                            Else
+                                Return False
+                            End If
+                        Else
+                            Return True
+                        End If
+                    Else
+                        Return False
+                    End If
+                Else
+                    If chkTrayEnabledOnly.Checked Then
+                        If My.Computer.Keyboard.CapsLock Then
+                            Return True
+                        Else
+                            Return False
+                        End If
+                    Else
+                        Return True
+                    End If
+                End If
             Case "Scroll"
-                
+                If chkTraySelection.Checked Then
+                    If chkTraySelectionScroll.Checked Then
+                        If chkTrayEnabledOnly.Checked Then
+                            If My.Computer.Keyboard.ScrollLock Then
+                                Return True
+                            Else
+                                Return False
+                            End If
+                        Else
+                            Return True
+                        End If
+                    Else
+                        Return False
+                    End If
+                Else
+                    If chkTrayEnabledOnly.Checked Then
+                        If My.Computer.Keyboard.ScrollLock Then
+                            Return True
+                        Else
+                            Return False
+                        End If
+                    Else
+                        Return True
+                    End If
+                End If
         End Select
-        
     End Function
 End Class
