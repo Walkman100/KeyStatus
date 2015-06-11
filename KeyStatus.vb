@@ -55,35 +55,28 @@ Public Class KeyStatus
     End Sub
     
     'Credits to http://www.ultimateprogrammingtutorials.info/2012/12/switch-onoff-numlockcapslockscrolllock.html
-    Private Declare Sub keybd_event Lib "user32" (ByVal bVk As Byte, ByVal bScan As Byte, ByVal dwFlags As Integer, ByVal dwExtraInfo As Integer)
- 
-    Private Const VK_CAPITAL As Integer = &H14
-    Private Const VK_SCROLL As Integer = &H91
-    Private Const VK_NUMLOCK As Integer = &H90
- 
-    Private Const KEYEVENTF_EXTENDEDKEY As Integer = &H1
-    Private Const KEYEVENTF_KEYUP As Integer = &H2
+    Private Declare Sub keybd_event Lib "user32" (bVk As Byte, bScan As Byte, dwFlags As Integer, Optional dwExtraInfo As Integer = 0)
     Sub toggleNumLock
         If My.Computer.Keyboard.NumLock Then
-            keybd_event(VK_NUMLOCK, &H45, KEYEVENTF_EXTENDEDKEY Or KEYEVENTF_KEYUP, 0)
+            keybd_event(&H90, &H45, &H1 Or &H2)
         Else
-            keybd_event(VK_NUMLOCK, &H45, KEYEVENTF_EXTENDEDKEY Or 0, 0)
+            keybd_event(&H90, &H45, &H1 Or 0)
         End If
     End Sub
     
     Sub toggleCapsLock
         If My.Computer.Keyboard.CapsLock Then
-            keybd_event(VK_CAPITAL, &H45, KEYEVENTF_EXTENDEDKEY Or KEYEVENTF_KEYUP, 0)
+            keybd_event(&H14, &H45, &H1 Or &H2)
         Else
-            keybd_event(VK_CAPITAL, &H45, KEYEVENTF_EXTENDEDKEY Or 0, 0)
+            keybd_event(&H14, &H45, &H1 Or 0)
         End If
     End Sub
     
     Sub toggleScrollLock
         If My.Computer.Keyboard.ScrollLock Then
-            keybd_event(VK_SCROLL, &H45, KEYEVENTF_EXTENDEDKEY Or KEYEVENTF_KEYUP, 0)
+            keybd_event(&H91, &H45, &H1 Or &H2)
         Else
-            keybd_event(VK_SCROLL, &H45, KEYEVENTF_EXTENDEDKEY Or 0, 0)
+            keybd_event(&H91, &H45, &H1 Or 0)
         End If
     End Sub
     
