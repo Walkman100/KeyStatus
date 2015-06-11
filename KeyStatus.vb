@@ -63,75 +63,40 @@ Public Class KeyStatus
  
     Private Const KEYEVENTF_EXTENDEDKEY As Integer = &H1
     Private Const KEYEVENTF_KEYUP As Integer = &H2
-    
-    Sub notifyIconNumLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconNumLock.Click
+    Sub toggleNumLock
         If My.Computer.Keyboard.NumLock Then
-            keybd_event(VK_CAPITAL, &H45, KEYEVENTF_EXTENDEDKEY Or KEYEVENTF_KEYUP, 0)
-            keybd_event(VK_SCROLL, &H45, KEYEVENTF_EXTENDEDKEY Or KEYEVENTF_KEYUP, 0)
             keybd_event(VK_NUMLOCK, &H45, KEYEVENTF_EXTENDEDKEY Or KEYEVENTF_KEYUP, 0)
         Else
-            keybd_event(VK_CAPITAL, &H45, KEYEVENTF_EXTENDEDKEY Or 0, 0)
-            keybd_event(VK_SCROLL, &H45, KEYEVENTF_EXTENDEDKEY Or 0, 0)
             keybd_event(VK_NUMLOCK, &H45, KEYEVENTF_EXTENDEDKEY Or 0, 0)
         End If
     End Sub
     
-    Sub notifyIconCapsLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconCapsLock.Click
-        KeyStatusNotifyIcon_MouseDoubleClick
-        If chkTrayClick.Checked Then
-            If My.Computer.Keyboard.CapsLock = True Then
-                SendKeys.SendWait("{CAPSLOCK}")
-                System.Threading.Thread.Sleep(50)
-                If My.Computer.Keyboard.CapsLock = True Then
-                    SendKeys.SendWait("{CAPSLOCK}")
-                    System.Threading.Thread.Sleep(50)
-                    If My.Computer.Keyboard.CapsLock = True Then
-                        SendKeys.SendWait("{CAPSLOCK}")
-                        System.Threading.Thread.Sleep(50)
-                    End If
-                End If
-            Else
-                SendKeys.SendWait("{CAPSLOCK}")
-                System.Threading.Thread.Sleep(50)
-                If My.Computer.Keyboard.CapsLock = False Then
-                    SendKeys.SendWait("{CAPSLOCK}")
-                    System.Threading.Thread.Sleep(50)
-                    If My.Computer.Keyboard.CapsLock = False Then
-                        SendKeys.SendWait("{CAPSLOCK}")
-                        System.Threading.Thread.Sleep(50)
-                    End If
-                End If
-            End If
+    Sub toggleCapsLock
+        If My.Computer.Keyboard.CapsLock Then
+            keybd_event(VK_CAPITAL, &H45, KEYEVENTF_EXTENDEDKEY Or KEYEVENTF_KEYUP, 0)
+        Else
+            keybd_event(VK_CAPITAL, &H45, KEYEVENTF_EXTENDEDKEY Or 0, 0)
         End If
     End Sub
     
-    Sub notifyIconScrollLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconScrollLock.Click
-        KeyStatusNotifyIcon_MouseDoubleClick
-        If chkTrayClick.Checked Then
-            If My.Computer.Keyboard.ScrollLock = True Then
-                SendKeys.SendWait("{SCROLLLOCK}")
-                System.Threading.Thread.Sleep(50)
-                If My.Computer.Keyboard.ScrollLock = True Then
-                    SendKeys.SendWait("{SCROLLLOCK}")
-                    System.Threading.Thread.Sleep(50)
-                    If My.Computer.Keyboard.ScrollLock = True Then
-                        SendKeys.SendWait("{SCROLLLOCK}")
-                        System.Threading.Thread.Sleep(50)
-                    End If
-                End If
-            Else
-                SendKeys.SendWait("{SCROLLLOCK}")
-                System.Threading.Thread.Sleep(50)
-                If My.Computer.Keyboard.ScrollLock = False Then
-                    SendKeys.SendWait("{SCROLLLOCK}")
-                    System.Threading.Thread.Sleep(50)
-                    If My.Computer.Keyboard.ScrollLock = False Then
-                        SendKeys.SendWait("{SCROLLLOCK}")
-                        System.Threading.Thread.Sleep(50)
-                    End If
-                End If
-            End If
+    Sub toggleScrollLock
+        If My.Computer.Keyboard.ScrollLock Then
+            keybd_event(VK_SCROLL, &H45, KEYEVENTF_EXTENDEDKEY Or KEYEVENTF_KEYUP, 0)
+        Else
+            keybd_event(VK_SCROLL, &H45, KEYEVENTF_EXTENDEDKEY Or 0, 0)
         End If
+    End Sub
+    
+    Sub notifyIconNumLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconNumLock.Click
+        If chkTrayClick.Checked Then toggleNumLock
+    End Sub
+    
+    Sub notifyIconCapsLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconCapsLock.Click
+        If chkTrayClick.Checked Then toggleCapsLock
+    End Sub
+    
+    Sub notifyIconScrollLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconScrollLock.Click
+        If chkTrayClick.Checked Then toggleScrollLock
     End Sub
     
     Private Function ShouldShow(lock As String)
