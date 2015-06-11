@@ -1,35 +1,33 @@
 ﻿Imports System.IO
 Public Class KeyStatus
+    Dim ResMan As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(KeyStatus))
     
-    Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(KeyStatus))
-    Sub KeyStatus_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        '(trayIconName).Icon = CType(resources.GetObject("e.g. CapsLockOff"),System.Drawing.Icon)
+    Sub SetIcons()
+        Me.Icon = CType(ResMan.GetObject("$this.Icon"),System.Drawing.Icon)
+        KeyStatusNotifyIcon.Icon = CType(ResMan.GetObject("$this.Icon"),System.Drawing.Icon)
+        If My.Computer.Keyboard.CapsLock Then
+            notifyIconCapsLock.Icon = CType(ResMan.GetObject("CapsLockOn"),System.Drawing.Icon)
+        Else
+            notifyIconCapsLock.Icon = CType(ResMan.GetObject("CapsLockOff"),System.Drawing.Icon)
+        End If
+        If My.Computer.Keyboard.NumLock Then
+            notifyIconNumLock.Icon = CType(ResMan.GetObject("NumLockOn"),System.Drawing.Icon)
+        Else
+            notifyIconNumLock.Icon = CType(ResMan.GetObject("NumLockOff"),System.Drawing.Icon)
+        End If
+        If My.Computer.Keyboard.ScrollLock Then
+            notifyIconScrollLock.Icon = CType(ResMan.GetObject("ScrollLockOn"),System.Drawing.Icon)
+        Else
+            notifyIconScrollLock.Icon = CType(ResMan.GetObject("ScrollLockOff"),System.Drawing.Icon)
+        End If
     End Sub
     
-    Private Sub KeyStatusService_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) 'Handles KeyStatusService.Tick
-        ' Caps Lock 'If' Statement Goes Below
-        'If My.Computer.Keyboard.CapsLock = True Then
-        '    CapsLockOn.Visible = True
-        '    CapsLockOff.Visible = False
-        'Else
-        '    CapsLockOff.Visible = True
-        '    CapsLockOn.Visible = False
-        'End If
-        ' Num Lock 'If' Statement Goes Below
-        'If My.Computer.Keyboard.NumLock = True Then
-        '    NumLockOn.Visible = True
-        '    NumLockOff.Visible = False
-        'Else
-        '    NumLockOff.Visible = True
-        '    NumLockOn.Visible = False
-        'End If
-        ' Scroll Lock 'If' Statement Goes Below
-        'If My.Computer.Keyboard.ScrollLock = True Then
-        '    ScrollLockOn.Visible = True
-        '    ScrollLockOff.Visible = False
-        'Else
-        '    ScrollLockOff.Visible = True
-        '    ScrollLockOn.Visible = False
-        'End If
+    Sub KeyStatus_Load() Handles MyBase.Load
+        
+    End Sub
+    
+    Sub timerKeyChecker_Tick() Handles timerKeyChecker.Tick
+        SetIcons
+        
     End Sub
 End Class
