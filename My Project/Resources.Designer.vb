@@ -59,12 +59,5 @@ Namespace My.Resources
                 resourceCulture = value
             End Set
         End Property
-        
-        Friend ReadOnly Property _1371918331_keyboard() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("1371918331_keyboard", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
     End Module
 End Namespace
