@@ -46,22 +46,102 @@ Public Class KeyStatus
         grpTraySelection.Enabled = chkTraySelection.Checked
     End Sub
     
-    Sub KeyStatusNotifyIcon_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles KeyStatusNotifyIcon.MouseDoubleClick
+    Sub KeyStatusNotifyIcon_MouseDoubleClick() Handles KeyStatusNotifyIcon.MouseDoubleClick
         Me.Show
         Me.WindowState = System.Windows.Forms.FormWindowState.Normal
         Me.BringToFront
+        Me.Focus
+        Me.Activate
     End Sub
     
     Sub notifyIconNumLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconNumLock.Click
-        If chkTrayClick.Checked Then SendKeys.Send("{NUMLOCK}")
+        KeyStatusNotifyIcon_MouseDoubleClick
+        If chkTrayClick.Checked Then
+            If My.Computer.Keyboard.NumLock = True Then
+                SendKeys.SendWait("{NUMLOCK}")
+                System.Threading.Thread.Sleep(50)
+                KeyStatusNotifyIcon_MouseDoubleClick
+                If My.Computer.Keyboard.NumLock = True Then
+                    SendKeys.SendWait("{NUMLOCK}")
+                    System.Threading.Thread.Sleep(50)
+                    KeyStatusNotifyIcon_MouseDoubleClick
+                    If My.Computer.Keyboard.NumLock = True Then
+                        SendKeys.SendWait("{NUMLOCK}")
+                    End If
+                End If
+            Else
+                SendKeys.SendWait("{NUMLOCK}")
+                System.Threading.Thread.Sleep(50)
+                KeyStatusNotifyIcon_MouseDoubleClick
+                If My.Computer.Keyboard.NumLock = False Then
+                    SendKeys.SendWait("{NUMLOCK}")
+                    System.Threading.Thread.Sleep(50)
+                    KeyStatusNotifyIcon_MouseDoubleClick
+                    If My.Computer.Keyboard.NumLock = False Then
+                        SendKeys.SendWait("{NUMLOCK}")
+                        System.Threading.Thread.Sleep(50)
+                    End If
+                End If
+            End If
+        End If
     End Sub
     
     Sub notifyIconCapsLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconCapsLock.Click
-        If chkTrayClick.Checked Then SendKeys.Send("{CAPSLOCK}")
+        KeyStatusNotifyIcon_MouseDoubleClick
+        If chkTrayClick.Checked Then
+            If My.Computer.Keyboard.CapsLock = True Then
+                SendKeys.SendWait("{CAPSLOCK}")
+                System.Threading.Thread.Sleep(50)
+                If My.Computer.Keyboard.CapsLock = True Then
+                    SendKeys.SendWait("{CAPSLOCK}")
+                    System.Threading.Thread.Sleep(50)
+                    If My.Computer.Keyboard.CapsLock = True Then
+                        SendKeys.SendWait("{CAPSLOCK}")
+                        System.Threading.Thread.Sleep(50)
+                    End If
+                End If
+            Else
+                SendKeys.SendWait("{CAPSLOCK}")
+                System.Threading.Thread.Sleep(50)
+                If My.Computer.Keyboard.CapsLock = False Then
+                    SendKeys.SendWait("{CAPSLOCK}")
+                    System.Threading.Thread.Sleep(50)
+                    If My.Computer.Keyboard.CapsLock = False Then
+                        SendKeys.SendWait("{CAPSLOCK}")
+                        System.Threading.Thread.Sleep(50)
+                    End If
+                End If
+            End If
+        End If
     End Sub
     
     Sub notifyIconScrollLock_MouseUp(sender As Object, e As MouseEventArgs) Handles notifyIconScrollLock.Click
-        If chkTrayClick.Checked Then SendKeys.Send("{SCROLLLOCK}")
+        KeyStatusNotifyIcon_MouseDoubleClick
+        If chkTrayClick.Checked Then
+            If My.Computer.Keyboard.ScrollLock = True Then
+                SendKeys.SendWait("{SCROLLLOCK}")
+                System.Threading.Thread.Sleep(50)
+                If My.Computer.Keyboard.ScrollLock = True Then
+                    SendKeys.SendWait("{SCROLLLOCK}")
+                    System.Threading.Thread.Sleep(50)
+                    If My.Computer.Keyboard.ScrollLock = True Then
+                        SendKeys.SendWait("{SCROLLLOCK}")
+                        System.Threading.Thread.Sleep(50)
+                    End If
+                End If
+            Else
+                SendKeys.SendWait("{SCROLLLOCK}")
+                System.Threading.Thread.Sleep(50)
+                If My.Computer.Keyboard.ScrollLock = False Then
+                    SendKeys.SendWait("{SCROLLLOCK}")
+                    System.Threading.Thread.Sleep(50)
+                    If My.Computer.Keyboard.ScrollLock = False Then
+                        SendKeys.SendWait("{SCROLLLOCK}")
+                        System.Threading.Thread.Sleep(50)
+                    End If
+                End If
+            End If
+        End If
     End Sub
     
     Private Function ShouldShow(lock As String)
@@ -144,6 +224,8 @@ Public Class KeyStatus
                         Return True
                     End If
                 End If
+            Case Else
+                Return False
         End Select
     End Function
 End Class

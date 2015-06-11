@@ -46,7 +46,6 @@ Partial Class KeyStatus
         'timerKeyChecker
         '
         Me.timerKeyChecker.Enabled = true
-        Me.timerKeyChecker.Interval = 1000
         '
         'KeyStatusNotifyIcon
         '
@@ -166,7 +165,7 @@ Partial Class KeyStatus
         Me.chkTrayClick.Name = "chkTrayClick"
         Me.chkTrayClick.Size = New System.Drawing.Size(450, 17)
         Me.chkTrayClick.TabIndex = 2
-        Me.chkTrayClick.Text = "Single click on icon to enable or disable locks"
+        Me.chkTrayClick.Text = "Click on icon to enable or disable locks"
         Me.chkTrayClick.UseVisualStyleBackColor = true
         '
         'chkTrayEnabledOnly
