@@ -51,7 +51,6 @@ Partial Class KeyStatus
         '
         Me.KeyStatusNotifyIcon.ContextMenuStrip = Me.notifyContext
         Me.KeyStatusNotifyIcon.Text = "KeyStatus"
-        Me.KeyStatusNotifyIcon.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
         '
         'notifyContext
         '

@@ -9,6 +9,20 @@ Public Class KeyStatus
     Sub SetIcons()
         Me.Icon = CType(ResMan.GetObject("$this.Icon"),System.Drawing.Icon)
         KeyStatusNotifyIcon.Icon = CType(ResMan.GetObject("$this.Icon"),System.Drawing.Icon)
+        
+        Try
+            If CType(ResMan.GetObject("NumLockOn"),System.Drawing.Icon).ToString = vbNull Then
+                Throw New System.NullReferenceException
+            End If
+        Catch ex As Exception
+            If ex.GetType.ToString = "System.NullReferenceException" Then
+                timerKeyChecker.Stop
+                MsgBox("Error loading tray icon resources! Please check the git diff and revert the changes to 'KeyStatus.resx' before recompiling.", MsgBoxStyle.Critical)
+                Application.Exit
+                End
+            End If
+        End Try
+        
         If My.Computer.Keyboard.NumLock Then
             notifyIconNumLock.Icon = CType(ResMan.GetObject("NumLockOn"),System.Drawing.Icon)
         Else
@@ -61,6 +75,7 @@ Public Class KeyStatus
             keybd_event(&H90, &H45, &H1 Or &H2)
         Else
             keybd_event(&H90, &H45, &H1 Or 0)
+            keybd_event(&H90, &H45, &H1 Or &H2)
         End If
     End Sub
     
@@ -69,6 +84,7 @@ Public Class KeyStatus
             keybd_event(&H14, &H45, &H1 Or &H2)
         Else
             keybd_event(&H14, &H45, &H1 Or 0)
+            keybd_event(&H14, &H45, &H1 Or &H2)
         End If
     End Sub
     
@@ -77,6 +93,7 @@ Public Class KeyStatus
             keybd_event(&H91, &H45, &H1 Or &H2)
         Else
             keybd_event(&H91, &H45, &H1 Or 0)
+            keybd_event(&H91, &H45, &H1 Or &H2)
         End If
     End Sub
     
