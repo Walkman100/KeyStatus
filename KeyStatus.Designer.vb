@@ -43,10 +43,6 @@ Partial Class KeyStatus
         Me.grpTraySelection.SuspendLayout
         Me.SuspendLayout
         '
-        'timerKeyChecker
-        '
-        Me.timerKeyChecker.Enabled = true
-        '
         'KeyStatusNotifyIcon
         '
         Me.KeyStatusNotifyIcon.ContextMenuStrip = Me.notifyContext

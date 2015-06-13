@@ -36,8 +36,8 @@ SectionEnd
 
 Section "AHK Scripts (if you have AutoHotkey installed)"
   SetOutPath $INSTDIR
-  File "toggleCapsLock.ahk"
   File "toggleNumLock.ahk"
+  File "toggleCapsLock.ahk"
   File "toggleScrollLock.ahk"
 SectionEnd
 
