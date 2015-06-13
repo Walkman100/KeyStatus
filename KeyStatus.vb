@@ -76,6 +76,7 @@ Public Class KeyStatus
         Else
             keybd_event(&H90, &H45, &H1 Or 0)
             keybd_event(&H90, &H45, &H1 Or &H2)
+            '"Disable" code (line above) was added, since for some reason if you don't run it you have to press the lock button twice to disable it manually
         End If
     End Sub
     

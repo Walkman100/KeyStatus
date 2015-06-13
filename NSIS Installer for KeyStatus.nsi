@@ -41,7 +41,7 @@ Section "AHK Scripts (if you have AutoHotkey installed)"
   File "toggleScrollLock.ahk"
 SectionEnd
 
-Section "AHK Scripts converted to exe (if you don't have AutoHotkey installed)"
+Section /o "AHK Scripts converted to exe (if you don't have AutoHotkey installed)"
   SetOutPath $INSTDIR
   File "bin\Release\toggleNumLock.exe"
   File "bin\Release\toggleCapsLock.exe"

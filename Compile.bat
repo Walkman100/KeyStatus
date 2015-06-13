@@ -158,6 +158,10 @@ echo Starting MSBuild compile for KeyStatus...
 
 :rar
     echo RARing portable releases with WinRAR...
+    rem remove previous archives, as WinRar tries to merge them
+        del "bin\Release\KeyStatus-Portable-noAutoHotkey.rar"
+        del "bin\Release\KeyStatus-Portable-requiresAutoHotkey.rar"
+        
     rem Run the WinRAR command
         "%ProgramFiles%\WinRAR\WinRAR.exe" a -ep1 -scul -r0 -iext -- bin\Release\KeyStatus-Portable-noAutoHotkey.rar bin\Release\KeyStatus.exe bin\Release\toggleNumLock.exe bin\Release\toggleCapsLock.exe bin\Release\toggleScrollLock.exe
         echo.
@@ -184,9 +188,8 @@ echo Starting MSBuild compile for KeyStatus...
         goto openOutputDir
 
 :rar2-orig
-    echo RARing portable releases with WinRAR...
     rem Run the WinRAR command
-        "%ProgramFiles%\WinRAR\WinRAR.exe" a -ep1 -scul -r0 -iext -- bin\Release\KeyStatus-Portable-requiresAutoHotkey.rar bin\Release\KeyStatus.exe bin\Release\toggleNumLock.exe bin\Release\toggleCapsLock.exe bin\Release\toggleScrollLock.exe
+        "%ProgramFiles%\WinRAR\WinRAR.exe" a -ep1 -scul -r0 -iext -- bin\Release\KeyStatus-Portable-requiresAutoHotkey.rar bin\Release\KeyStatus.exe toggleCapsLock.ahk toggleNumLock.ahk toggleScrollLock.ahk
         echo.
 
     rem If it doesn't fail, go to next step
@@ -199,9 +202,8 @@ echo Starting MSBuild compile for KeyStatus...
         goto openOutputDir
 
 :rar2-32
-    echo RARing portable releases with WinRAR...
     rem Run the WinRAR command
-        "%ProgramFiles(x86)%\WinRAR\WinRAR.exe" a -ep1 -scul -r0 -iext -- bin\Release\KeyStatus-Portable-requiresAutoHotkey.rar bin\Release\KeyStatus.exe bin\Release\toggleNumLock.exe bin\Release\toggleCapsLock.exe bin\Release\toggleScrollLock.exe
+        "%ProgramFiles(x86)%\WinRAR\WinRAR.exe" a -ep1 -scul -r0 -iext -- bin\Release\KeyStatus-Portable-requiresAutoHotkey.rar bin\Release\KeyStatus.exe toggleCapsLock.ahk toggleNumLock.ahk toggleScrollLock.ahk
         echo.
 
     rem If it doesn't fail, go to next step
@@ -214,9 +216,8 @@ echo Starting MSBuild compile for KeyStatus...
         goto openOutputDir
 
 :rar2-64
-    echo RARing portable releases with WinRAR...
     rem Run the WinRAR command
-        "%ProgramW6432%\WinRAR\WinRAR.exe" a -ep1 -scul -r0 -iext -- bin\Release\KeyStatus-Portable-requiresAutoHotkey.rar bin\Release\KeyStatus.exe bin\Release\toggleNumLock.exe bin\Release\toggleCapsLock.exe bin\Release\toggleScrollLock.exe
+        "%ProgramW6432%\WinRAR\WinRAR.exe" a -ep1 -scul -r0 -iext -- bin\Release\KeyStatus-Portable-requiresAutoHotkey.rar bin\Release\KeyStatus.exe toggleCapsLock.ahk toggleNumLock.ahk toggleScrollLock.ahk
         echo.
 
     rem If it doesn't fail, go to next step
@@ -228,7 +229,7 @@ echo Starting MSBuild compile for KeyStatus...
         pause
 
 :openOutputDir
-    echo RARing portable release with WinRAR done.
+    echo RARing portable releases with WinRAR done.
     rem Delete previous portable executable, rename new one to portable
         del "bin\Release\KeyStatus-Portable-noDisableLock.exe"
         ren "bin\Release\KeyStatus.exe" KeyStatus-Portable-noDisableLock.exe
