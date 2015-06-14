@@ -38,6 +38,7 @@ Public Class KeyStatus
         End If
     End Sub
     
+    Dim numLastOn, capsLastOn, scrollLastOn As Boolean
     Sub timerKeyChecker_Tick() Handles timerKeyChecker.Tick
         SetIcons
         notifyIconNumLock.Visible = ShouldShow("Num")
@@ -51,6 +52,48 @@ Public Class KeyStatus
             End If
         Else
             KeyStatusNotifyIcon.Visible = True
+        End If
+        
+        If chkPopup.Checked Then
+            If My.Computer.Keyboard.NumLock <> numLastOn Then
+                numLastOn = My.Computer.Keyboard.NumLock
+                If My.Computer.Keyboard.NumLock Then
+                    Popup.lblLock.ForeColor = System.Drawing.Color.Green
+                    Popup.lblLock.Text = "NUM LOCK: ENABLED"
+                Else
+                    Popup.lblLock.ForeColor = System.Drawing.Color.Red
+                    Popup.lblLock.Text = "NUM LOCK: DISABLED"
+                End If
+                Popup.Opacity = 1
+                timerPopupHide.Interval = numPopupDelay.Value
+                timerPopupHide.Start
+            End If
+            If My.Computer.Keyboard.CapsLock <> capsLastOn Then
+                capsLastOn = My.Computer.Keyboard.CapsLock
+                If My.Computer.Keyboard.CapsLock Then
+                    Popup.lblLock.ForeColor = System.Drawing.Color.Green
+                    Popup.lblLock.Text = "CAPS LOCK: ENABLED"
+                Else
+                    Popup.lblLock.ForeColor = System.Drawing.Color.Red
+                    Popup.lblLock.Text = "CAPS LOCK: DISABLED"
+                End If
+                Popup.Opacity = 1
+                timerPopupHide.Interval = numPopupDelay.Value
+                timerPopupHide.Start
+            End If
+            If My.Computer.Keyboard.ScrollLock <> scrollLastOn Then
+                scrollLastOn = My.Computer.Keyboard.ScrollLock
+                If My.Computer.Keyboard.ScrollLock Then
+                    Popup.lblLock.ForeColor = System.Drawing.Color.Green
+                    Popup.lblLock.Text = "SCROLL LOCK: ENABLED"
+                Else
+                    Popup.lblLock.ForeColor = System.Drawing.Color.Red
+                    Popup.lblLock.Text = "SCROLL LOCK: DISABLED"
+                End If
+                Popup.Opacity = 1
+                timerPopupHide.Interval = numPopupDelay.Value
+                timerPopupHide.Start
+            End If
         End If
     End Sub
     
@@ -133,10 +176,7 @@ Public Class KeyStatus
     End Sub
     
     Sub HideKeyStatus() Handles btnHide.Click, notifyContextHide.Click
-        Popup.Opacity = 1
-        timerPopupHide.Interval = numPopupDelay.Value
-        timerPopupHide.Start
-        'Me.Hide
+        Me.Hide
     End Sub
     
     Sub CloseKeyStatus() Handles btnExit.Click, notifyContextExit.Click

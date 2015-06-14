@@ -29,6 +29,7 @@ Public Class Popup
         lblLock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         lblLock.AutoEllipsis = true
         lblLock.Text = "CAPS LOCK: DISABLED"
+        lblLock.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         '
         'Popup
         '
@@ -39,11 +40,11 @@ Public Class Popup
         Me.ControlBox = false
         Me.Controls.Add(Me.lblLock)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Opacity = 0R
         Me.ShowInTaskbar = false
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.TopMost = true
-        Me.ResumeLayout(False)
-        Me.Opacity = 0
+        Me.ResumeLayout(false)
     End Sub
     Friend lblLock As System.Windows.Forms.Label
 End Class
