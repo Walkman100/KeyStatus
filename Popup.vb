@@ -20,30 +20,30 @@ Public Class Popup
         '
         'lblLock
         '
-        Me.lblLock.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-                        Or System.Windows.Forms.AnchorStyles.Left)  _
-                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.lblLock.AutoEllipsis = true
-        Me.lblLock.Location = New System.Drawing.Point(-4, -1)
         Me.lblLock.Name = "lblLock"
-        Me.lblLock.Size = New System.Drawing.Size(134, 34)
-        Me.lblLock.TabIndex = 0
-        Me.lblLock.Text = "CAPS LOCK: DISABLED"
-        Me.lblLock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        lblLock.Location = New System.Drawing.Point(-4, -1)
+        lblLock.Size = New System.Drawing.Size(134, 34)
+        lblLock.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        lblLock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        lblLock.AutoEllipsis = true
+        lblLock.Text = "CAPS LOCK: DISABLED"
         '
         'Popup
         '
+        Me.Name = "Popup"
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(126, 32)
         Me.ControlBox = false
         Me.Controls.Add(Me.lblLock)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Name = "Popup"
         Me.ShowInTaskbar = false
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.TopMost = true
-        Me.ResumeLayout(false)
+        Me.ResumeLayout(False)
+        Me.Opacity = 0
     End Sub
     Friend lblLock As System.Windows.Forms.Label
 End Class

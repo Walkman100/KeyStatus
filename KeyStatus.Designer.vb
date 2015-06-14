@@ -53,6 +53,7 @@ Partial Class KeyStatus
         Me.numPopupDelay = New System.Windows.Forms.NumericUpDown()
         Me.lblPopupDelay = New System.Windows.Forms.Label()
         Me.chkPopup = New System.Windows.Forms.CheckBox()
+        Me.timerPopupHide = New System.Windows.Forms.Timer(Me.components)
         Me.notifyContext.SuspendLayout
         Me.grpTray.SuspendLayout
         Me.grpTraySelection.SuspendLayout
@@ -379,12 +380,13 @@ Partial Class KeyStatus
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
+    Private WithEvents timerPopupHide As System.Windows.Forms.Timer
     Private WithEvents chkColours As System.Windows.Forms.CheckBox
     Private lblPopupDelay As System.Windows.Forms.Label
     Private numPopupDelay As System.Windows.Forms.NumericUpDown
-    Private cbxPopupLocation As System.Windows.Forms.ComboBox
+    Private WithEvents cbxPopupLocation As System.Windows.Forms.ComboBox
     Private lblPopupLocation As System.Windows.Forms.Label
-    Private chkPopupTaskbar As System.Windows.Forms.CheckBox
+    Private WithEvents chkPopupTaskbar As System.Windows.Forms.CheckBox
     Private WithEvents chkPopup As System.Windows.Forms.CheckBox
     Private grpPopup As System.Windows.Forms.GroupBox
     Private WithEvents notifyContextHide As System.Windows.Forms.ToolStripMenuItem
