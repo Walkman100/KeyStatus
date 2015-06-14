@@ -61,12 +61,29 @@ Public Class KeyStatus
         grpTraySelection.Enabled = chkTraySelection.Checked
     End Sub
     
-    Sub ShowKeyStatus() Handles KeyStatusNotifyIcon.DoubleClick
+    Sub ShowKeyStatus() Handles KeyStatusNotifyIcon.DoubleClick, notifyContextShow.Click, _
+      notifyIconNumLock.DoubleClick, notifyIconCapsLock.DoubleClick, notifyIconScrollLock.DoubleClick
         Me.Show
         Me.WindowState = System.Windows.Forms.FormWindowState.Normal
         Me.BringToFront
         Me.Focus
         Me.Activate
+    End Sub
+    
+    Sub HideKeyStatus() Handles btnHide.Click, notifyContextHide.Click
+        Me.Hide
+    End Sub
+    
+    Sub CloseKeyStatus() Handles btnExit.Click, notifyContextExit.Click
+        Application.Exit
+    End Sub
+    
+    Sub OpenAbout() Handles btnAbout.Click
+        Try
+            Process.Start("https://github.com/Walkman100/KeyStatus/blob/master/README.md#keystatus-")
+        Catch ex As Exception
+            If MsgBox("Unable to launch URL, copy to clipboard instead?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then Clipboard.SetText("https://github.com/Walkman100/KeyStatus/blob/master/README.md#keystatus-")
+        End Try
     End Sub
     
     'Credits to http://www.ultimateprogrammingtutorials.info/2012/12/switch-onoff-numlockcapslockscrolllock.html

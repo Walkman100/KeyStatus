@@ -27,6 +27,8 @@ Partial Class KeyStatus
         Me.timerKeyChecker = New System.Windows.Forms.Timer(Me.components)
         Me.KeyStatusNotifyIcon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.notifyContext = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.notifyContextShow = New System.Windows.Forms.ToolStripMenuItem()
+        Me.notifyContextExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.notifyIconNumLock = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.notifyIconCapsLock = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.notifyIconScrollLock = New System.Windows.Forms.NotifyIcon(Me.components)
@@ -39,6 +41,11 @@ Partial Class KeyStatus
         Me.chkTrayClick = New System.Windows.Forms.CheckBox()
         Me.chkTrayEnabledOnly = New System.Windows.Forms.CheckBox()
         Me.chkTrayAppIcon = New System.Windows.Forms.CheckBox()
+        Me.btnAbout = New System.Windows.Forms.Button()
+        Me.btnHide = New System.Windows.Forms.Button()
+        Me.btnExit = New System.Windows.Forms.Button()
+        Me.notifyContextHide = New System.Windows.Forms.ToolStripMenuItem()
+        Me.notifyContext.SuspendLayout
         Me.grpTray.SuspendLayout
         Me.grpTraySelection.SuspendLayout
         Me.SuspendLayout
@@ -50,8 +57,21 @@ Partial Class KeyStatus
         '
         'notifyContext
         '
+        Me.notifyContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.notifyContextShow, Me.notifyContextHide, Me.notifyContextExit})
         Me.notifyContext.Name = "notifyContext"
-        Me.notifyContext.Size = New System.Drawing.Size(61, 4)
+        Me.notifyContext.Size = New System.Drawing.Size(168, 92)
+        '
+        'notifyContextShow
+        '
+        Me.notifyContextShow.Name = "notifyContextShow"
+        Me.notifyContextShow.Size = New System.Drawing.Size(167, 22)
+        Me.notifyContextShow.Text = "Show KeyStatus"
+        '
+        'notifyContextExit
+        '
+        Me.notifyContextExit.Name = "notifyContextExit"
+        Me.notifyContextExit.Size = New System.Drawing.Size(167, 22)
+        Me.notifyContextExit.Text = "Close"
         '
         'notifyIconNumLock
         '
@@ -192,21 +212,70 @@ Partial Class KeyStatus
         "s hidden)"
         Me.chkTrayAppIcon.UseVisualStyleBackColor = true
         '
+        'btnAbout
+        '
+        Me.btnAbout.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.btnAbout.Location = New System.Drawing.Point(125, 208)
+        Me.btnAbout.Name = "btnAbout"
+        Me.btnAbout.Size = New System.Drawing.Size(75, 23)
+        Me.btnAbout.TabIndex = 2
+        Me.btnAbout.Text = "About"
+        Me.btnAbout.UseVisualStyleBackColor = true
+        '
+        'btnHide
+        '
+        Me.btnHide.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.btnHide.Location = New System.Drawing.Point(206, 208)
+        Me.btnHide.Name = "btnHide"
+        Me.btnHide.Size = New System.Drawing.Size(75, 23)
+        Me.btnHide.TabIndex = 3
+        Me.btnHide.Text = "Hide"
+        Me.btnHide.UseVisualStyleBackColor = true
+        '
+        'btnExit
+        '
+        Me.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnExit.Location = New System.Drawing.Point(287, 208)
+        Me.btnExit.Name = "btnExit"
+        Me.btnExit.Size = New System.Drawing.Size(75, 23)
+        Me.btnExit.TabIndex = 4
+        Me.btnExit.Text = "Close"
+        Me.btnExit.UseVisualStyleBackColor = true
+        '
+        'notifyContextHide
+        '
+        Me.notifyContextHide.Name = "notifyContextHide"
+        Me.notifyContextHide.Size = New System.Drawing.Size(167, 22)
+        Me.notifyContextHide.Text = "Hide KeyStatus"
+        '
         'KeyStatus
         '
+        Me.AcceptButton = Me.btnHide
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(486, 301)
+        Me.CancelButton = Me.btnExit
+        Me.ClientSize = New System.Drawing.Size(486, 243)
+        Me.Controls.Add(Me.btnExit)
+        Me.Controls.Add(Me.btnHide)
+        Me.Controls.Add(Me.btnAbout)
         Me.Controls.Add(Me.grpTray)
         Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
         Me.Name = "KeyStatus"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "KeyStatus"
+        Me.notifyContext.ResumeLayout(false)
         Me.grpTray.ResumeLayout(false)
         Me.grpTray.PerformLayout
         Me.grpTraySelection.ResumeLayout(false)
         Me.ResumeLayout(false)
     End Sub
+    Private WithEvents notifyContextHide As System.Windows.Forms.ToolStripMenuItem
+    Private WithEvents notifyContextExit As System.Windows.Forms.ToolStripMenuItem
+    Private WithEvents notifyContextShow As System.Windows.Forms.ToolStripMenuItem
+    Private WithEvents btnExit As System.Windows.Forms.Button
+    Private WithEvents btnHide As System.Windows.Forms.Button
+    Private WithEvents btnAbout As System.Windows.Forms.Button
     Private WithEvents chkTraySelectionNum As System.Windows.Forms.CheckBox
     Private WithEvents chkTraySelectionCaps As System.Windows.Forms.CheckBox
     Private WithEvents chkTraySelectionScroll As System.Windows.Forms.CheckBox
