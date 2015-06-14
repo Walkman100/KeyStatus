@@ -27,6 +27,11 @@ Partial Class KeyStatus
         Me.timerKeyChecker = New System.Windows.Forms.Timer(Me.components)
         Me.KeyStatusNotifyIcon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.notifyContext = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.notifyContextShowIcons = New System.Windows.Forms.ToolStripMenuItem()
+        Me.notifyContextAllowToggle = New System.Windows.Forms.ToolStripMenuItem()
+        Me.notifyContextSeperator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.notifyContextPopups = New System.Windows.Forms.ToolStripMenuItem()
+        Me.notifyContextSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.notifyContextShow = New System.Windows.Forms.ToolStripMenuItem()
         Me.notifyContextHide = New System.Windows.Forms.ToolStripMenuItem()
         Me.notifyContextExit = New System.Windows.Forms.ToolStripMenuItem()
@@ -68,27 +73,70 @@ Partial Class KeyStatus
         '
         'notifyContext
         '
-        Me.notifyContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.notifyContextShow, Me.notifyContextHide, Me.notifyContextExit})
+        Me.notifyContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.notifyContextShowIcons, Me.notifyContextAllowToggle, Me.notifyContextSeperator1, Me.notifyContextPopups, Me.notifyContextSeparator2, Me.notifyContextShow, Me.notifyContextHide, Me.notifyContextExit})
         Me.notifyContext.Name = "notifyContext"
-        Me.notifyContext.Size = New System.Drawing.Size(168, 70)
+        Me.notifyContext.Size = New System.Drawing.Size(251, 148)
+        '
+        'notifyContextShowIcons
+        '
+        Me.notifyContextShowIcons.AutoToolTip = true
+        Me.notifyContextShowIcons.Checked = true
+        Me.notifyContextShowIcons.CheckOnClick = true
+        Me.notifyContextShowIcons.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.notifyContextShowIcons.Name = "notifyContextShowIcons"
+        Me.notifyContextShowIcons.Size = New System.Drawing.Size(250, 22)
+        Me.notifyContextShowIcons.Text = "Show taskbar icons"
+        '
+        'notifyContextAllowToggle
+        '
+        Me.notifyContextAllowToggle.AutoToolTip = true
+        Me.notifyContextAllowToggle.Checked = true
+        Me.notifyContextAllowToggle.CheckOnClick = true
+        Me.notifyContextAllowToggle.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.notifyContextAllowToggle.Name = "notifyContextAllowToggle"
+        Me.notifyContextAllowToggle.Size = New System.Drawing.Size(250, 22)
+        Me.notifyContextAllowToggle.Text = "Allow toggling locks from icons"
+        '
+        'notifyContextSeperator1
+        '
+        Me.notifyContextSeperator1.Name = "notifyContextSeperator1"
+        Me.notifyContextSeperator1.Size = New System.Drawing.Size(247, 6)
+        '
+        'notifyContextPopups
+        '
+        Me.notifyContextPopups.AutoToolTip = true
+        Me.notifyContextPopups.Checked = true
+        Me.notifyContextPopups.CheckOnClick = true
+        Me.notifyContextPopups.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.notifyContextPopups.Name = "notifyContextPopups"
+        Me.notifyContextPopups.Size = New System.Drawing.Size(250, 22)
+        Me.notifyContextPopups.Text = "Show Popups"
+        '
+        'notifyContextSeparator2
+        '
+        Me.notifyContextSeparator2.Name = "notifyContextSeparator2"
+        Me.notifyContextSeparator2.Size = New System.Drawing.Size(247, 6)
         '
         'notifyContextShow
         '
+        Me.notifyContextShow.AutoToolTip = true
         Me.notifyContextShow.Name = "notifyContextShow"
-        Me.notifyContextShow.Size = New System.Drawing.Size(167, 22)
+        Me.notifyContextShow.Size = New System.Drawing.Size(250, 22)
         Me.notifyContextShow.Text = "Show KeyStatus"
         '
         'notifyContextHide
         '
+        Me.notifyContextHide.AutoToolTip = true
         Me.notifyContextHide.Name = "notifyContextHide"
-        Me.notifyContextHide.Size = New System.Drawing.Size(167, 22)
+        Me.notifyContextHide.Size = New System.Drawing.Size(250, 22)
         Me.notifyContextHide.Text = "Hide KeyStatus"
         '
         'notifyContextExit
         '
+        Me.notifyContextExit.AutoToolTip = true
         Me.notifyContextExit.Name = "notifyContextExit"
-        Me.notifyContextExit.Size = New System.Drawing.Size(167, 22)
-        Me.notifyContextExit.Text = "Close"
+        Me.notifyContextExit.Size = New System.Drawing.Size(250, 22)
+        Me.notifyContextExit.Text = "Exit"
         '
         'notifyIconNumLock
         '
@@ -131,7 +179,6 @@ Partial Class KeyStatus
         Me.chkTraySelection.TabIndex = 4
         Me.chkTraySelection.Text = "Show icons for these locks only:"
         Me.chkTraySelection.UseVisualStyleBackColor = true
-        AddHandler Me.chkTraySelection.CheckedChanged, AddressOf Me.ChkTraySelection_CheckedChanged
         '
         'grpTraySelection
         '
@@ -271,7 +318,6 @@ Partial Class KeyStatus
         Me.grpPopup.Controls.Add(Me.cbxPopupLocation)
         Me.grpPopup.Controls.Add(Me.numPopupDelay)
         Me.grpPopup.Controls.Add(Me.lblPopupDelay)
-        Me.grpPopup.Enabled = false
         Me.grpPopup.Location = New System.Drawing.Point(12, 204)
         Me.grpPopup.Name = "grpPopup"
         Me.grpPopup.Size = New System.Drawing.Size(462, 120)
@@ -346,6 +392,8 @@ Partial Class KeyStatus
         Me.chkPopup.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.chkPopup.AutoSize = true
+        Me.chkPopup.Checked = true
+        Me.chkPopup.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkPopup.Location = New System.Drawing.Point(20, 204)
         Me.chkPopup.Name = "chkPopup"
         Me.chkPopup.Size = New System.Drawing.Size(189, 17)
@@ -380,6 +428,11 @@ Partial Class KeyStatus
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
+    Private notifyContextSeparator2 As System.Windows.Forms.ToolStripSeparator
+    Private WithEvents notifyContextPopups As System.Windows.Forms.ToolStripMenuItem
+    Private notifyContextSeperator1 As System.Windows.Forms.ToolStripSeparator
+    Private WithEvents notifyContextAllowToggle As System.Windows.Forms.ToolStripMenuItem
+    Private WithEvents notifyContextShowIcons As System.Windows.Forms.ToolStripMenuItem
     Private WithEvents timerPopupHide As System.Windows.Forms.Timer
     Private chkColours As System.Windows.Forms.CheckBox
     Private lblPopupDelay As System.Windows.Forms.Label
@@ -398,11 +451,11 @@ Partial Class KeyStatus
     Private WithEvents chkTraySelectionNum As System.Windows.Forms.CheckBox
     Private WithEvents chkTraySelectionCaps As System.Windows.Forms.CheckBox
     Private WithEvents chkTraySelectionScroll As System.Windows.Forms.CheckBox
-    Private WithEvents chkTrayEnabledOnly As System.Windows.Forms.CheckBox
+    Private chkTrayEnabledOnly As System.Windows.Forms.CheckBox
     Private WithEvents chkTrayClick As System.Windows.Forms.CheckBox
     Private grpTraySelection As System.Windows.Forms.GroupBox
     Private WithEvents chkTraySelection As System.Windows.Forms.CheckBox
-    Private WithEvents chkTrayAppIcon As System.Windows.Forms.CheckBox
+    Private chkTrayAppIcon As System.Windows.Forms.CheckBox
     Private grpTray As System.Windows.Forms.GroupBox
     Private notifyContext As System.Windows.Forms.ContextMenuStrip
     Private WithEvents notifyIconScrollLock As System.Windows.Forms.NotifyIcon
@@ -410,5 +463,4 @@ Partial Class KeyStatus
     Private WithEvents notifyIconNumLock As System.Windows.Forms.NotifyIcon
     Private WithEvents KeyStatusNotifyIcon As System.Windows.Forms.NotifyIcon
     Private WithEvents timerKeyChecker As System.Windows.Forms.Timer
-
 End Class

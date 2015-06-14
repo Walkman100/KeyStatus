@@ -10,6 +10,8 @@ Public Class KeyStatus
         cbxPopupLocation.SelectedIndex = 8
     End Sub
     
+    ' Timers
+    
     Sub SetIcons()
         Me.Icon = CType(ResMan.GetObject("$this.Icon"),System.Drawing.Icon)
         KeyStatusNotifyIcon.Icon = CType(ResMan.GetObject("$this.Icon"),System.Drawing.Icon)
@@ -131,12 +133,24 @@ Public Class KeyStatus
         End Select
     End Sub
     
+    ' UI options
+    
+    Sub chkTrayClick_CheckedChanged() Handles chkTrayClick.CheckedChanged
+        notifyContextAllowToggle.Checked = chkTrayClick.Checked
+    End Sub
+    
     Sub chkTraySelection_CheckedChanged() Handles chkTraySelection.CheckedChanged
         grpTraySelection.Enabled = chkTraySelection.Checked
+        If chkTraySelection.Checked = False Then notifyContextShowIcons.Checked = True
+    End Sub
+    
+    Sub chkTrayAnyLock_Click() Handles chkTraySelectionNum.Click, chkTraySelectionCaps.Click, chkTraySelectionScroll.Click
+        notifyContextShowIcons.Checked = True
     End Sub
     
     Sub chkPopup_CheckedChanged() Handles chkPopup.CheckedChanged
         grpPopup.Enabled = chkPopup.Checked
+        notifyContextPopups.Checked = chkPopup.Checked
     End Sub
     
     Dim dispArea As System.Drawing.Rectangle
@@ -172,6 +186,27 @@ Public Class KeyStatus
         End Select
     End Sub
     
+    ' Notification icon context menu items and buttons on form
+    
+    Sub notifyContextShowIcons_Click() Handles notifyContextShowIcons.Click
+        If notifyContextShowIcons.Checked Then
+            chkTraySelection.Checked = False
+        Else
+            chkTraySelection.Checked = True
+            chkTraySelectionNum.Checked = False
+            chkTraySelectionCaps.Checked = False
+            chkTraySelectionScroll.Checked = False
+        End If
+    End Sub
+    
+    Sub notifyContextAllowToggle_Click() Handles notifyContextAllowToggle.Click
+        chkTrayClick.Checked = notifyContextAllowToggle.Checked
+    End Sub
+    
+    Sub notifyContextPopups_Click() Handles notifyContextPopups.Click
+        chkPopup.Checked = notifyContextPopups.Checked
+    End Sub
+    
     Sub ShowKeyStatus() Handles KeyStatusNotifyIcon.DoubleClick, notifyContextShow.Click, _
       notifyIconNumLock.DoubleClick, notifyIconCapsLock.DoubleClick, notifyIconScrollLock.DoubleClick
         Me.Show
@@ -196,6 +231,9 @@ Public Class KeyStatus
             If MsgBox("Unable to launch URL, copy to clipboard instead?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then Clipboard.SetText("https://github.com/Walkman100/KeyStatus/blob/master/README.md#keystatus-")
         End Try
     End Sub
+    
+    ' Toggling locks: clicking on icons, checking if toggle scripts exist
+    ' Checking if icons should be shown
     
     'Credits to http://www.ultimateprogrammingtutorials.info/2012/12/switch-onoff-numlockcapslockscrolllock.html
     Private Declare Sub keybd_event Lib "user32" (bVk As Byte, bScan As Byte, dwFlags As Integer, Optional dwExtraInfo As Integer = 0)
@@ -245,15 +283,15 @@ Public Class KeyStatus
         End If
     End Sub
     
-    Sub notifyIconNumLock_Click(sender As Object, e As MouseEventArgs) Handles notifyIconNumLock.Click
+    Sub notifyIconNumLock_Click() Handles notifyIconNumLock.Click
         If chkTrayClick.Checked Then toggleNumLock Else ShowKeyStatus
     End Sub
     
-    Sub notifyIconCapsLock_Click(sender As Object, e As MouseEventArgs) Handles notifyIconCapsLock.Click
+    Sub notifyIconCapsLock_Click() Handles notifyIconCapsLock.Click
         If chkTrayClick.Checked Then toggleCapsLock Else ShowKeyStatus
     End Sub
     
-    Sub notifyIconScrollLock_Click(sender As Object, e As MouseEventArgs) Handles notifyIconScrollLock.Click
+    Sub notifyIconScrollLock_Click() Handles notifyIconScrollLock.Click
         If chkTrayClick.Checked Then toggleScrollLock Else ShowKeyStatus
     End Sub
     
@@ -285,81 +323,33 @@ Public Class KeyStatus
         Select Case lock
             Case "Num"
                 If chkTraySelection.Checked Then
-                    If chkTraySelectionNum.Checked Then
-                        If chkTrayEnabledOnly.Checked Then
-                            If My.Computer.Keyboard.NumLock Then
-                                Return True
-                            Else
-                                Return False
-                            End If
-                        Else
-                            Return True
-                        End If
+                    If chkTraySelectionNum.Checked Then 
+                        If (chkTrayEnabledOnly.Checked) Then Return My.Computer.Keyboard.NumLock Else Return True
                     Else
                         Return False
                     End If
                 Else
-                    If chkTrayEnabledOnly.Checked Then
-                        If My.Computer.Keyboard.NumLock Then
-                            Return True
-                        Else
-                            Return False
-                        End If
-                    Else
-                        Return True
-                    End If
+                    If (chkTrayEnabledOnly.Checked) Then Return My.Computer.Keyboard.NumLock Else Return True
                 End If
             Case "Caps"
                 If chkTraySelection.Checked Then
                     If chkTraySelectionCaps.Checked Then
-                        If chkTrayEnabledOnly.Checked Then
-                            If My.Computer.Keyboard.CapsLock Then
-                                Return True
-                            Else
-                                Return False
-                            End If
-                        Else
-                            Return True
-                        End If
+                        If (chkTrayEnabledOnly.Checked) Then Return My.Computer.Keyboard.CapsLock Else Return True
                     Else
                         Return False
                     End If
                 Else
-                    If chkTrayEnabledOnly.Checked Then
-                        If My.Computer.Keyboard.CapsLock Then
-                            Return True
-                        Else
-                            Return False
-                        End If
-                    Else
-                        Return True
-                    End If
+                    If (chkTrayEnabledOnly.Checked) Then Return My.Computer.Keyboard.CapsLock Else Return True
                 End If
             Case "Scroll"
                 If chkTraySelection.Checked Then
                     If chkTraySelectionScroll.Checked Then
-                        If chkTrayEnabledOnly.Checked Then
-                            If My.Computer.Keyboard.ScrollLock Then
-                                Return True
-                            Else
-                                Return False
-                            End If
-                        Else
-                            Return True
-                        End If
+                        If (chkTrayEnabledOnly.Checked) Then Return My.Computer.Keyboard.ScrollLock Else Return True
                     Else
                         Return False
                     End If
                 Else
-                    If chkTrayEnabledOnly.Checked Then
-                        If My.Computer.Keyboard.ScrollLock Then
-                            Return True
-                        Else
-                            Return False
-                        End If
-                    Else
-                        Return True
-                    End If
+                    If (chkTrayEnabledOnly.Checked) Then Return My.Computer.Keyboard.ScrollLock Else Return True
                 End If
             Case Else
                 Return False
