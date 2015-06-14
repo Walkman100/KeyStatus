@@ -14,18 +14,12 @@ Public Class KeyStatus
         Me.Icon = CType(ResMan.GetObject("$this.Icon"),System.Drawing.Icon)
         KeyStatusNotifyIcon.Icon = CType(ResMan.GetObject("$this.Icon"),System.Drawing.Icon)
         
-        Try
-            If CType(ResMan.GetObject("NumLockOn"),System.Drawing.Icon).ToString = vbNull Then
-                Throw New System.NullReferenceException
-            End If
-        Catch ex As Exception
-            If ex.GetType.ToString = "System.NullReferenceException" Then
-                timerKeyChecker.Stop
-                MsgBox("Error loading tray icon resources! Please check the git diff and revert the changes to 'KeyStatus.resx' before recompiling.", MsgBoxStyle.Critical)
-                Application.Exit
-                End
-            End If
-        End Try
+        If Not (TypeOf ResMan.GetObject("NumLockOn") Is System.Drawing.Icon) Then
+            timerKeyChecker.Stop
+            MsgBox("Error loading tray icon resources! Please check the git diff and revert the changes to 'KeyStatus.resx' before recompiling.", MsgBoxStyle.Critical)
+            Application.Exit
+            End
+        End If
         
         If My.Computer.Keyboard.NumLock Then
             notifyIconNumLock.Icon = CType(ResMan.GetObject("NumLockOn"),System.Drawing.Icon)
