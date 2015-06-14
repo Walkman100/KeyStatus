@@ -28,6 +28,7 @@ Partial Class KeyStatus
         Me.KeyStatusNotifyIcon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.notifyContext = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.notifyContextShow = New System.Windows.Forms.ToolStripMenuItem()
+        Me.notifyContextHide = New System.Windows.Forms.ToolStripMenuItem()
         Me.notifyContextExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.notifyIconNumLock = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.notifyIconCapsLock = New System.Windows.Forms.NotifyIcon(Me.components)
@@ -44,10 +45,19 @@ Partial Class KeyStatus
         Me.btnAbout = New System.Windows.Forms.Button()
         Me.btnHide = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
-        Me.notifyContextHide = New System.Windows.Forms.ToolStripMenuItem()
+        Me.grpPopup = New System.Windows.Forms.GroupBox()
+        Me.chkColours = New System.Windows.Forms.CheckBox()
+        Me.chkPopupTaskbar = New System.Windows.Forms.CheckBox()
+        Me.lblPopupLocation = New System.Windows.Forms.Label()
+        Me.cbxPopupLocation = New System.Windows.Forms.ComboBox()
+        Me.numPopupDelay = New System.Windows.Forms.NumericUpDown()
+        Me.lblPopupDelay = New System.Windows.Forms.Label()
+        Me.chkPopup = New System.Windows.Forms.CheckBox()
         Me.notifyContext.SuspendLayout
         Me.grpTray.SuspendLayout
         Me.grpTraySelection.SuspendLayout
+        Me.grpPopup.SuspendLayout
+        CType(Me.numPopupDelay,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'KeyStatusNotifyIcon
@@ -59,13 +69,19 @@ Partial Class KeyStatus
         '
         Me.notifyContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.notifyContextShow, Me.notifyContextHide, Me.notifyContextExit})
         Me.notifyContext.Name = "notifyContext"
-        Me.notifyContext.Size = New System.Drawing.Size(168, 92)
+        Me.notifyContext.Size = New System.Drawing.Size(168, 70)
         '
         'notifyContextShow
         '
         Me.notifyContextShow.Name = "notifyContextShow"
         Me.notifyContextShow.Size = New System.Drawing.Size(167, 22)
         Me.notifyContextShow.Text = "Show KeyStatus"
+        '
+        'notifyContextHide
+        '
+        Me.notifyContextHide.Name = "notifyContextHide"
+        Me.notifyContextHide.Size = New System.Drawing.Size(167, 22)
+        Me.notifyContextHide.Text = "Hide KeyStatus"
         '
         'notifyContextExit
         '
@@ -215,7 +231,7 @@ Partial Class KeyStatus
         'btnAbout
         '
         Me.btnAbout.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.btnAbout.Location = New System.Drawing.Point(125, 208)
+        Me.btnAbout.Location = New System.Drawing.Point(125, 330)
         Me.btnAbout.Name = "btnAbout"
         Me.btnAbout.Size = New System.Drawing.Size(75, 23)
         Me.btnAbout.TabIndex = 2
@@ -225,7 +241,7 @@ Partial Class KeyStatus
         'btnHide
         '
         Me.btnHide.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.btnHide.Location = New System.Drawing.Point(206, 208)
+        Me.btnHide.Location = New System.Drawing.Point(206, 330)
         Me.btnHide.Name = "btnHide"
         Me.btnHide.Size = New System.Drawing.Size(75, 23)
         Me.btnHide.TabIndex = 3
@@ -236,18 +252,105 @@ Partial Class KeyStatus
         '
         Me.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnExit.Location = New System.Drawing.Point(287, 208)
+        Me.btnExit.Location = New System.Drawing.Point(287, 330)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(75, 23)
         Me.btnExit.TabIndex = 4
         Me.btnExit.Text = "Close"
         Me.btnExit.UseVisualStyleBackColor = true
         '
-        'notifyContextHide
+        'grpPopup
         '
-        Me.notifyContextHide.Name = "notifyContextHide"
-        Me.notifyContextHide.Size = New System.Drawing.Size(167, 22)
-        Me.notifyContextHide.Text = "Hide KeyStatus"
+        Me.grpPopup.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
+                        Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.grpPopup.Controls.Add(Me.chkColours)
+        Me.grpPopup.Controls.Add(Me.chkPopupTaskbar)
+        Me.grpPopup.Controls.Add(Me.lblPopupLocation)
+        Me.grpPopup.Controls.Add(Me.cbxPopupLocation)
+        Me.grpPopup.Controls.Add(Me.numPopupDelay)
+        Me.grpPopup.Controls.Add(Me.lblPopupDelay)
+        Me.grpPopup.Enabled = false
+        Me.grpPopup.Location = New System.Drawing.Point(12, 204)
+        Me.grpPopup.Name = "grpPopup"
+        Me.grpPopup.Size = New System.Drawing.Size(462, 120)
+        Me.grpPopup.TabIndex = 5
+        Me.grpPopup.TabStop = false
+        '
+        'chkColours
+        '
+        Me.chkColours.AutoSize = true
+        Me.chkColours.Checked = true
+        Me.chkColours.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkColours.Location = New System.Drawing.Point(6, 95)
+        Me.chkColours.Name = "chkColours"
+        Me.chkColours.Size = New System.Drawing.Size(103, 17)
+        Me.chkColours.TabIndex = 5
+        Me.chkColours.Text = "Colour-code text"
+        Me.chkColours.UseVisualStyleBackColor = true
+        '
+        'chkPopupTaskbar
+        '
+        Me.chkPopupTaskbar.AutoSize = true
+        Me.chkPopupTaskbar.Location = New System.Drawing.Point(6, 72)
+        Me.chkPopupTaskbar.Name = "chkPopupTaskbar"
+        Me.chkPopupTaskbar.Size = New System.Drawing.Size(235, 17)
+        Me.chkPopupTaskbar.TabIndex = 4
+        Me.chkPopupTaskbar.Text = "Whole screen (alternative is without taskbar)"
+        Me.chkPopupTaskbar.UseVisualStyleBackColor = true
+        '
+        'lblPopupLocation
+        '
+        Me.lblPopupLocation.AutoSize = true
+        Me.lblPopupLocation.Location = New System.Drawing.Point(6, 48)
+        Me.lblPopupLocation.Name = "lblPopupLocation"
+        Me.lblPopupLocation.Size = New System.Drawing.Size(81, 13)
+        Me.lblPopupLocation.TabIndex = 3
+        Me.lblPopupLocation.Text = "Popup location:"
+        '
+        'cbxPopupLocation
+        '
+        Me.cbxPopupLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbxPopupLocation.FormattingEnabled = true
+        Me.cbxPopupLocation.Items.AddRange(New Object() {"Top Left", "Top Center", "Top Right", "Center Left", "Center", "Center Right", "Bottom Left", "Bottom Center", "Bottom Right"})
+        Me.cbxPopupLocation.Location = New System.Drawing.Point(93, 45)
+        Me.cbxPopupLocation.Name = "cbxPopupLocation"
+        Me.cbxPopupLocation.Size = New System.Drawing.Size(92, 21)
+        Me.cbxPopupLocation.TabIndex = 2
+        '
+        'numPopupDelay
+        '
+        Me.numPopupDelay.Increment = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.numPopupDelay.Location = New System.Drawing.Point(135, 19)
+        Me.numPopupDelay.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
+        Me.numPopupDelay.Minimum = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.numPopupDelay.Name = "numPopupDelay"
+        Me.numPopupDelay.Size = New System.Drawing.Size(90, 20)
+        Me.numPopupDelay.TabIndex = 1
+        Me.numPopupDelay.ThousandsSeparator = true
+        Me.numPopupDelay.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
+        Me.numPopupDelay.Value = New Decimal(New Integer() {500, 0, 0, 0})
+        '
+        'lblPopupDelay
+        '
+        Me.lblPopupDelay.AutoSize = true
+        Me.lblPopupDelay.Location = New System.Drawing.Point(6, 21)
+        Me.lblPopupDelay.Name = "lblPopupDelay"
+        Me.lblPopupDelay.Size = New System.Drawing.Size(123, 13)
+        Me.lblPopupDelay.TabIndex = 0
+        Me.lblPopupDelay.Text = "Delay before hiding (ms):"
+        '
+        'chkPopup
+        '
+        Me.chkPopup.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.chkPopup.AutoSize = true
+        Me.chkPopup.Location = New System.Drawing.Point(20, 204)
+        Me.chkPopup.Name = "chkPopup"
+        Me.chkPopup.Size = New System.Drawing.Size(189, 17)
+        Me.chkPopup.TabIndex = 6
+        Me.chkPopup.Text = "Show popup on lock state change"
+        Me.chkPopup.UseVisualStyleBackColor = true
         '
         'KeyStatus
         '
@@ -255,7 +358,9 @@ Partial Class KeyStatus
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnExit
-        Me.ClientSize = New System.Drawing.Size(486, 243)
+        Me.ClientSize = New System.Drawing.Size(486, 365)
+        Me.Controls.Add(Me.chkPopup)
+        Me.Controls.Add(Me.grpPopup)
         Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.btnHide)
         Me.Controls.Add(Me.btnAbout)
@@ -268,8 +373,20 @@ Partial Class KeyStatus
         Me.grpTray.ResumeLayout(false)
         Me.grpTray.PerformLayout
         Me.grpTraySelection.ResumeLayout(false)
+        Me.grpPopup.ResumeLayout(false)
+        Me.grpPopup.PerformLayout
+        CType(Me.numPopupDelay,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
+        Me.PerformLayout
     End Sub
+    Private WithEvents chkColours As System.Windows.Forms.CheckBox
+    Private lblPopupDelay As System.Windows.Forms.Label
+    Private numPopupDelay As System.Windows.Forms.NumericUpDown
+    Private cbxPopupLocation As System.Windows.Forms.ComboBox
+    Private lblPopupLocation As System.Windows.Forms.Label
+    Private chkPopupTaskbar As System.Windows.Forms.CheckBox
+    Private WithEvents chkPopup As System.Windows.Forms.CheckBox
+    Private grpPopup As System.Windows.Forms.GroupBox
     Private WithEvents notifyContextHide As System.Windows.Forms.ToolStripMenuItem
     Private WithEvents notifyContextExit As System.Windows.Forms.ToolStripMenuItem
     Private WithEvents notifyContextShow As System.Windows.Forms.ToolStripMenuItem
@@ -281,11 +398,11 @@ Partial Class KeyStatus
     Private WithEvents chkTraySelectionScroll As System.Windows.Forms.CheckBox
     Private WithEvents chkTrayEnabledOnly As System.Windows.Forms.CheckBox
     Private WithEvents chkTrayClick As System.Windows.Forms.CheckBox
-    Private WithEvents grpTraySelection As System.Windows.Forms.GroupBox
+    Private grpTraySelection As System.Windows.Forms.GroupBox
     Private WithEvents chkTraySelection As System.Windows.Forms.CheckBox
     Private WithEvents chkTrayAppIcon As System.Windows.Forms.CheckBox
-    Private WithEvents grpTray As System.Windows.Forms.GroupBox
-    Private WithEvents notifyContext As System.Windows.Forms.ContextMenuStrip
+    Private grpTray As System.Windows.Forms.GroupBox
+    Private notifyContext As System.Windows.Forms.ContextMenuStrip
     Private WithEvents notifyIconScrollLock As System.Windows.Forms.NotifyIcon
     Private WithEvents notifyIconCapsLock As System.Windows.Forms.NotifyIcon
     Private WithEvents notifyIconNumLock As System.Windows.Forms.NotifyIcon

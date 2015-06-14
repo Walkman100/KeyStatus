@@ -5,6 +5,7 @@ Public Class KeyStatus
     Sub KeyStatus_Shown() Handles Me.Shown
         FileNotFound("All")
         timerKeyChecker.Start
+        cbxPopupLocation.SelectedIndex = 8
     End Sub
     
     Sub SetIcons()
@@ -59,6 +60,10 @@ Public Class KeyStatus
     
     Sub chkTraySelection_CheckedChanged() Handles chkTraySelection.CheckedChanged
         grpTraySelection.Enabled = chkTraySelection.Checked
+    End Sub
+    
+    Sub chkPopup_CheckedChanged() Handles chkPopup.CheckedChanged
+        grpPopup.Enabled = chkPopup.Checked
     End Sub
     
     Sub ShowKeyStatus() Handles KeyStatusNotifyIcon.DoubleClick, notifyContextShow.Click, _
