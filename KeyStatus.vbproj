@@ -69,6 +69,13 @@
       <DependentUpon>KeyStatus.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Popup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup.Designer.vb">
+      <DependentUpon>Popup.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -88,6 +95,9 @@
   <ItemGroup>
     <EmbeddedResource Include="KeyStatus.resx">
       <DependentUpon>KeyStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup.resx">
+      <DependentUpon>Popup.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
