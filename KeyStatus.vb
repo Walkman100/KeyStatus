@@ -48,7 +48,7 @@ Public Class KeyStatus
         notifyIconScrollLock.Visible = ShouldShow("Scroll")
         If chkTrayAppIcon.Checked Then
             If notifyIconNumLock.Visible = False And notifyIconCapsLock.Visible = False And notifyIconScrollLock.Visible = False Then
-                KeyStatusNotifyIcon.Visible = True
+                KeyStatusNotifyIcon.Visible = Not Me.Visible
             Else
                 KeyStatusNotifyIcon.Visible = False
             End If
@@ -61,7 +61,7 @@ Public Class KeyStatus
         grpTraySelection.Enabled = chkTraySelection.Checked
     End Sub
     
-    Sub KeyStatusNotifyIcon_MouseDoubleClick() Handles KeyStatusNotifyIcon.MouseDoubleClick
+    Sub ShowKeyStatus() Handles KeyStatusNotifyIcon.DoubleClick
         Me.Show
         Me.WindowState = System.Windows.Forms.FormWindowState.Normal
         Me.BringToFront
@@ -118,15 +118,15 @@ Public Class KeyStatus
     End Sub
     
     Sub notifyIconNumLock_Click(sender As Object, e As MouseEventArgs) Handles notifyIconNumLock.Click
-        If chkTrayClick.Checked Then toggleNumLock
+        If chkTrayClick.Checked Then toggleNumLock Else ShowKeyStatus
     End Sub
     
     Sub notifyIconCapsLock_Click(sender As Object, e As MouseEventArgs) Handles notifyIconCapsLock.Click
-        If chkTrayClick.Checked Then toggleCapsLock
+        If chkTrayClick.Checked Then toggleCapsLock Else ShowKeyStatus
     End Sub
     
     Sub notifyIconScrollLock_Click(sender As Object, e As MouseEventArgs) Handles notifyIconScrollLock.Click
-        If chkTrayClick.Checked Then toggleScrollLock
+        If chkTrayClick.Checked Then toggleScrollLock Else ShowKeyStatus
     End Sub
     
     Sub FileNotFound(lock As String)
