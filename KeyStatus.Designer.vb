@@ -381,7 +381,7 @@ Partial Class KeyStatus
         Me.PerformLayout
     End Sub
     Private WithEvents timerPopupHide As System.Windows.Forms.Timer
-    Private WithEvents chkColours As System.Windows.Forms.CheckBox
+    Private chkColours As System.Windows.Forms.CheckBox
     Private lblPopupDelay As System.Windows.Forms.Label
     Private numPopupDelay As System.Windows.Forms.NumericUpDown
     Private WithEvents cbxPopupLocation As System.Windows.Forms.ComboBox

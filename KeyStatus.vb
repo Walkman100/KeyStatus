@@ -5,9 +5,9 @@ Public Class KeyStatus
     Sub KeyStatus_Shown() Handles Me.Shown
         FileNotFound("All")
         timerKeyChecker.Start
-        cbxPopupLocation.SelectedIndex = 8
         Popup.Show
         Me.Focus
+        cbxPopupLocation.SelectedIndex = 8
     End Sub
     
     Sub SetIcons()
@@ -58,10 +58,12 @@ Public Class KeyStatus
             If My.Computer.Keyboard.NumLock <> numLastOn Then
                 numLastOn = My.Computer.Keyboard.NumLock
                 If My.Computer.Keyboard.NumLock Then
-                    Popup.lblLock.ForeColor = System.Drawing.Color.Green
+                    If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Green _
+                        Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
                     Popup.lblLock.Text = "NUM LOCK: ENABLED"
                 Else
-                    Popup.lblLock.ForeColor = System.Drawing.Color.Red
+                    If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Red _
+                        Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
                     Popup.lblLock.Text = "NUM LOCK: DISABLED"
                 End If
                 Popup.Opacity = 1
@@ -71,10 +73,12 @@ Public Class KeyStatus
             If My.Computer.Keyboard.CapsLock <> capsLastOn Then
                 capsLastOn = My.Computer.Keyboard.CapsLock
                 If My.Computer.Keyboard.CapsLock Then
-                    Popup.lblLock.ForeColor = System.Drawing.Color.Green
+                    If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Green _
+                        Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
                     Popup.lblLock.Text = "CAPS LOCK: ENABLED"
                 Else
-                    Popup.lblLock.ForeColor = System.Drawing.Color.Red
+                    If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Red _
+                        Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
                     Popup.lblLock.Text = "CAPS LOCK: DISABLED"
                 End If
                 Popup.Opacity = 1
@@ -84,10 +88,12 @@ Public Class KeyStatus
             If My.Computer.Keyboard.ScrollLock <> scrollLastOn Then
                 scrollLastOn = My.Computer.Keyboard.ScrollLock
                 If My.Computer.Keyboard.ScrollLock Then
-                    Popup.lblLock.ForeColor = System.Drawing.Color.Green
+                    If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Green _
+                        Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
                     Popup.lblLock.Text = "SCROLL LOCK: ENABLED"
                 Else
-                    Popup.lblLock.ForeColor = System.Drawing.Color.Red
+                    If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Red _
+                        Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
                     Popup.lblLock.Text = "SCROLL LOCK: DISABLED"
                 End If
                 Popup.Opacity = 1
