@@ -321,7 +321,7 @@ Partial Class KeyStatus
         '
         'numPopupDelay
         '
-        Me.numPopupDelay.Increment = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.numPopupDelay.Increment = New Decimal(New Integer() {500, 0, 0, 0})
         Me.numPopupDelay.Location = New System.Drawing.Point(135, 19)
         Me.numPopupDelay.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.numPopupDelay.Minimum = New Decimal(New Integer() {100, 0, 0, 0})
