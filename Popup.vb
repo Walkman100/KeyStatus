@@ -44,5 +44,9 @@ Public Class Popup
         Me.TopMost = true
         Me.ResumeLayout(false)
     End Sub
-    Friend lblLock As System.Windows.Forms.Label
+    Friend WithEvents lblLock As System.Windows.Forms.Label
+    
+    Sub Popup_Click() Handles Me.Click, MyBase.Click, lblLock.Click
+        Me.Opacity = 0
+    End Sub
 End Class

@@ -8,6 +8,41 @@ Public Class KeyStatus
         Popup.Show
         Me.Focus
         cbxPopupLocation.SelectedIndex = 8
+        
+        ' Command line flags: Hide ShowAppIcon AlwaysShowIcons NoToggle NoIcons NoPopup PopupDelay=1000 PopupLocation=2
+        ' See https://github.com/Walkman100/KeyStatus/blob/master/README.md#command-line-arguments for full explanation
+        For Each s As String In My.Application.CommandLineArgs
+            Select Case s.ToLower
+                Case "hide"
+                    HideKeyStatus
+                Case "showappicon"
+                    chkTrayAppIcon.Checked = False
+                Case "alwaysshowicons"
+                    chkTrayEnabledOnly.Checked = False
+                Case "notoggle"
+                    chkTrayClick.Checked = False
+                Case "noicons"
+                    notifyContextShowIcons_Click
+                Case "nopopup"
+                    chkPopup.Checked = False
+                Case Else
+                    If s.ToLower.StartsWith("popupdelay=") Then
+                        If s.Substring(11).Length > 0 And IsNumeric(s.Substring(11)) AndAlso s.Substring(11) >= 100 Then
+                            numPopupDelay.Value = s.Substring(11)
+                        Else
+                            MsgBox("Please use a valid value to set Popup Delay to!"&vbNewLine &"Invalid value: """&s.Substring(11)&"""", MsgBoxStyle.Exclamation)
+                        End If
+                    ElseIf s.ToLower.StartsWith("popuplocation=") Then
+                        If s.Substring(14).Length > 0 And IsNumeric(s.Substring(14)) AndAlso s.Substring(14) >= 0 AndAlso s.Substring(14) <= 10.5 Then
+                            cbxPopupLocation.SelectedIndex = s.Substring(14)
+                        Else
+                            MsgBox("Please use a valid index to set Popup Location to!"&vbNewLine &"Invalid index: """&s.Substring(14)&"""", MsgBoxStyle.Exclamation)
+                        End If
+                    Else
+                        MsgBox("Unrecognised argument """&s &"""!", MsgBoxStyle.Exclamation)
+                    End If
+            End Select
+        Next
     End Sub
     
     ' Timers

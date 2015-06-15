@@ -1,6 +1,18 @@
 # KeyStatus [![Build status](https://ci.appveyor.com/api/projects/status/9iuxa35vg8bhsscl)](https://ci.appveyor.com/project/Walkman100/KeyStatus)
 A fork of KeyStatus simplified, and with options to how you want key changes to be displayed
 
+## Command line arguments
+
+CLAs are defined [here](https://github.com/Walkman100/KeyStatus/blob/master/KeyStatus.vb#L12-45).
+- `Hide`: Minimises the window to tray on start
+- `ShowAppIcon`: Show KeyStatus's tray icon
+- `AlwaysShowIcons`: Show lock icons no matter the state (alternative is only when lock is enabled)
+- `NoToggle`: Disable clicking on lock tray icons to toggle locks
+- `NoIcons`: Don't show lock tray icons
+- `NoPopup`: Disable popup on lock state change
+- `PopupDelay=1000`: Set popup delay (in ms) to value
+- `PopupLocation=2`: Set popup location option: The list in the dropdown is numbered from `0` to `10`, so `Top Right` would be `2`.
+
 ## Compile requirements
 Before running `Compile.bat` (just double-click on it), make sure you have the following installed:
 
