@@ -1,8 +1,10 @@
 # KeyStatus [![Build status](https://ci.appveyor.com/api/projects/status/9iuxa35vg8bhsscl)](https://ci.appveyor.com/project/Walkman100/KeyStatus)
 A fork of KeyStatus simplified, and with options to how you want key changes to be displayed
 
-## Command line arguments
+## Screenshot
+[![screenshot](http://walkman100.github.io/images/Screenshots/KeyStatus/MainWindow.png)](http://walkman100.github.io/images/Screenshots/KeyStatus/MainWindow.png)
 
+## Command line arguments
 CLAs are defined [here](https://github.com/Walkman100/KeyStatus/blob/master/KeyStatus.vb#L12-45).
 - `Hide`: Minimises the window to tray on start
 - `ShowAppIcon`: Show KeyStatus's tray icon
@@ -12,6 +14,9 @@ CLAs are defined [here](https://github.com/Walkman100/KeyStatus/blob/master/KeyS
 - `NoPopup`: Disable popup on lock state change
 - `PopupDelay=1000`: Set popup delay (in ms) to value
 - `PopupLocation=2`: Set popup location option: The list in the dropdown is numbered from `0` to `10`, so `Top Right` would be `2`.
+
+To help make this info easier to understand, here is a screenshot with the args next to the option they change:
+[![screenshot with args](http://walkman100.github.io/images/Screenshots/KeyStatus/MainWindowArgs.png)](http://walkman100.github.io/images/Screenshots/KeyStatus/MainWindowArgs.png)
 
 ## Compile requirements
 Before running `Compile.bat` (just double-click on it), make sure you have the following installed:
