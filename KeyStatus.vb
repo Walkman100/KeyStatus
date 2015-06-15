@@ -164,6 +164,12 @@ Public Class KeyStatus
         Else
             dispArea = My.Computer.Screen.WorkingArea
         End If
+        lblPopupCustLocX.Visible = False
+        lblPopupCustLocY.Visible = False
+        numPopupCustLocFactX.Visible = False
+        numPopupCustLocFactY.Visible = False
+        numPopupCustLocExactX.Visible = False
+        numPopupCustLocExactY.Visible = False
         Select Case cbxPopupLocation.SelectedIndex
             Case 0 ' Top Left
                 Popup.Location = New Size((dispArea.Width/20) - 66, (dispArea.Height/20) - 19)
@@ -183,6 +189,22 @@ Public Class KeyStatus
                 Popup.Location = New Size((dispArea.Width/2) - 66, (dispArea.Height/1.05) - 19)
             Case 8 ' Bottom Right
                 Popup.Location = New Size((dispArea.Width/1.05) - 66, (dispArea.Height/1.05) - 19)
+            Case 9 ' Custom Division Factor
+                lblPopupCustLocX.Visible = True
+                lblPopupCustLocY.Visible = True
+                lblPopupCustLocY.Text = "Y Division factor:"
+                lblPopupCustLocX.Text = "X Division factor:"
+                numPopupCustLocFactX.Visible = True
+                numPopupCustLocFactY.Visible = True
+                Popup.Location = New Size((dispArea.Width/numPopupCustLocFactX.Value) - 66, (dispArea.Height/numPopupCustLocFactY.Value) - 19)
+            Case 10' Custom Co-ordinates
+                lblPopupCustLocX.Visible = True
+                lblPopupCustLocY.Visible = True
+                lblPopupCustLocY.Text = "Y Co-ordinate:"
+                lblPopupCustLocX.Text = "X Co-ordinate:"
+                numPopupCustLocExactX.Visible = True
+                numPopupCustLocExactY.Visible = True
+                Popup.Location = New Size(numPopupCustLocExactX.Value, numPopupCustLocExactY.Value)
         End Select
     End Sub
     

@@ -51,6 +51,12 @@ Partial Class KeyStatus
         Me.btnHide = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.grpPopup = New System.Windows.Forms.GroupBox()
+        Me.numPopupCustLocExactY = New System.Windows.Forms.NumericUpDown()
+        Me.numPopupCustLocExactX = New System.Windows.Forms.NumericUpDown()
+        Me.numPopupCustLocFactY = New System.Windows.Forms.NumericUpDown()
+        Me.numPopupCustLocFactX = New System.Windows.Forms.NumericUpDown()
+        Me.lblPopupCustLocY = New System.Windows.Forms.Label()
+        Me.lblPopupCustLocX = New System.Windows.Forms.Label()
         Me.chkColours = New System.Windows.Forms.CheckBox()
         Me.chkPopupTaskbar = New System.Windows.Forms.CheckBox()
         Me.lblPopupLocation = New System.Windows.Forms.Label()
@@ -63,6 +69,10 @@ Partial Class KeyStatus
         Me.grpTray.SuspendLayout
         Me.grpTraySelection.SuspendLayout
         Me.grpPopup.SuspendLayout
+        CType(Me.numPopupCustLocExactY,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.numPopupCustLocExactX,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.numPopupCustLocFactY,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.numPopupCustLocFactX,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.numPopupDelay,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
@@ -312,6 +322,12 @@ Partial Class KeyStatus
         Me.grpPopup.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
                         Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.grpPopup.Controls.Add(Me.numPopupCustLocExactY)
+        Me.grpPopup.Controls.Add(Me.numPopupCustLocExactX)
+        Me.grpPopup.Controls.Add(Me.numPopupCustLocFactY)
+        Me.grpPopup.Controls.Add(Me.numPopupCustLocFactX)
+        Me.grpPopup.Controls.Add(Me.lblPopupCustLocY)
+        Me.grpPopup.Controls.Add(Me.lblPopupCustLocX)
         Me.grpPopup.Controls.Add(Me.chkColours)
         Me.grpPopup.Controls.Add(Me.chkPopupTaskbar)
         Me.grpPopup.Controls.Add(Me.lblPopupLocation)
@@ -323,6 +339,84 @@ Partial Class KeyStatus
         Me.grpPopup.Size = New System.Drawing.Size(462, 120)
         Me.grpPopup.TabIndex = 5
         Me.grpPopup.TabStop = false
+        '
+        'numPopupCustLocExactY
+        '
+        Me.numPopupCustLocExactY.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.numPopupCustLocExactY.Increment = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.numPopupCustLocExactY.Location = New System.Drawing.Point(264, 55)
+        Me.numPopupCustLocExactY.Maximum = New Decimal(New Integer() {1, 1, 1, 0})
+        Me.numPopupCustLocExactY.Minimum = New Decimal(New Integer() {1, 1, 1, -2147483648})
+        Me.numPopupCustLocExactY.Name = "numPopupCustLocExactY"
+        Me.numPopupCustLocExactY.Size = New System.Drawing.Size(192, 20)
+        Me.numPopupCustLocExactY.TabIndex = 11
+        Me.numPopupCustLocExactY.ThousandsSeparator = true
+        Me.numPopupCustLocExactY.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
+        Me.numPopupCustLocExactY.Value = New Decimal(New Integer() {200, 0, 0, 0})
+        '
+        'numPopupCustLocExactX
+        '
+        Me.numPopupCustLocExactX.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.numPopupCustLocExactX.Increment = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.numPopupCustLocExactX.Location = New System.Drawing.Point(264, 35)
+        Me.numPopupCustLocExactX.Maximum = New Decimal(New Integer() {1, 1, 1, 0})
+        Me.numPopupCustLocExactX.Minimum = New Decimal(New Integer() {1, 1, 1, -2147483648})
+        Me.numPopupCustLocExactX.Name = "numPopupCustLocExactX"
+        Me.numPopupCustLocExactX.Size = New System.Drawing.Size(192, 20)
+        Me.numPopupCustLocExactX.TabIndex = 10
+        Me.numPopupCustLocExactX.ThousandsSeparator = true
+        Me.numPopupCustLocExactX.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
+        Me.numPopupCustLocExactX.Value = New Decimal(New Integer() {200, 0, 0, 0})
+        '
+        'numPopupCustLocFactY
+        '
+        Me.numPopupCustLocFactY.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.numPopupCustLocFactY.DecimalPlaces = 2
+        Me.numPopupCustLocFactY.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
+        Me.numPopupCustLocFactY.Location = New System.Drawing.Point(275, 55)
+        Me.numPopupCustLocFactY.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
+        Me.numPopupCustLocFactY.Minimum = New Decimal(New Integer() {105, 0, 0, 131072})
+        Me.numPopupCustLocFactY.Name = "numPopupCustLocFactY"
+        Me.numPopupCustLocFactY.Size = New System.Drawing.Size(181, 20)
+        Me.numPopupCustLocFactY.TabIndex = 9
+        Me.numPopupCustLocFactY.ThousandsSeparator = true
+        Me.numPopupCustLocFactY.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
+        Me.numPopupCustLocFactY.Value = New Decimal(New Integer() {2, 0, 0, 0})
+        '
+        'numPopupCustLocFactX
+        '
+        Me.numPopupCustLocFactX.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.numPopupCustLocFactX.DecimalPlaces = 2
+        Me.numPopupCustLocFactX.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
+        Me.numPopupCustLocFactX.Location = New System.Drawing.Point(275, 35)
+        Me.numPopupCustLocFactX.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
+        Me.numPopupCustLocFactX.Minimum = New Decimal(New Integer() {105, 0, 0, 131072})
+        Me.numPopupCustLocFactX.Name = "numPopupCustLocFactX"
+        Me.numPopupCustLocFactX.Size = New System.Drawing.Size(181, 20)
+        Me.numPopupCustLocFactX.TabIndex = 8
+        Me.numPopupCustLocFactX.ThousandsSeparator = true
+        Me.numPopupCustLocFactX.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
+        Me.numPopupCustLocFactX.Value = New Decimal(New Integer() {2, 0, 0, 0})
+        '
+        'lblPopupCustLocY
+        '
+        Me.lblPopupCustLocY.AutoSize = true
+        Me.lblPopupCustLocY.Location = New System.Drawing.Point(191, 55)
+        Me.lblPopupCustLocY.Name = "lblPopupCustLocY"
+        Me.lblPopupCustLocY.Size = New System.Drawing.Size(0, 13)
+        Me.lblPopupCustLocY.TabIndex = 7
+        '
+        'lblPopupCustLocX
+        '
+        Me.lblPopupCustLocX.AutoSize = true
+        Me.lblPopupCustLocX.Location = New System.Drawing.Point(191, 42)
+        Me.lblPopupCustLocX.Name = "lblPopupCustLocX"
+        Me.lblPopupCustLocX.Size = New System.Drawing.Size(0, 13)
+        Me.lblPopupCustLocX.TabIndex = 6
         '
         'chkColours
         '
@@ -359,7 +453,7 @@ Partial Class KeyStatus
         '
         Me.cbxPopupLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbxPopupLocation.FormattingEnabled = true
-        Me.cbxPopupLocation.Items.AddRange(New Object() {"Top Left", "Top Center", "Top Right", "Center Left", "Center", "Center Right", "Bottom Left", "Bottom Center", "Bottom Right"})
+        Me.cbxPopupLocation.Items.AddRange(New Object() {"Top Left", "Top Center", "Top Right", "Center Left", "Center", "Center Right", "Bottom Left", "Bottom Center", "Bottom Right", "Custom Division Factor", "Custom Co-ordinates"})
         Me.cbxPopupLocation.Location = New System.Drawing.Point(93, 45)
         Me.cbxPopupLocation.Name = "cbxPopupLocation"
         Me.cbxPopupLocation.Size = New System.Drawing.Size(92, 21)
@@ -424,10 +518,20 @@ Partial Class KeyStatus
         Me.grpTraySelection.ResumeLayout(false)
         Me.grpPopup.ResumeLayout(false)
         Me.grpPopup.PerformLayout
+        CType(Me.numPopupCustLocExactY,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.numPopupCustLocExactX,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.numPopupCustLocFactY,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.numPopupCustLocFactX,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.numPopupDelay,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
+    Private numPopupCustLocExactX As System.Windows.Forms.NumericUpDown
+    Private numPopupCustLocExactY As System.Windows.Forms.NumericUpDown
+    Private lblPopupCustLocY As System.Windows.Forms.Label
+    Private numPopupCustLocFactX As System.Windows.Forms.NumericUpDown
+    Private numPopupCustLocFactY As System.Windows.Forms.NumericUpDown
+    Private lblPopupCustLocX As System.Windows.Forms.Label
     Private notifyContextSeparator2 As System.Windows.Forms.ToolStripSeparator
     Private WithEvents notifyContextPopups As System.Windows.Forms.ToolStripMenuItem
     Private notifyContextSeperator1 As System.Windows.Forms.ToolStripSeparator
