@@ -5,7 +5,7 @@ A fork of KeyStatus simplified, and with options to how you want key changes to 
 [![screenshot](http://walkman100.github.io/images/Screenshots/KeyStatus/MainWindow.png)](http://walkman100.github.io/images/Screenshots/KeyStatus/MainWindow.png)
 
 ## Command line arguments
-CLAs are defined [here](https://github.com/Walkman100/KeyStatus/blob/master/KeyStatus.vb#L12-45).
+CLAs are defined [here](https://github.com/Walkman100/KeyStatus/blob/master/KeyStatus.vb#L12-49).
 - `Hide`: Minimises the window to tray on start
 - `ShowAppIcon`: Show KeyStatus's tray icon
 - `AlwaysShowIcons`: Show lock icons no matter the state (alternative is only when lock is enabled)
