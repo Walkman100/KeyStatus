@@ -9,7 +9,7 @@ Public Class KeyStatus
         Me.Focus
         cbxPopupLocation.SelectedIndex = 8
         
-        ' Command line flags: Hide ShowAppIcon AlwaysShowIcons NoToggle NoIcons NoPopup PopupDelay=1000 PopupLocation=2
+        ' Command line flags: Hide ShowAppIcon AlwaysShowIcons NoToggle NoIcons AllIcons NoPopup PopupDelay=1000 PopupLocation=2
         ' See https://github.com/Walkman100/KeyStatus/blob/master/README.md#command-line-arguments for full explanation
         For Each s As String In My.Application.CommandLineArgs
             Select Case s.ToLower
@@ -22,6 +22,10 @@ Public Class KeyStatus
                 Case "notoggle"
                     chkTrayClick.Checked = False
                 Case "noicons"
+                    notifyContextShowIcons.Checked = False
+                    notifyContextShowIcons_Click
+                Case "allicons"
+                    notifyContextShowIcons.Checked = True
                     notifyContextShowIcons_Click
                 Case "nopopup"
                     chkPopup.Checked = False

@@ -11,6 +11,7 @@ CLAs are defined [here](https://github.com/Walkman100/KeyStatus/blob/master/KeyS
 - `AlwaysShowIcons`: Show lock icons no matter the state (alternative is only when lock is enabled)
 - `NoToggle`: Disable clicking on lock tray icons to toggle locks
 - `NoIcons`: Don't show lock tray icons
+- `AllIcons`: Opposite of `NoIcons`, show all lock tray icons
 - `NoPopup`: Disable popup on lock state change
 - `PopupDelay=1000`: Set popup delay (in ms) to value
 - `PopupLocation=2`: Set popup location option: The list in the dropdown is numbered from `0` to `10`, so `Top Right` would be `2`.
