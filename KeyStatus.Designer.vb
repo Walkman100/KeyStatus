@@ -85,7 +85,7 @@ Partial Class KeyStatus
         '
         Me.notifyContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.notifyContextShowIcons, Me.notifyContextAllowToggle, Me.notifyContextSeperator1, Me.notifyContextPopups, Me.notifyContextSeparator2, Me.notifyContextShow, Me.notifyContextHide, Me.notifyContextExit})
         Me.notifyContext.Name = "notifyContext"
-        Me.notifyContext.Size = New System.Drawing.Size(251, 148)
+        Me.notifyContext.Size = New System.Drawing.Size(251, 170)
         '
         'notifyContextShowIcons
         '
@@ -130,6 +130,7 @@ Partial Class KeyStatus
         'notifyContextShow
         '
         Me.notifyContextShow.AutoToolTip = true
+        Me.notifyContextShow.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold)
         Me.notifyContextShow.Name = "notifyContextShow"
         Me.notifyContextShow.Size = New System.Drawing.Size(250, 22)
         Me.notifyContextShow.Text = "Show KeyStatus"
