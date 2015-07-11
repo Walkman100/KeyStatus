@@ -9,7 +9,7 @@ Public Class KeyStatus
         Me.Focus
         cbxPopupLocation.SelectedIndex = 8
         
-        ' Command line flags: Hide ShowAppIcon AlwaysShowIcons NoToggle NoIcons AllIcons NoPopup PopupDelay=1000 PopupLocation=2
+        ' Command line flags: Hide ShowAppIcon AlwaysShowIcons NoToggle NoIcons AllIcons NoPopup ShowBalloons PopupDelay=1000 PopupLocation=2
         ' See https://github.com/Walkman100/KeyStatus/blob/master/README.md#command-line-arguments for full explanation
         For Each s As String In My.Application.CommandLineArgs
             Select Case s.ToLower
@@ -29,6 +29,8 @@ Public Class KeyStatus
                     notifyContextShowIcons_Click
                 Case "nopopup"
                     chkPopup.Checked = False
+                Case "showballoons"
+                    chkBalloon.Checked = True
                 Case Else
                     If s.ToLower.StartsWith("popupdelay=") Then
                         If s.Substring(11).Length > 0 And IsNumeric(s.Substring(11)) AndAlso s.Substring(11) >= 100 Then
@@ -149,7 +151,7 @@ Public Class KeyStatus
                     KeyStatusNotifyIcon.BalloonTipTitle = "Lock Disabled"
                     KeyStatusNotifyIcon.BalloonTipText = "Num Lock: Disabled"
                 End If
-                
+                KeyStatusNotifyIcon.Visible = True
                 KeyStatusNotifyIcon.ShowBalloonTip(numBalloonTimeout.Value)
             End If
             If My.Computer.Keyboard.CapsLock <> capsLastOn Then
@@ -160,6 +162,7 @@ Public Class KeyStatus
                     KeyStatusNotifyIcon.BalloonTipTitle = "Lock Disabled"
                     KeyStatusNotifyIcon.BalloonTipText = "Caps Lock: Disabled"
                 End If
+                KeyStatusNotifyIcon.Visible = True
                 KeyStatusNotifyIcon.ShowBalloonTip(numBalloonTimeout.Value)
             End If
             If My.Computer.Keyboard.ScrollLock <> scrollLastOn Then
@@ -170,6 +173,7 @@ Public Class KeyStatus
                     KeyStatusNotifyIcon.BalloonTipTitle = "Lock Disabled"
                     KeyStatusNotifyIcon.BalloonTipText = "Scroll Lock: Disabled"
                 End If
+                KeyStatusNotifyIcon.Visible = True
                 KeyStatusNotifyIcon.ShowBalloonTip(numBalloonTimeout.Value)
             End If
         End If
@@ -229,7 +233,8 @@ Public Class KeyStatus
     
     Sub chkBalloon_CheckedChanged() Handles chkBalloon.CheckedChanged
         grpBalloon.Enabled = chkBalloon.Checked
-        'notifyContextBalloons.Checked = chkBalloon.Checked
+        notifyContextBalloons.Checked = chkBalloon.Checked
+        If chkBalloon.Checked Then chkTrayAppIcon.Checked = False
     End Sub
     
     Dim dispArea As System.Drawing.Rectangle
@@ -306,6 +311,10 @@ Public Class KeyStatus
     
     Sub notifyContextPopups_Click() Handles notifyContextPopups.Click
         chkPopup.Checked = notifyContextPopups.Checked
+    End Sub
+    
+    Sub notifyContextBalloons_Click() Handles notifyContextBalloons.Click
+        chkBalloon.Checked = notifyContextBalloons.Checked
     End Sub
     
     Sub ShowKeyStatus() Handles KeyStatusNotifyIcon.DoubleClick, notifyContextShow.Click, _

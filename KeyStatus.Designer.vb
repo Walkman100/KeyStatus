@@ -31,6 +31,7 @@ Partial Class KeyStatus
         Me.notifyContextAllowToggle = New System.Windows.Forms.ToolStripMenuItem()
         Me.notifyContextSeperator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.notifyContextPopups = New System.Windows.Forms.ToolStripMenuItem()
+        Me.notifyContextBalloons = New System.Windows.Forms.ToolStripMenuItem()
         Me.notifyContextSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.notifyContextShow = New System.Windows.Forms.ToolStripMenuItem()
         Me.notifyContextHide = New System.Windows.Forms.ToolStripMenuItem()
@@ -90,9 +91,9 @@ Partial Class KeyStatus
         '
         'notifyContext
         '
-        Me.notifyContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.notifyContextShowIcons, Me.notifyContextAllowToggle, Me.notifyContextSeperator1, Me.notifyContextPopups, Me.notifyContextSeparator2, Me.notifyContextShow, Me.notifyContextHide, Me.notifyContextExit})
+        Me.notifyContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.notifyContextShowIcons, Me.notifyContextAllowToggle, Me.notifyContextSeperator1, Me.notifyContextPopups, Me.notifyContextBalloons, Me.notifyContextSeparator2, Me.notifyContextShow, Me.notifyContextHide, Me.notifyContextExit})
         Me.notifyContext.Name = "notifyContext"
-        Me.notifyContext.Size = New System.Drawing.Size(251, 148)
+        Me.notifyContext.Size = New System.Drawing.Size(251, 170)
         '
         'notifyContextShowIcons
         '
@@ -128,6 +129,14 @@ Partial Class KeyStatus
         Me.notifyContextPopups.Name = "notifyContextPopups"
         Me.notifyContextPopups.Size = New System.Drawing.Size(250, 22)
         Me.notifyContextPopups.Text = "Show Popups"
+        '
+        'notifyContextBalloons
+        '
+        Me.notifyContextBalloons.AutoToolTip = true
+        Me.notifyContextBalloons.CheckOnClick = true
+        Me.notifyContextBalloons.Name = "notifyContextBalloons"
+        Me.notifyContextBalloons.Size = New System.Drawing.Size(250, 22)
+        Me.notifyContextBalloons.Text = "Show Balloons"
         '
         'notifyContextSeparator2
         '
@@ -507,8 +516,6 @@ Partial Class KeyStatus
         Me.chkBalloon.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.chkBalloon.AutoSize = true
-        Me.chkBalloon.Checked = true
-        Me.chkBalloon.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkBalloon.Location = New System.Drawing.Point(20, 330)
         Me.chkBalloon.Name = "chkBalloon"
         Me.chkBalloon.Size = New System.Drawing.Size(133, 17)
@@ -522,6 +529,7 @@ Partial Class KeyStatus
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.grpBalloon.Controls.Add(Me.numBalloonTimeout)
         Me.grpBalloon.Controls.Add(Me.lblBalloonTimeout)
+        Me.grpBalloon.Enabled = false
         Me.grpBalloon.Location = New System.Drawing.Point(12, 330)
         Me.grpBalloon.Name = "grpBalloon"
         Me.grpBalloon.Size = New System.Drawing.Size(462, 51)
@@ -586,6 +594,7 @@ Partial Class KeyStatus
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
+    Private WithEvents notifyContextBalloons As System.Windows.Forms.ToolStripMenuItem
     Private lblBalloonTimeout As System.Windows.Forms.Label
     Private numBalloonTimeout As System.Windows.Forms.NumericUpDown
     Private grpBalloon As System.Windows.Forms.GroupBox
