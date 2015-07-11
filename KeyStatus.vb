@@ -97,7 +97,6 @@ Public Class KeyStatus
         
         If chkPopup.Checked Then
             If My.Computer.Keyboard.NumLock <> numLastOn Then
-                numLastOn = My.Computer.Keyboard.NumLock
                 If My.Computer.Keyboard.NumLock Then
                     If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Green _
                         Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
@@ -112,7 +111,6 @@ Public Class KeyStatus
                 timerPopupHide.Start
             End If
             If My.Computer.Keyboard.CapsLock <> capsLastOn Then
-                capsLastOn = My.Computer.Keyboard.CapsLock
                 If My.Computer.Keyboard.CapsLock Then
                     If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Green _
                         Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
@@ -127,7 +125,6 @@ Public Class KeyStatus
                 timerPopupHide.Start
             End If
             If My.Computer.Keyboard.ScrollLock <> scrollLastOn Then
-                scrollLastOn = My.Computer.Keyboard.ScrollLock
                 If My.Computer.Keyboard.ScrollLock Then
                     If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Green _
                         Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
@@ -142,6 +139,44 @@ Public Class KeyStatus
                 timerPopupHide.Start
             End If
         End If
+        
+        If chkBalloon.Checked Then
+            If My.Computer.Keyboard.NumLock <> numLastOn Then
+                If My.Computer.Keyboard.NumLock Then
+                    KeyStatusNotifyIcon.BalloonTipTitle = "Lock Enabled"
+                    KeyStatusNotifyIcon.BalloonTipText = "Num Lock: Enabled"
+                Else
+                    KeyStatusNotifyIcon.BalloonTipTitle = "Lock Disabled"
+                    KeyStatusNotifyIcon.BalloonTipText = "Num Lock: Disabled"
+                End If
+                
+                KeyStatusNotifyIcon.ShowBalloonTip(numBalloonTimeout.Value)
+            End If
+            If My.Computer.Keyboard.CapsLock <> capsLastOn Then
+                If My.Computer.Keyboard.CapsLock Then
+                    KeyStatusNotifyIcon.BalloonTipTitle = "Lock Enabled"
+                    KeyStatusNotifyIcon.BalloonTipText = "Caps Lock: Enabled"
+                Else
+                    KeyStatusNotifyIcon.BalloonTipTitle = "Lock Disabled"
+                    KeyStatusNotifyIcon.BalloonTipText = "Caps Lock: Disabled"
+                End If
+                KeyStatusNotifyIcon.ShowBalloonTip(numBalloonTimeout.Value)
+            End If
+            If My.Computer.Keyboard.ScrollLock <> scrollLastOn Then
+                If My.Computer.Keyboard.ScrollLock Then
+                    KeyStatusNotifyIcon.BalloonTipTitle = "Lock Enabled"
+                    KeyStatusNotifyIcon.BalloonTipText = "Scroll Lock: Enabled"
+                Else
+                    KeyStatusNotifyIcon.BalloonTipTitle = "Lock Disabled"
+                    KeyStatusNotifyIcon.BalloonTipText = "Scroll Lock: Disabled"
+                End If
+                KeyStatusNotifyIcon.ShowBalloonTip(numBalloonTimeout.Value)
+            End If
+        End If
+        
+        numLastOn = My.Computer.Keyboard.NumLock
+        capsLastOn = My.Computer.Keyboard.CapsLock
+        scrollLastOn = My.Computer.Keyboard.ScrollLock
     End Sub
     
     Sub timerPopupHide_Tick() Handles timerPopupHide.Tick
@@ -190,6 +225,11 @@ Public Class KeyStatus
     Sub chkPopup_CheckedChanged() Handles chkPopup.CheckedChanged
         grpPopup.Enabled = chkPopup.Checked
         notifyContextPopups.Checked = chkPopup.Checked
+    End Sub
+    
+    Sub chkBalloon_CheckedChanged() Handles chkBalloon.CheckedChanged
+        grpBalloon.Enabled = chkBalloon.Checked
+        'notifyContextBalloons.Checked = chkBalloon.Checked
     End Sub
     
     Dim dispArea As System.Drawing.Rectangle

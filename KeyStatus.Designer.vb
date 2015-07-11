@@ -65,6 +65,10 @@ Partial Class KeyStatus
         Me.lblPopupDelay = New System.Windows.Forms.Label()
         Me.chkPopup = New System.Windows.Forms.CheckBox()
         Me.timerPopupHide = New System.Windows.Forms.Timer(Me.components)
+        Me.chkBalloon = New System.Windows.Forms.CheckBox()
+        Me.grpBalloon = New System.Windows.Forms.GroupBox()
+        Me.numBalloonTimeout = New System.Windows.Forms.NumericUpDown()
+        Me.lblBalloonTimeout = New System.Windows.Forms.Label()
         Me.notifyContext.SuspendLayout
         Me.grpTray.SuspendLayout
         Me.grpTraySelection.SuspendLayout
@@ -74,10 +78,13 @@ Partial Class KeyStatus
         CType(Me.numPopupCustLocFactY,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.numPopupCustLocFactX,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.numPopupDelay,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.grpBalloon.SuspendLayout
+        CType(Me.numBalloonTimeout,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'KeyStatusNotifyIcon
         '
+        Me.KeyStatusNotifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info
         Me.KeyStatusNotifyIcon.ContextMenuStrip = Me.notifyContext
         Me.KeyStatusNotifyIcon.Text = "KeyStatus"
         '
@@ -85,7 +92,7 @@ Partial Class KeyStatus
         '
         Me.notifyContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.notifyContextShowIcons, Me.notifyContextAllowToggle, Me.notifyContextSeperator1, Me.notifyContextPopups, Me.notifyContextSeparator2, Me.notifyContextShow, Me.notifyContextHide, Me.notifyContextExit})
         Me.notifyContext.Name = "notifyContext"
-        Me.notifyContext.Size = New System.Drawing.Size(251, 170)
+        Me.notifyContext.Size = New System.Drawing.Size(251, 148)
         '
         'notifyContextShowIcons
         '
@@ -289,8 +296,8 @@ Partial Class KeyStatus
         '
         'btnAbout
         '
-        Me.btnAbout.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.btnAbout.Location = New System.Drawing.Point(125, 330)
+        Me.btnAbout.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnAbout.Location = New System.Drawing.Point(125, 387)
         Me.btnAbout.Name = "btnAbout"
         Me.btnAbout.Size = New System.Drawing.Size(75, 23)
         Me.btnAbout.TabIndex = 2
@@ -299,8 +306,8 @@ Partial Class KeyStatus
         '
         'btnHide
         '
-        Me.btnHide.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.btnHide.Location = New System.Drawing.Point(206, 330)
+        Me.btnHide.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnHide.Location = New System.Drawing.Point(206, 387)
         Me.btnHide.Name = "btnHide"
         Me.btnHide.Size = New System.Drawing.Size(75, 23)
         Me.btnHide.TabIndex = 3
@@ -309,9 +316,9 @@ Partial Class KeyStatus
         '
         'btnExit
         '
-        Me.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnExit.Location = New System.Drawing.Point(287, 330)
+        Me.btnExit.Location = New System.Drawing.Point(287, 387)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(75, 23)
         Me.btnExit.TabIndex = 4
@@ -320,8 +327,7 @@ Partial Class KeyStatus
         '
         'grpPopup
         '
-        Me.grpPopup.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-                        Or System.Windows.Forms.AnchorStyles.Left)  _
+        Me.grpPopup.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.grpPopup.Controls.Add(Me.numPopupCustLocExactY)
         Me.grpPopup.Controls.Add(Me.numPopupCustLocExactX)
@@ -496,13 +502,63 @@ Partial Class KeyStatus
         Me.chkPopup.Text = "Show popup on lock state change"
         Me.chkPopup.UseVisualStyleBackColor = true
         '
+        'chkBalloon
+        '
+        Me.chkBalloon.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.chkBalloon.AutoSize = true
+        Me.chkBalloon.Checked = true
+        Me.chkBalloon.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkBalloon.Location = New System.Drawing.Point(20, 330)
+        Me.chkBalloon.Name = "chkBalloon"
+        Me.chkBalloon.Size = New System.Drawing.Size(133, 17)
+        Me.chkBalloon.TabIndex = 8
+        Me.chkBalloon.Text = "Show tray icon balloon"
+        Me.chkBalloon.UseVisualStyleBackColor = true
+        '
+        'grpBalloon
+        '
+        Me.grpBalloon.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.grpBalloon.Controls.Add(Me.numBalloonTimeout)
+        Me.grpBalloon.Controls.Add(Me.lblBalloonTimeout)
+        Me.grpBalloon.Location = New System.Drawing.Point(12, 330)
+        Me.grpBalloon.Name = "grpBalloon"
+        Me.grpBalloon.Size = New System.Drawing.Size(462, 51)
+        Me.grpBalloon.TabIndex = 7
+        Me.grpBalloon.TabStop = false
+        '
+        'numBalloonTimeout
+        '
+        Me.numBalloonTimeout.Increment = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.numBalloonTimeout.Location = New System.Drawing.Point(123, 19)
+        Me.numBalloonTimeout.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
+        Me.numBalloonTimeout.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.numBalloonTimeout.Name = "numBalloonTimeout"
+        Me.numBalloonTimeout.Size = New System.Drawing.Size(90, 20)
+        Me.numBalloonTimeout.TabIndex = 2
+        Me.numBalloonTimeout.ThousandsSeparator = true
+        Me.numBalloonTimeout.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
+        Me.numBalloonTimeout.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        '
+        'lblBalloonTimeout
+        '
+        Me.lblBalloonTimeout.AutoSize = true
+        Me.lblBalloonTimeout.Location = New System.Drawing.Point(6, 21)
+        Me.lblBalloonTimeout.Name = "lblBalloonTimeout"
+        Me.lblBalloonTimeout.Size = New System.Drawing.Size(111, 13)
+        Me.lblBalloonTimeout.TabIndex = 0
+        Me.lblBalloonTimeout.Text = "Show balloon for (ms):"
+        '
         'KeyStatus
         '
         Me.AcceptButton = Me.btnHide
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnExit
-        Me.ClientSize = New System.Drawing.Size(486, 365)
+        Me.ClientSize = New System.Drawing.Size(486, 422)
+        Me.Controls.Add(Me.chkBalloon)
+        Me.Controls.Add(Me.grpBalloon)
         Me.Controls.Add(Me.chkPopup)
         Me.Controls.Add(Me.grpPopup)
         Me.Controls.Add(Me.btnExit)
@@ -524,9 +580,16 @@ Partial Class KeyStatus
         CType(Me.numPopupCustLocFactY,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.numPopupCustLocFactX,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.numPopupDelay,System.ComponentModel.ISupportInitialize).EndInit
+        Me.grpBalloon.ResumeLayout(false)
+        Me.grpBalloon.PerformLayout
+        CType(Me.numBalloonTimeout,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
+    Private lblBalloonTimeout As System.Windows.Forms.Label
+    Private numBalloonTimeout As System.Windows.Forms.NumericUpDown
+    Private grpBalloon As System.Windows.Forms.GroupBox
+    Private WithEvents chkBalloon As System.Windows.Forms.CheckBox
     Private numPopupCustLocExactX As System.Windows.Forms.NumericUpDown
     Private numPopupCustLocExactY As System.Windows.Forms.NumericUpDown
     Private lblPopupCustLocY As System.Windows.Forms.Label
