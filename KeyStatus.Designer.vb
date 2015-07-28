@@ -23,7 +23,6 @@ Partial Class KeyStatus
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(KeyStatus))
         Me.timerKeyChecker = New System.Windows.Forms.Timer(Me.components)
         Me.KeyStatusNotifyIcon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.notifyContext = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -87,13 +86,14 @@ Partial Class KeyStatus
         '
         Me.KeyStatusNotifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info
         Me.KeyStatusNotifyIcon.ContextMenuStrip = Me.notifyContext
+        Me.KeyStatusNotifyIcon.Icon = Global.KeyStatus.My.Resources.Resources.keyboard
         Me.KeyStatusNotifyIcon.Text = "KeyStatus"
         '
         'notifyContext
         '
         Me.notifyContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.notifyContextShowIcons, Me.notifyContextAllowToggle, Me.notifyContextSeperator1, Me.notifyContextPopups, Me.notifyContextBalloons, Me.notifyContextSeparator2, Me.notifyContextShow, Me.notifyContextHide, Me.notifyContextExit})
         Me.notifyContext.Name = "notifyContext"
-        Me.notifyContext.Size = New System.Drawing.Size(251, 170)
+        Me.notifyContext.Size = New System.Drawing.Size(251, 192)
         '
         'notifyContextShowIcons
         '
@@ -167,14 +167,17 @@ Partial Class KeyStatus
         '
         'notifyIconNumLock
         '
+        Me.notifyIconNumLock.Icon = Global.KeyStatus.My.Resources.Resources.NumLockOff
         Me.notifyIconNumLock.Text = "Num Lock"
         '
         'notifyIconCapsLock
         '
+        Me.notifyIconCapsLock.Icon = Global.KeyStatus.My.Resources.Resources.CapsLockOff
         Me.notifyIconCapsLock.Text = "Caps Lock"
         '
         'notifyIconScrollLock
         '
+        Me.notifyIconScrollLock.Icon = Global.KeyStatus.My.Resources.Resources.ScrollLockOff
         Me.notifyIconScrollLock.Text = "Scroll Lock"
         '
         'grpTray
@@ -573,7 +576,7 @@ Partial Class KeyStatus
         Me.Controls.Add(Me.btnHide)
         Me.Controls.Add(Me.btnAbout)
         Me.Controls.Add(Me.grpTray)
-        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
+        Me.Icon = Global.KeyStatus.My.Resources.Resources.keyboard
         Me.Name = "KeyStatus"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "KeyStatus"

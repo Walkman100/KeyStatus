@@ -1,7 +1,5 @@
 ﻿Imports System.IO
 Public Class KeyStatus
-    Dim ResMan As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(KeyStatus))
-    
     Sub KeyStatus_Shown() Handles Me.Shown
         FileNotFound("All")
         timerKeyChecker.Start
@@ -54,30 +52,20 @@ Public Class KeyStatus
     ' Timers
     
     Sub SetIcons()
-        Me.Icon = CType(ResMan.GetObject("$this.Icon"),System.Drawing.Icon)
-        KeyStatusNotifyIcon.Icon = CType(ResMan.GetObject("$this.Icon"),System.Drawing.Icon)
-        
-        If Not (TypeOf ResMan.GetObject("NumLockOn") Is System.Drawing.Icon) Then
-            timerKeyChecker.Stop
-            MsgBox("Error loading tray icon resources! Please check the git diff and revert the changes to 'KeyStatus.resx' before recompiling.", MsgBoxStyle.Critical)
-            Application.Exit
-            End
-        End If
-        
         If My.Computer.Keyboard.NumLock Then
-            notifyIconNumLock.Icon = CType(ResMan.GetObject("NumLockOn"),System.Drawing.Icon)
+            notifyIconNumLock.Icon = Global.KeyStatus.My.Resources.Resources.NumLockOn
         Else
-            notifyIconNumLock.Icon = CType(ResMan.GetObject("NumLockOff"),System.Drawing.Icon)
+            notifyIconNumLock.Icon = Global.KeyStatus.My.Resources.Resources.NumLockOff
         End If
         If My.Computer.Keyboard.CapsLock Then
-            notifyIconCapsLock.Icon = CType(ResMan.GetObject("CapsLockOn"),System.Drawing.Icon)
+            notifyIconCapsLock.Icon = Global.KeyStatus.My.Resources.Resources.CapsLockOn
         Else
-            notifyIconCapsLock.Icon = CType(ResMan.GetObject("CapsLockOff"),System.Drawing.Icon)
+            notifyIconCapsLock.Icon = Global.KeyStatus.My.Resources.Resources.CapsLockOff
         End If
         If My.Computer.Keyboard.ScrollLock Then
-            notifyIconScrollLock.Icon = CType(ResMan.GetObject("ScrollLockOn"),System.Drawing.Icon)
+            notifyIconScrollLock.Icon = Global.KeyStatus.My.Resources.Resources.ScrollLockOn
         Else
-            notifyIconScrollLock.Icon = CType(ResMan.GetObject("ScrollLockOff"),System.Drawing.Icon)
+            notifyIconScrollLock.Icon = Global.KeyStatus.My.Resources.Resources.ScrollLockOff
         End If
     End Sub
     
