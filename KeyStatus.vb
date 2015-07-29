@@ -1,13 +1,12 @@
 ﻿Imports System.IO
 Public Class KeyStatus
     Sub KeyStatus_Shown() Handles Me.Shown
-        FileNotFound("All")
         timerKeyChecker.Start
         Popup.Show
         Me.Focus
         cbxPopupLocation.SelectedIndex = 8
         
-        ' Command line flags: Hide ShowAppIcon AlwaysShowIcons NoToggle NoIcons AllIcons NoPopup ShowBalloons PopupDelay=1000 PopupLocation=2
+        ' Command line flags: Hide ShowAppIcon AlwaysShowIcons NoToggle AlwaysUseScripts NoIcons AllIcons NoPopup ShowBalloons PopupDelay=1000 PopupLocation=2
         ' See https://github.com/Walkman100/KeyStatus/blob/master/README.md#command-line-arguments for full explanation
         For Each s As String In My.Application.CommandLineArgs
             Select Case s.ToLower
@@ -19,6 +18,8 @@ Public Class KeyStatus
                     chkTrayEnabledOnly.Checked = False
                 Case "notoggle"
                     chkTrayClick.Checked = False
+                Case "alwaysusescripts"
+                    chkAlwaysUseAHK.Checked = True
                 Case "noicons"
                     notifyContextShowIcons.Checked = False
                     notifyContextShowIcons_Click
@@ -51,7 +52,7 @@ Public Class KeyStatus
     
     ' Timers
     
-    Sub SetIcons()
+    Sub SetIcons() ' If code autocomplete isn't working, comment out the contents of this sub
         If My.Computer.Keyboard.NumLock Then
             notifyIconNumLock.Icon = Global.KeyStatus.My.Resources.Resources.NumLockOn
         Else
@@ -89,11 +90,11 @@ Public Class KeyStatus
             If My.Computer.Keyboard.NumLock <> numLastOn Then
                 If My.Computer.Keyboard.NumLock Then
                     If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Green _
-                        Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
+                      Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
                     Popup.lblLock.Text = "NUM LOCK: ENABLED"
                 Else
                     If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Red _
-                        Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
+                      Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
                     Popup.lblLock.Text = "NUM LOCK: DISABLED"
                 End If
                 Popup.Opacity = 1
@@ -103,11 +104,11 @@ Public Class KeyStatus
             If My.Computer.Keyboard.CapsLock <> capsLastOn Then
                 If My.Computer.Keyboard.CapsLock Then
                     If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Green _
-                        Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
+                      Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
                     Popup.lblLock.Text = "CAPS LOCK: ENABLED"
                 Else
                     If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Red _
-                        Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
+                      Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
                     Popup.lblLock.Text = "CAPS LOCK: DISABLED"
                 End If
                 Popup.Opacity = 1
@@ -117,11 +118,11 @@ Public Class KeyStatus
             If My.Computer.Keyboard.ScrollLock <> scrollLastOn Then
                 If My.Computer.Keyboard.ScrollLock Then
                     If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Green _
-                        Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
+                      Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
                     Popup.lblLock.Text = "SCROLL LOCK: ENABLED"
                 Else
                     If chkColours.Checked Then Popup.lblLock.ForeColor = System.Drawing.Color.Red _
-                        Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
+                      Else Popup.lblLock.ForeColor = System.Drawing.SystemColors.ControlText
                     Popup.lblLock.Text = "SCROLL LOCK: DISABLED"
                 End If
                 Popup.Opacity = 1
@@ -336,7 +337,7 @@ Public Class KeyStatus
     'Credits to http://www.ultimateprogrammingtutorials.info/2012/12/switch-onoff-numlockcapslockscrolllock.html
     Private Declare Sub keybd_event Lib "user32" (bVk As Byte, bScan As Byte, dwFlags As Integer, Optional dwExtraInfo As Integer = 0)
     Sub toggleNumLock
-        If My.Computer.Keyboard.NumLock Then
+        If chkAlwaysUseAHK.Checked Or My.Computer.Keyboard.NumLock Then
             If File.Exists("toggleNumLock.exe") Then
                 Process.Start("toggleNumLock.exe")
             ElseIf File.Exists("toggleNumLock.ahk") Then
@@ -352,7 +353,7 @@ Public Class KeyStatus
     End Sub
     
     Sub toggleCapsLock
-        If My.Computer.Keyboard.CapsLock Then
+        If chkAlwaysUseAHK.Checked Or My.Computer.Keyboard.CapsLock Then
             If File.Exists("toggleCapsLock.exe") Then
                 Process.Start("toggleCapsLock.exe")
             ElseIf File.Exists("toggleCapsLock.ahk") Then
@@ -367,7 +368,7 @@ Public Class KeyStatus
     End Sub
     
     Sub toggleScrollLock
-        If My.Computer.Keyboard.ScrollLock Then
+        If chkAlwaysUseAHK.Checked Or My.Computer.Keyboard.ScrollLock Then
             If File.Exists("toggleScrollLock.exe") Then
                 Process.Start("toggleScrollLock.exe")
             ElseIf File.Exists("toggleScrollLock.ahk") Then
@@ -398,17 +399,17 @@ Public Class KeyStatus
             Case "Num"
                 If Not File.Exists("toggleNumLock.exe") And Not File.Exists("toggleNumLock.ahk") Then
                     MsgBox("AHK script 'toggleNumLock.ahk' and backup binary 'toggleNumLock.exe' not found! Disabling Num Lock will not work unless you download " & _
-                        "a portable release from the Releases page and put the scripts or binaries in the same folder as this program", MsgBoxStyle.Exclamation)
+                      "a portable release from the Releases page and put the scripts or binaries in the same folder as this program", MsgBoxStyle.Exclamation)
                 End If
             Case "Caps"
                 If Not File.Exists("toggleCapsLock.exe") And Not File.Exists("toggleCapsLock.ahk") Then
                     MsgBox("AHK script 'toggleCapsLock.ahk' and backup binary 'toggleCapsLock.exe' not found! Disabling Caps Lock will not work unless you download " & _
-                        "a portable release from the Releases page and put the scripts or binaries in the same folder as this program", MsgBoxStyle.Exclamation)
+                      "a portable release from the Releases page and put the scripts or binaries in the same folder as this program", MsgBoxStyle.Exclamation)
                 End If
             Case "Scroll"
                 If Not File.Exists("toggleScrollLock.exe") And Not File.Exists("toggleScrollLock.ahk") Then
                     MsgBox("AHK script 'toggleScrollLock.ahk' and backup binary 'toggleScrollLock.exe' not found! Disabling Scroll Lock will not work unless you " & _
-                        "download a portable release from the Releases page and put the scripts or binaries in the same folder as this program", MsgBoxStyle.Exclamation)
+                      "download a portable release from the Releases page and put the scripts or binaries in the same folder as this program", MsgBoxStyle.Exclamation)
                 End If
             Case "All"
                 FileNotFound("Num")
@@ -422,32 +423,32 @@ Public Class KeyStatus
             Case "Num"
                 If chkTraySelection.Checked Then
                     If chkTraySelectionNum.Checked Then 
-                        If (chkTrayEnabledOnly.Checked) Then Return My.Computer.Keyboard.NumLock Else Return True
+                        If chkTrayEnabledOnly.Checked Then Return My.Computer.Keyboard.NumLock Else Return True
                     Else
                         Return False
                     End If
                 Else
-                    If (chkTrayEnabledOnly.Checked) Then Return My.Computer.Keyboard.NumLock Else Return True
+                    If chkTrayEnabledOnly.Checked Then Return My.Computer.Keyboard.NumLock Else Return True
                 End If
             Case "Caps"
                 If chkTraySelection.Checked Then
                     If chkTraySelectionCaps.Checked Then
-                        If (chkTrayEnabledOnly.Checked) Then Return My.Computer.Keyboard.CapsLock Else Return True
+                        If chkTrayEnabledOnly.Checked Then Return My.Computer.Keyboard.CapsLock Else Return True
                     Else
                         Return False
                     End If
                 Else
-                    If (chkTrayEnabledOnly.Checked) Then Return My.Computer.Keyboard.CapsLock Else Return True
+                    If chkTrayEnabledOnly.Checked Then Return My.Computer.Keyboard.CapsLock Else Return True
                 End If
             Case "Scroll"
                 If chkTraySelection.Checked Then
                     If chkTraySelectionScroll.Checked Then
-                        If (chkTrayEnabledOnly.Checked) Then Return My.Computer.Keyboard.ScrollLock Else Return True
+                        If chkTrayEnabledOnly.Checked Then Return My.Computer.Keyboard.ScrollLock Else Return True
                     Else
                         Return False
                     End If
                 Else
-                    If (chkTrayEnabledOnly.Checked) Then Return My.Computer.Keyboard.ScrollLock Else Return True
+                    If chkTrayEnabledOnly.Checked Then Return My.Computer.Keyboard.ScrollLock Else Return True
                 End If
             Case Else
                 Return False

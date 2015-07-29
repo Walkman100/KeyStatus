@@ -69,6 +69,7 @@ Partial Class KeyStatus
         Me.grpBalloon = New System.Windows.Forms.GroupBox()
         Me.numBalloonTimeout = New System.Windows.Forms.NumericUpDown()
         Me.lblBalloonTimeout = New System.Windows.Forms.Label()
+        Me.chkAlwaysUseAHK = New System.Windows.Forms.CheckBox()
         Me.notifyContext.SuspendLayout
         Me.grpTray.SuspendLayout
         Me.grpTraySelection.SuspendLayout
@@ -93,7 +94,7 @@ Partial Class KeyStatus
         '
         Me.notifyContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.notifyContextShowIcons, Me.notifyContextAllowToggle, Me.notifyContextSeperator1, Me.notifyContextPopups, Me.notifyContextBalloons, Me.notifyContextSeparator2, Me.notifyContextShow, Me.notifyContextHide, Me.notifyContextExit})
         Me.notifyContext.Name = "notifyContext"
-        Me.notifyContext.Size = New System.Drawing.Size(251, 192)
+        Me.notifyContext.Size = New System.Drawing.Size(251, 170)
         '
         'notifyContextShowIcons
         '
@@ -184,6 +185,7 @@ Partial Class KeyStatus
         '
         Me.grpTray.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.grpTray.Controls.Add(Me.chkAlwaysUseAHK)
         Me.grpTray.Controls.Add(Me.chkTraySelection)
         Me.grpTray.Controls.Add(Me.grpTraySelection)
         Me.grpTray.Controls.Add(Me.chkTrayClick)
@@ -265,14 +267,12 @@ Partial Class KeyStatus
         '
         'chkTrayClick
         '
-        Me.chkTrayClick.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.chkTrayClick.AutoEllipsis = true
+        Me.chkTrayClick.AutoSize = true
         Me.chkTrayClick.Checked = true
         Me.chkTrayClick.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkTrayClick.Location = New System.Drawing.Point(6, 65)
         Me.chkTrayClick.Name = "chkTrayClick"
-        Me.chkTrayClick.Size = New System.Drawing.Size(450, 17)
+        Me.chkTrayClick.Size = New System.Drawing.Size(210, 17)
         Me.chkTrayClick.TabIndex = 2
         Me.chkTrayClick.Text = "Click on icon to enable or disable locks"
         Me.chkTrayClick.UseVisualStyleBackColor = true
@@ -561,6 +561,18 @@ Partial Class KeyStatus
         Me.lblBalloonTimeout.TabIndex = 0
         Me.lblBalloonTimeout.Text = "Show balloon for (ms):"
         '
+        'chkAlwaysUseAHK
+        '
+        Me.chkAlwaysUseAHK.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.chkAlwaysUseAHK.AutoEllipsis = true
+        Me.chkAlwaysUseAHK.Location = New System.Drawing.Point(222, 65)
+        Me.chkAlwaysUseAHK.Name = "chkAlwaysUseAHK"
+        Me.chkAlwaysUseAHK.Size = New System.Drawing.Size(234, 17)
+        Me.chkAlwaysUseAHK.TabIndex = 5
+        Me.chkAlwaysUseAHK.Text = "Always use AHK scripts"
+        Me.chkAlwaysUseAHK.UseVisualStyleBackColor = true
+        '
         'KeyStatus
         '
         Me.AcceptButton = Me.btnHide
@@ -597,6 +609,7 @@ Partial Class KeyStatus
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
+    Private chkAlwaysUseAHK As System.Windows.Forms.CheckBox
     Private WithEvents notifyContextBalloons As System.Windows.Forms.ToolStripMenuItem
     Private lblBalloonTimeout As System.Windows.Forms.Label
     Private numBalloonTimeout As System.Windows.Forms.NumericUpDown

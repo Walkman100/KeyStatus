@@ -11,6 +11,7 @@ CLAs are defined [here](https://github.com/Walkman100/KeyStatus/blob/master/KeyS
 - `ShowAppIcon`: Show KeyStatus's tray icon
 - `AlwaysShowIcons`: Show lock icons no matter the state (alternative is only when lock is enabled)
 - `NoToggle`: Disable clicking on lock tray icons to toggle locks
+- `AlwaysUseScripts`: Always use the provided scripts to toggle locks, instead of enabling them within the program
 - `NoIcons`: Don't show lock tray icons
 - `AllIcons`: Opposite of `NoIcons`, show all lock tray icons
 - `NoPopup`: Disable popup on lock state change
