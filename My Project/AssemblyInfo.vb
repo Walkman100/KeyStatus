@@ -8,12 +8,12 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Key Status")> 
+<Assembly: AssemblyTitle("KeyStatus")> 
 <Assembly: AssemblyDescription("Easily Tells You The Status of Your Keyboard")> 
 <Assembly: AssemblyCompany("WalkmanOSS")> 
 <Assembly: AssemblyProduct("KeyStatus")> 
-<Assembly: AssemblyCopyright("FOSS from Crowbar (via Walkman) 2015. This software is licensed under the GNU GPL v3.0 or above")> 
-<Assembly: AssemblyTrademark("Showing You What Your Keys Are Doing")> 
+<Assembly: AssemblyCopyright("FOSS from Walkman 2015")> 
+<Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
 
