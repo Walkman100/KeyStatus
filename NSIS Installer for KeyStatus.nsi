@@ -5,6 +5,7 @@
 Icon "My Project\1371918331_keyboard.ico"
 Caption "KeyStatus Installer"
 Name "KeyStatus"
+XPStyle on
 AutoCloseWindow true
 ShowInstDetails show
 
