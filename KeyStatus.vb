@@ -52,21 +52,21 @@ Public Class KeyStatus
     
     ' Timers
     
-    Sub SetIcons() ' If code autocomplete isn't working, comment out the contents of this sub
+    Sub SetIcons()
         If My.Computer.Keyboard.NumLock Then
-            notifyIconNumLock.Icon = Global.KeyStatus.My.Resources.Resources.NumLockOn
+            notifyIconNumLock.Icon = My.Resources.Resources.NumLockOn
         Else
-            notifyIconNumLock.Icon = Global.KeyStatus.My.Resources.Resources.NumLockOff
+            notifyIconNumLock.Icon = My.Resources.Resources.NumLockOff
         End If
         If My.Computer.Keyboard.CapsLock Then
-            notifyIconCapsLock.Icon = Global.KeyStatus.My.Resources.Resources.CapsLockOn
+            notifyIconCapsLock.Icon = My.Resources.Resources.CapsLockOn
         Else
-            notifyIconCapsLock.Icon = Global.KeyStatus.My.Resources.Resources.CapsLockOff
+            notifyIconCapsLock.Icon = My.Resources.Resources.CapsLockOff
         End If
         If My.Computer.Keyboard.ScrollLock Then
-            notifyIconScrollLock.Icon = Global.KeyStatus.My.Resources.Resources.ScrollLockOn
+            notifyIconScrollLock.Icon = My.Resources.Resources.ScrollLockOn
         Else
-            notifyIconScrollLock.Icon = Global.KeyStatus.My.Resources.Resources.ScrollLockOff
+            notifyIconScrollLock.Icon = My.Resources.Resources.ScrollLockOff
         End If
     End Sub
     
@@ -309,7 +309,7 @@ Public Class KeyStatus
     Sub ShowKeyStatus() Handles KeyStatusNotifyIcon.DoubleClick, notifyContextShow.Click, _
       notifyIconNumLock.DoubleClick, notifyIconCapsLock.DoubleClick, notifyIconScrollLock.DoubleClick
         Me.Show
-        Me.WindowState = System.Windows.Forms.FormWindowState.Normal
+        Me.WindowState = FormWindowState.Normal
         Me.BringToFront
         Me.Focus
         Me.Activate
