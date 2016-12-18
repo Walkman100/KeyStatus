@@ -6,7 +6,7 @@
     cd %~dp0
 
 :MSBuild
-    echo ==== Starting MSBuild compile for %~1 ====
+    echo ==== Starting MSBuild compile for KeyStatus ====
     "%WinDir%\Microsoft.NET\Framework\v4.0.30319\msbuild.exe" /property:Configuration=Release "KeyStatus.sln"
 
 if Not ERRORLEVEL==1 goto ahk
@@ -82,7 +82,7 @@ if Not ERRORLEVEL==1 goto ahk3-64
 :ahk3-orig
     "%ProgramFiles%\AutoHotkey\Compiler\Ahk2Exe" /in "%~dp0\toggleScrollLock.ahk" /out "%~dp0\bin\Release\toggleScrollLock.exe"
 
-if Not ERRORLEVEL==1 goto nsis
+if Not ERRORLEVEL==1 goto PortableCert
 
     color 0C
         echo toggleScrollLock AHK Script compile Failed!
@@ -92,7 +92,7 @@ if Not ERRORLEVEL==1 goto nsis
 :ahk3-32
     "%ProgramFiles(x86)%\AutoHotkey\Compiler\Ahk2Exe" /in "%~dp0\toggleScrollLock.ahk" /out "%~dp0\bin\Release\toggleScrollLock.exe"
 
-if Not ERRORLEVEL==1 goto nsis
+if Not ERRORLEVEL==1 goto PortableCert
 
     color 0C
         echo toggleScrollLock AHK Script compile-32 Failed!
@@ -102,28 +102,48 @@ if Not ERRORLEVEL==1 goto nsis
 :ahk3-64
     "%ProgramW6432%\AutoHotkey\Compiler\Ahk2Exe" /in "%~dp0\toggleScrollLock.ahk" /out "%~dp0\bin\Release\toggleScrollLock.exe"
 
-if Not ERRORLEVEL==1 goto nsis
+if Not ERRORLEVEL==1 goto PortableCert
 
     color 0C
         echo toggleScrollLock AHK Script compile-64 Failed!
         pause
         goto eof
 
-:nsis
+:PortableCert
+    echo ==== Compiling AHK Scripts Done ====
+    echo.
+    echo ==== Signing KeyStatus.exe ====
+        echo %~dp0..\WinCompile\WalkmanOSS.cer
+        echo %~dp0..\WinCompile\WalkmanOSS.pvk
+        echo https://github.com/Walkman100/KeyStatus
+        echo http://timestamp.verisign.com/scripts/timstamp.dll
+    %~dp0..\WinCompile\signtool signwizard "%~dp0bin\Release\KeyStatus.exe"
+
+if Not ERRORLEVEL==1 goto PortableCertDone
+
+    echo ==== Signing KeyStatus.exe Failed! ====
+    echo.
+        goto NSIS
+
+:PortableCertDone
+    echo ==== Signing KeyStatus.exe done ====
+    echo.
+
+:NSIS
     echo ==== Starting MakeNSIS Installer script for KeyStatus ====
     "%ProgramFiles%\NSIS\makensis.exe" "NSIS Installer for KeyStatus.nsi"
 
-if Not ERRORLEVEL==1 goto rar
+if Not ERRORLEVEL==1 goto InstallerCert
 
     echo MakeNSIS command failed, trying again in 32-bit program files folder...
     "%ProgramFiles(x86)%\NSIS\makensis.exe" "NSIS Installer for KeyStatus.nsi"
 
-if Not ERRORLEVEL==1 goto rar
+if Not ERRORLEVEL==1 goto InstallerCert
 
     echo MakeNSIS-32 command failed, trying again in 64-bit program files folder...
     "%ProgramW6432%\NSIS\makensis.exe" "NSIS Installer for KeyStatus.nsi"
 
-if Not ERRORLEVEL==1 goto rar
+if Not ERRORLEVEL==1 goto InstallerCert
 
     color 0C
     echo ==== MakeNSIS Commands Failed! ====
@@ -132,9 +152,27 @@ if Not ERRORLEVEL==1 goto rar
         pause
         color %defaultColor%
 
-:rar
+:InstallerCert
     echo ==== MakeNSIS Script done ====
     echo.
+    echo ==== Signing KeyStatus-Installer.exe ====
+        echo %~dp0..\WinCompile\WalkmanOSS.cer
+        echo %~dp0..\WinCompile\WalkmanOSS.pvk
+        echo https://github.com/Walkman100/KeyStatus
+        echo http://timestamp.verisign.com/scripts/timstamp.dll
+    %~dp0..\WinCompile\signtool signwizard "%~dp0bin\Release\KeyStatus-Installer.exe"
+
+if Not ERRORLEVEL==1 goto InstallerCertDone
+
+    echo ==== Signing KeyStatus-Installer.exe Failed! ====
+    echo.
+        goto rar
+
+:InstallerCertDone
+    echo ==== Signing KeyStatus-Installer.exe done ====
+    echo.
+
+:rar
     echo ==== RARing portable releases with WinRAR ====
     rem remove previous archives, as WinRar tries to merge them
         del "bin\Release\KeyStatus-Portable-noAutoHotkey.rar"
