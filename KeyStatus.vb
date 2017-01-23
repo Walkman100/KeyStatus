@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Public Class KeyStatus
     Sub KeyStatus_Shown() Handles Me.Shown
         timerKeyChecker.Start

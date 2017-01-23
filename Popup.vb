@@ -1,4 +1,4 @@
-﻿'Manually merged from the Designer file
+'Manually merged from the Designer file
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Public Class Popup
     Inherits System.Windows.Forms.Form
