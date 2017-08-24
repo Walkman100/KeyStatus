@@ -3,6 +3,7 @@ A fork of [Deavmi/KeyStatus](https://github.com/Walkman-Mirror/KeyStatus) simpli
 
 ## Screenshot
 [![screenshot][screenshot]][screenshot]
+
   [screenshot]: http://walkman100.github.io/images/Screenshots/My_Projects/KeyStatus/MainWindow.png
 
 ## Command line arguments
@@ -22,6 +23,7 @@ CLAs are defined [here](https://github.com/Walkman100/KeyStatus/blob/master/KeyS
 To help make this info easier to understand, here is a screenshot with the args next to the option they change:
 
 [![screenshot with args][screenshot with args]][screenshot with args]
+
   [screenshot with args]: http://walkman100.github.io/images/Screenshots/My_Projects/KeyStatus/MainWindowArgs.png
 
 ## Compile requirements
@@ -43,7 +45,3 @@ Without NSIS, there won't be an installer - not needed for portable releases
 - WinRAR (Optional) - [WinRAR-2.9-setup.exe](https://github.com/Walkman100/WinCompile/raw/master/WinRAR-2.9-setup.exe):
 Without WinRAR, there won't be nicely packaged release files,
 but the original files that would've been packaged will still be there
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/deavmi/keystatus/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
