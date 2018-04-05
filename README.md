@@ -6,6 +6,11 @@ A fork of [Deavmi/KeyStatus](https://github.com/Walkman-Mirror/KeyStatus) simpli
 
   [screenshot]: http://walkman100.github.io/images/Screenshots/My_Projects/KeyStatus/MainWindow.png
 
+## Download
+Get the latest version [here](https://github.com/Walkman100/KeyStatus/releases), and the latest build from commit
+[here](https://ci.appveyor.com/project/Walkman100/KeyStatus/build/artifacts)
+(note that these builds are built for the Debug config and so are not optimised)
+
 ## Command line arguments
 CLAs are defined [here](https://github.com/Walkman100/KeyStatus/blob/master/KeyStatus.vb#L12-51).
 - `Hide`: Minimises the window to tray on start
