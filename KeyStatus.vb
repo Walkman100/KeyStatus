@@ -232,9 +232,9 @@ Public Class KeyStatus
         'My.Computer.Screen.WorkingArea
         'Popup.Width/2 = 66
         'Popup.Height/2 = 19
-        If chkPopupTaskbar.Checked Then
+        If chkPopupTaskbar.Checked Then ' use whole screen
             dispArea = My.Computer.Screen.Bounds
-        Else
+        Else  ' use screen area above taskbar
             dispArea = My.Computer.Screen.WorkingArea
         End If
         lblPopupCustLocX.Visible = False
@@ -245,23 +245,23 @@ Public Class KeyStatus
         numPopupCustLocExactY.Visible = False
         Select Case cbxPopupLocation.SelectedIndex
             Case 0 ' Top Left
-                Popup.Location = New Size((dispArea.Width/20) - 66, (dispArea.Height/20) - 19)
+                Popup.Location = New Point((dispArea.Width/20) - 66, (dispArea.Height/20) - 19)
             Case 1 ' Top Center
-                Popup.Location = New Size((dispArea.Width/2) - 66, (dispArea.Height/20) - 19)
+                Popup.Location = New Point((dispArea.Width/2) - 66, (dispArea.Height/20) - 19)
             Case 2 ' Top Right
-                Popup.Location = New Size((dispArea.Width/1.05) - 66, (dispArea.Height/20) - 19)
+                Popup.Location = New Point((dispArea.Width/1.05) - 66, (dispArea.Height/20) - 19)
             Case 3 ' Center Left
-                Popup.Location = New Size((dispArea.Width/20) - 66, (dispArea.Height/2) - 19)
+                Popup.Location = New Point((dispArea.Width/20) - 66, (dispArea.Height/2) - 19)
             Case 4 ' Center
-                Popup.Location = New Size((dispArea.Width/2) - 66, (dispArea.Height/2) - 19)
+                Popup.Location = New Point((dispArea.Width/2) - 66, (dispArea.Height/2) - 19)
             Case 5 ' Center Right
-                Popup.Location = New Size((dispArea.Width/1.05) - 66, (dispArea.Height/2) - 19)
+                Popup.Location = New Point((dispArea.Width/1.05) - 66, (dispArea.Height/2) - 19)
             Case 6 ' Bottom Left
-                Popup.Location = New Size((dispArea.Width/20) - 66, (dispArea.Height/1.05) - 19)
+                Popup.Location = New Point((dispArea.Width/20) - 66, (dispArea.Height/1.05) - 19)
             Case 7 ' Bottom Center
-                Popup.Location = New Size((dispArea.Width/2) - 66, (dispArea.Height/1.05) - 19)
+                Popup.Location = New Point((dispArea.Width/2) - 66, (dispArea.Height/1.05) - 19)
             Case 8 ' Bottom Right
-                Popup.Location = New Size((dispArea.Width/1.05) - 66, (dispArea.Height/1.05) - 19)
+                Popup.Location = New Point((dispArea.Width/1.05) - 66, (dispArea.Height/1.05) - 19)
             Case 9 ' Custom Division Factor
                 lblPopupCustLocX.Visible = True
                 lblPopupCustLocY.Visible = True
