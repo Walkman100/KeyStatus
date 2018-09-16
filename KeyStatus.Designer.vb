@@ -39,6 +39,7 @@ Partial Class KeyStatus
         Me.notifyIconCapsLock = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.notifyIconScrollLock = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.grpTray = New System.Windows.Forms.GroupBox()
+        Me.chkAlwaysUseAHK = New System.Windows.Forms.CheckBox()
         Me.chkTraySelection = New System.Windows.Forms.CheckBox()
         Me.grpTraySelection = New System.Windows.Forms.GroupBox()
         Me.chkTraySelectionScroll = New System.Windows.Forms.CheckBox()
@@ -69,7 +70,7 @@ Partial Class KeyStatus
         Me.grpBalloon = New System.Windows.Forms.GroupBox()
         Me.numBalloonTimeout = New System.Windows.Forms.NumericUpDown()
         Me.lblBalloonTimeout = New System.Windows.Forms.Label()
-        Me.chkAlwaysUseAHK = New System.Windows.Forms.CheckBox()
+        Me.lblVersion = New System.Windows.Forms.Label()
         Me.notifyContext.SuspendLayout
         Me.grpTray.SuspendLayout
         Me.grpTraySelection.SuspendLayout
@@ -573,6 +574,17 @@ Partial Class KeyStatus
         Me.chkAlwaysUseAHK.Text = "Always use AHK scripts"
         Me.chkAlwaysUseAHK.UseVisualStyleBackColor = true
         '
+        'lblVersion
+        '
+        Me.lblVersion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.lblVersion.AutoSize = true
+        Me.lblVersion.Font = New System.Drawing.Font("Microsoft Sans Serif", 6!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblVersion.Location = New System.Drawing.Point(453, 404)
+        Me.lblVersion.Name = "lblVersion"
+        Me.lblVersion.Size = New System.Drawing.Size(21, 9)
+        Me.lblVersion.TabIndex = 9
+        Me.lblVersion.Text = "1.0.0"
+        '
         'KeyStatus
         '
         Me.AcceptButton = Me.btnHide
@@ -580,6 +592,7 @@ Partial Class KeyStatus
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnExit
         Me.ClientSize = New System.Drawing.Size(486, 422)
+        Me.Controls.Add(Me.lblVersion)
         Me.Controls.Add(Me.chkBalloon)
         Me.Controls.Add(Me.grpBalloon)
         Me.Controls.Add(Me.chkPopup)
@@ -609,6 +622,7 @@ Partial Class KeyStatus
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
+    Private lblVersion As System.Windows.Forms.Label
     Private chkAlwaysUseAHK As System.Windows.Forms.CheckBox
     Private WithEvents notifyContextBalloons As System.Windows.Forms.ToolStripMenuItem
     Private lblBalloonTimeout As System.Windows.Forms.Label

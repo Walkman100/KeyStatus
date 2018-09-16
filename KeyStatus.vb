@@ -1,6 +1,7 @@
 Imports System.IO
 Public Class KeyStatus
     Sub KeyStatus_Shown() Handles Me.Shown
+        lblVersion.Text = My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Build
         timerKeyChecker.Start
         Popup.Show
         Me.Focus
