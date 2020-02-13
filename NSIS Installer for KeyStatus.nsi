@@ -88,7 +88,6 @@ SectionEnd
 ; Functions
 
 Function .onInit
-Function .onInit
   SetShellVarContext all
   SetAutoClose true
 FunctionEnd
@@ -151,6 +150,13 @@ Section "Uninstall"
   RMDir "$INSTDIR"
   
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${ProgramName}" ; Remove Windows Programs & Features integration (uninstall info)
+  
+  Delete "$INSTDIR\toggleNumLock.ahk"           ; Remove toggle scripts
+  Delete "$INSTDIR\toggleCapsLock.ahk"
+  Delete "$INSTDIR\toggleScrollLock.ahk"
+  Delete "$INSTDIR\toggleNumLock.exe"
+  Delete "$INSTDIR\toggleCapsLock.exe"
+  Delete "$INSTDIR\toggleScrollLock.exe"
   
   Delete "$SMPROGRAMS\WalkmanOSS\${ProgramName}.lnk"   ; Remove Start Menu Shortcuts & Folder
   Delete "$SMPROGRAMS\WalkmanOSS\Uninstall ${ProgramName}.lnk"
