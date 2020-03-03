@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Easily Tells You The Status of Your Keyboard")> 
 <Assembly: AssemblyCompany("WalkmanOSS")> 
 <Assembly: AssemblyProduct("KeyStatus")> 
-<Assembly: AssemblyCopyright("FOSS from Walkman 2015")> 
+<Assembly: AssemblyCopyright("FOSS from Walkman 2015-20")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>

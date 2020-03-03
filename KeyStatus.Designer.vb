@@ -397,8 +397,7 @@ Partial Class KeyStatus
         Me.numPopupCustLocFactY.DecimalPlaces = 2
         Me.numPopupCustLocFactY.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
         Me.numPopupCustLocFactY.Location = New System.Drawing.Point(275, 55)
-        Me.numPopupCustLocFactY.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
-        Me.numPopupCustLocFactY.Minimum = New Decimal(New Integer() {105, 0, 0, 131072})
+        Me.numPopupCustLocFactY.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numPopupCustLocFactY.Name = "numPopupCustLocFactY"
         Me.numPopupCustLocFactY.Size = New System.Drawing.Size(181, 20)
         Me.numPopupCustLocFactY.TabIndex = 9
@@ -413,8 +412,7 @@ Partial Class KeyStatus
         Me.numPopupCustLocFactX.DecimalPlaces = 2
         Me.numPopupCustLocFactX.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
         Me.numPopupCustLocFactX.Location = New System.Drawing.Point(275, 35)
-        Me.numPopupCustLocFactX.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
-        Me.numPopupCustLocFactX.Minimum = New Decimal(New Integer() {105, 0, 0, 131072})
+        Me.numPopupCustLocFactX.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numPopupCustLocFactX.Name = "numPopupCustLocFactX"
         Me.numPopupCustLocFactX.Size = New System.Drawing.Size(181, 20)
         Me.numPopupCustLocFactX.TabIndex = 8
@@ -629,11 +627,11 @@ Partial Class KeyStatus
     Private numBalloonTimeout As System.Windows.Forms.NumericUpDown
     Private grpBalloon As System.Windows.Forms.GroupBox
     Private WithEvents chkBalloon As System.Windows.Forms.CheckBox
-    Private numPopupCustLocExactX As System.Windows.Forms.NumericUpDown
-    Private numPopupCustLocExactY As System.Windows.Forms.NumericUpDown
+    Private WithEvents numPopupCustLocExactX As System.Windows.Forms.NumericUpDown
+    Private WithEvents numPopupCustLocExactY As System.Windows.Forms.NumericUpDown
     Private lblPopupCustLocY As System.Windows.Forms.Label
-    Private numPopupCustLocFactX As System.Windows.Forms.NumericUpDown
-    Private numPopupCustLocFactY As System.Windows.Forms.NumericUpDown
+    Private WithEvents numPopupCustLocFactX As System.Windows.Forms.NumericUpDown
+    Private WithEvents numPopupCustLocFactY As System.Windows.Forms.NumericUpDown
     Private lblPopupCustLocX As System.Windows.Forms.Label
     Private notifyContextSeparator2 As System.Windows.Forms.ToolStripSeparator
     Private WithEvents notifyContextPopups As System.Windows.Forms.ToolStripMenuItem

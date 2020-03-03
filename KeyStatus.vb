@@ -228,7 +228,8 @@ Public Class KeyStatus
     End Sub
     
     Dim dispArea As System.Drawing.Rectangle
-    Sub SetPopupLocation() Handles cbxPopupLocation.SelectedIndexChanged, chkPopupTaskbar.CheckedChanged
+    Sub SetPopupLocation() Handles cbxPopupLocation.SelectedIndexChanged, chkPopupTaskbar.CheckedChanged,
+      numPopupCustLocExactX.ValueChanged, numPopupCustLocExactY.ValueChanged, numPopupCustLocFactX.ValueChanged, numPopupCustLocFactY.ValueChanged
         'My.Computer.Screen.Bounds
         'My.Computer.Screen.WorkingArea
         'Popup.Width/2 = 66
