@@ -175,30 +175,11 @@ Public Class KeyStatus
     
     Sub timerPopupHide_Tick() Handles timerPopupHide.Tick
         timerPopupHide.Interval = 100
-        Select Case Popup.Opacity
-            Case 1
-                Popup.Opacity = .9
-            Case .9
-                Popup.Opacity = .8
-            Case .8
-                Popup.Opacity = .7
-            Case .7
-                Popup.Opacity = .6
-            Case .6
-                Popup.Opacity = .5
-            Case .5
-                Popup.Opacity = .4
-            Case .4
-                Popup.Opacity = .3
-            Case .3
-                Popup.Opacity = .2
-            Case .2
-                Popup.Opacity = .1
-            Case .1
-                Popup.Opacity = 0
-            Case 0
-                timerPopupHide.Stop
-        End Select
+        If Popup.Opacity > 0 Then
+            Popup.Opacity -= 0.1
+        Else
+            timerPopupHide.Stop()
+        End If
     End Sub
     
     ' UI options
