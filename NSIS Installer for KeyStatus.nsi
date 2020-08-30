@@ -1,6 +1,5 @@
 ; KeyStatus Installer NSIS Script
 ; get NSIS at http://nsis.sourceforge.net/Download
-; As a program that all Power PC users should have, Notepad++ is recommended to edit this file
 
 !define ProgramName "KeyStatus"
 Icon "My Project\1371918331_keyboard.ico"
@@ -19,6 +18,7 @@ LicenseForceSelection checkbox "I have read and understand this notice"
 LicenseText "Please read the notice below before installing ${ProgramName}. If you understand the notice, click the checkbox below and click Next."
 
 InstallDir $PROGRAMFILES\WalkmanOSS
+InstallDirRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${ProgramName}" "InstallLocation"
 OutFile "bin\Release\${ProgramName}-Installer.exe"
 
 ; Pages
